@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #ED1B2F;
+  --color-secondary: #231F20;
+  --color-accent: #231F20;
+  --color-background: #ffffff;
+  --color-text-muted: #88909b;
+  --color-border: #666666;
+
+  --font-heading: 'Libre Franklin', sans-serif;
+  --font-serif: 'PT Serif', serif;
+
+  --spacing-base: 24px;
+
+  --shadow-natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+  --shadow-deep: 12px 12px 50px rgba(0, 0, 0, 0.3);
+  --shadow-sharp: 6px 6px 0px rgba(0, 0, 0, 0.4);
+}
+
 :root {
+  --primary: #ED1B2F;
+  --secondary: #231F20;
+  --accent: #231F20;
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-muted: #88909b;
+  --border: #666666;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--secondary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.container-standard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation-name: fadeInUp;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
 }
