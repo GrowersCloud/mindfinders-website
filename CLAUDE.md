@@ -46,6 +46,7 @@ See [package.json](package.json) for complete scripts.
 - `/training-and-talent` - [src/app/training-and-talent/page.tsx](src/app/training-and-talent/page.tsx)
 - `/about` - [src/app/about/page.tsx](src/app/about/page.tsx)
 - `/get-started` - [src/app/get-started/page.tsx](src/app/get-started/page.tsx)
+- `/sips-and-smoothies` - [src/app/sips-and-smoothies/page.tsx](src/app/sips-and-smoothies/page.tsx) (Marketing Landing Page)
 - `/faq`, `/privacy-policy`, `/terms-of-service` - Legal/support pages
 
 **Navigation Patterns:**
@@ -86,24 +87,23 @@ export const content = {
 
 ## Design System
 
+**IMPORTANT:** The authoritative style guide is [../mindfinders-style.md](../mindfinders-style.md). Always refer to it for the complete design system.
+
 **Tailwind CSS 4:** Using `@theme` directive in [src/app/globals.css](src/app/globals.css)
 
-**CSS Variables:**
-Defined in both `@theme` (for Tailwind) and `:root` (for direct access)
-
+**CSS Variables (Quick Reference):**
 ```css
 /* Colors */
---color-primary / --primary: #cc3366  /* Dusty rose/mauve */
---color-secondary / --secondary: #333333  /* Dark charcoal */
---color-accent / --accent: #1f2124  /* Near black */
+--primary: #ED1B2F           /* Vibrant red/crimson */
+--secondary: #231F20         /* Deep charcoal */
+--accent: #231F20            /* Deep charcoal */
 --background: #ffffff
 --text-muted: #88909b
 --border: #666666
 
 /* Typography */
 --font-heading: 'Libre Franklin', sans-serif
---font-serif: 'PT Serif', serif
-/* Body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, etc. */
+--font-serif: 'PT Serif', serif (weights 400, 700)
 
 /* Spacing */
 --spacing-base: 24px
@@ -111,22 +111,19 @@ Defined in both `@theme` (for Tailwind) and `:root` (for direct access)
 /* Shadows */
 --shadow-natural: 6px 6px 9px rgba(0, 0, 0, 0.2)
 --shadow-deep: 12px 12px 50px rgba(0, 0, 0, 0.3)
---shadow-sharp: 6px 6px 0px rgba(0, 0, 0, 0.4)
 ```
 
 **Google Fonts:** Loaded in [src/app/layout.tsx](src/app/layout.tsx) using `next/font/google`
 
 **Tailwind Usage:**
 ```tsx
-<div className="text-[var(--primary)] bg-[var(--accent)]">
+<div className="text-[var(--primary)] bg-[var(--secondary)]">
 <button className="hover:text-[var(--primary)] transition-colors">
 ```
 
 **Custom Classes:**
 - `.container` - max-width 1200px, auto margins, 10px padding
 - `.container-standard` - max-width 800px, auto margins, 10px padding
-
-**Full Design System Reference:** See [../mindfinders-style.md](../mindfinders-style.md)
 
 ## Component Architecture
 
@@ -135,6 +132,7 @@ Defined in both `@theme` (for Tailwind) and `:root` (for direct access)
 
 - Uses React hooks: `useState`, `useEffect`, `usePathname`
 - Services mega menu (3 columns on desktop, accordion on mobile)
+- Programs mega menu (2 columns on desktop: Events, etc.; accordion on mobile)
 - AI Agents dropdown (7 items)
 - Active route detection with `usePathname()` from `next/navigation`
 - Mobile hamburger menu with state management
@@ -383,7 +381,7 @@ export const content = {
 
 For detailed requirements beyond this architectural overview:
 
-- **Build Specs:** [../final_prompt-1-26-build-mindfinders-website.md](../final_prompt-1-26-build-mindfinders-website.md)
-- **Design System:** [../mindfinders-style.md](../mindfinders-style.md)
+- **Design System:** [../mindfinders-style.md](../mindfinders-style.md) (authoritative style guide)
 - **Website Copy:** [../final_mindfinders-website-copy.md](../final_mindfinders-website-copy.md)
 - **Getting Started:** [README.md](README.md)
+- **Build Specs (archived):** [../archive/final_prompt-1-26-build-mindfinders-website.md](../archive/final_prompt-1-26-build-mindfinders-website.md)

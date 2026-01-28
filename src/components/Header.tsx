@@ -11,12 +11,14 @@ export default function Header() {
 
     // Mobile accordion states
     const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
     const [mobileAgentsOpen, setMobileAgentsOpen] = useState(false);
 
     // Close mobile menu on route change
     useEffect(() => {
         setMobileMenuOpen(false);
         setMobileServicesOpen(false);
+        setMobileProgramsOpen(false);
         setMobileAgentsOpen(false);
     }, [pathname]);
 
@@ -108,6 +110,35 @@ export default function Header() {
                                 <li><Link href="/ai-agents#voice" className="hover:text-[var(--primary)] block py-1">AI Voice Agents</Link></li>
                                 <li><Link href="/ai-agents#abandoned-cart" className="hover:text-[var(--primary)] block py-1">AI Abandoned Cart</Link></li>
                             </ul>
+                        </div>
+                    </div>
+
+                    {/* Programs Mega Menu */}
+                    <div className="group relative h-full flex items-center">
+                        <Link
+                            href="/programs"
+                            className={`flex items-center h-full border-b-2 px-1 transition-colors cursor-pointer ${isActive('/programs') ? 'border-[var(--primary)] text-[var(--primary)]' : 'border-transparent group-hover:text-[var(--primary)]'}`}
+                        >
+                            PROGRAMS <span className="ml-1 text-xs">▼</span>
+                        </Link>
+
+                        {/* Mega Menu Dropdown */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white border border-[var(--border)] shadow-[var(--shadow-deep)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 p-8 grid grid-cols-2 gap-8">
+                            {/* Col 1: Events */}
+                            <div>
+                                <h3 className="font-bold mb-4 text-[var(--primary)] uppercase text-sm tracking-wider">Events</h3>
+                                <ul className="space-y-2 text-sm">
+                                    <li><Link href="/sips-and-smoothies" className="hover:text-[var(--primary)] block py-1">AI CEO Sips & Smoothies</Link></li>
+                                </ul>
+                            </div>
+
+                            {/* Col 2: Placeholder */}
+                            <div>
+                                <h3 className="font-bold mb-4 text-[var(--primary)] uppercase text-sm tracking-wider opacity-50">More to come</h3>
+                                <ul className="space-y-2 text-sm opacity-50">
+                                    <li className="py-1">Upcoming Program...</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -206,6 +237,22 @@ export default function Header() {
                                 <Link href="/ai-agents#database-reactivation" className="block text-sm">Database Reactivation</Link>
                                 <Link href="/ai-agents#speed-to-lead" className="block text-sm">Speed to Lead</Link>
                                 <Link href="/ai-agents#out-of-hours" className="block text-sm">Out of Hours</Link>
+                            </div>
+                        </div>
+
+                        {/* Mobile Programs */}
+                        <div>
+                            <button
+                                onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
+                                className="flex justify-between items-center w-full text-lg font-medium border-b border-gray-100 pb-2"
+                            >
+                                PROGRAMS <span>{mobileProgramsOpen ? '-' : '+'}</span>
+                            </button>
+                            <div className={`${mobileProgramsOpen ? 'block' : 'hidden'} pl-4 py-2 space-y-3`}>
+                                <div className="space-y-2">
+                                    <p className="text-xs uppercase text-gray-400 font-bold">Events</p>
+                                    <Link href="/sips-and-smoothies" className="block text-sm pl-2">AI CEO Sips & Smoothies</Link>
+                                </div>
                             </div>
                         </div>
 

@@ -47,12 +47,12 @@ All text content is centered in `src/lib/content.ts`. This makes it easy to upda
 
 ## 🎨 Design System
 
-The design system is implemented using CSS variables in `globals.css` and configured in Tailwind.
+The design system is implemented using CSS variables in `globals.css` and configured in Tailwind. See [../mindfinders-style.md](../mindfinders-style.md) for the complete style guide.
 
-- **Primary Color**: `#cc3366` (Dusty Rose)
-- **Secondary**: `#333333` (Charcoal)
-- **Accent**: `#1f2124` (Near Black)
-- **Fonts**: `Libre Franklin` (Headings), `PT Serif` (Accents), System Sans (Body)
+- **Primary Color**: `#ED1B2F` (Vibrant Red/Crimson)
+- **Secondary**: `#231F20` (Deep Charcoal)
+- **Accent**: `#231F20` (Deep Charcoal)
+- **Fonts**: `Libre Franklin` (Headings), `PT Serif` (Body/Accents), System Sans (UI)
 
 ## 📦 Building for Production
 
