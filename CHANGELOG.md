@@ -4,6 +4,25 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-01-29] - Documentation Update
+**Commit**: `343fa9b`
+
+### Added
+- Created CHANGELOG.md with full deployment history
+- Added Deployment section to README.md (git repo info, deploy process, checklist)
+- Added Deployment & Git Repository section to CLAUDE.md
+
+### Removed
+- Deleted stale COMMITS_PENDING.md (superseded by CHANGELOG.md)
+
+### Files Modified
+- `CHANGELOG.md` (new)
+- `README.md`
+- `CLAUDE.md`
+- `COMMITS_PENDING.md` (deleted)
+
+---
+
 ## [2026-01-29] - Mobile Menu Fix
 **Commit**: `44ec721`
 
