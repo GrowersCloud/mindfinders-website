@@ -2,6 +2,31 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Deployment & Git Repository
+
+**CRITICAL**: This folder (`frontend-next/`) is the git repository. The parent `Mindfinders-website/` folder is for documentation only and is NOT a git repo.
+
+| Info | Value |
+|------|-------|
+| Remote | https://github.com/GrowersCloud/mindfinders-website.git |
+| Branch | `master` |
+| Deployment | Vercel (auto-deploys on push to master) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) - **update after every deployment** |
+
+### Deploy Process
+1. Make changes in this folder
+2. Test: `npm run dev`
+3. Build: `npm run build`
+4. Stage: `git add <files>`
+5. Commit: `git commit -m "message"`
+6. Push: `git push origin master`
+7. **Update [CHANGELOG.md](CHANGELOG.md)** with date, commit hash, and changes
+
+### Post-Deployment Checklist
+- [ ] Verify Vercel deployment succeeded
+- [ ] Test changes on production site (mindfinders.ai)
+- [ ] Update CHANGELOG.md with deployment details
+
 ## Development Commands
 
 ```bash

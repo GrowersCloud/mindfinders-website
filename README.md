@@ -67,3 +67,36 @@ To start the production server:
 ```bash
 npm start
 ```
+
+## 🚀 Deployment
+
+### Git Repository
+
+**IMPORTANT**: This folder (`frontend-next/`) is the git repository. The parent `Mindfinders-website/` folder is for documentation only and is NOT a git repo.
+
+| Info | Value |
+|------|-------|
+| Remote | https://github.com/GrowersCloud/mindfinders-website.git |
+| Branch | `master` |
+| Deployment | Vercel (auto-deploys on push to master) |
+| Changelog | See [CHANGELOG.md](CHANGELOG.md) |
+
+### How to Deploy
+
+1. Make your changes in this folder (`frontend-next/`)
+2. Test locally: `npm run dev`
+3. Build to verify: `npm run build`
+4. Stage changes: `git add <files>`
+5. Commit: `git commit -m "Your message"`
+6. Push: `git push origin master`
+7. **Update [CHANGELOG.md](CHANGELOG.md)** with the deployment details
+
+Vercel automatically deploys when you push to master.
+
+### Post-Deployment Checklist
+
+After every deployment, update `CHANGELOG.md` with:
+- Date
+- Commit hash
+- Summary of changes (Added/Changed/Fixed)
+- Files modified
