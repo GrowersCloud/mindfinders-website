@@ -6,6 +6,23 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## KNOWN ISSUES (for next session)
+
+### 1. Mobile Menu Bug - NOT FIXED
+- **Status**: Code changes applied but NOT deployed to production
+- **Problem**: Mobile menu navigation links are cut off when menu is opened
+- **Fix Applied**: Changed `overflow-hidden` to `overflow-x-hidden overflow-y-auto` in Header.tsx
+- **Blocker**: Vercel auto-deployments are being canceled (see issue #2)
+- **Workaround**: Run `vercel --prod` manually from `frontend-next/` folder
+
+### 2. Vercel Auto-Deploy Not Working
+- **Status**: Git pushes trigger deployments but they immediately get "Canceled"
+- **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
+- **Manual deploy works**: `vercel --prod` successfully deploys
+- **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
 ## [2026-01-29] - Documentation Update
 **Commit**: `343fa9b`
 
