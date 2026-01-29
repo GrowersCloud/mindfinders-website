@@ -8,12 +8,12 @@ All deployments to production are documented here. **Update this file after ever
 
 ## KNOWN ISSUES (for next session)
 
-### 1. Mobile Menu Bug - NOT FIXED
-- **Status**: Code changes applied but NOT deployed to production
-- **Problem**: Mobile menu navigation links are cut off when menu is opened
-- **Fix Applied**: Changed `overflow-hidden` to `overflow-x-hidden overflow-y-auto` in Header.tsx
-- **Blocker**: Vercel auto-deployments are being canceled (see issue #2)
-- **Workaround**: Run `vercel --prod` manually from `frontend-next/` folder
+### 1. Mobile Menu Bug - STILL BROKEN
+- **Status**: FIX ATTEMPTED BUT DID NOT WORK - needs re-investigation
+- **Problem**: Mobile menu navigation links are cut off when menu is opened (user cannot see nav items)
+- **Attempted Fix**: Changed `overflow-hidden` to `overflow-x-hidden overflow-y-auto` in Header.tsx (lines 216, 219, 290, 337, 383)
+- **Result**: Deployed via `vercel --prod` but mobile menu STILL NOT WORKING
+- **Next Steps**: Re-examine Header.tsx mobile menu implementation, test locally, find actual root cause
 
 ### 2. Vercel Auto-Deploy Not Working
 - **Status**: Git pushes trigger deployments but they immediately get "Canceled"
@@ -42,12 +42,13 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
-## [2026-01-29] - Mobile Menu Fix
+## [2026-01-29] - Mobile Menu Fix (UNSUCCESSFUL)
 **Commit**: `44ec721`
 
-### Fixed
-- Mobile menu visibility bug where navigation links were cut off when menu opened
-- Changed `overflow-hidden` to `overflow-x-hidden overflow-y-auto` on menu container and inner panels to allow scrolling when content exceeds viewport height
+### Attempted Fix (DID NOT RESOLVE ISSUE)
+- Attempted to fix mobile menu visibility bug where navigation links are cut off
+- Changed `overflow-hidden` to `overflow-x-hidden overflow-y-auto` on menu container and inner panels
+- **Result**: Fix was deployed but mobile menu is STILL NOT WORKING - needs further investigation
 
 ### Files Modified
 - `src/components/Header.tsx` (lines 216, 219, 290, 337, 383)
