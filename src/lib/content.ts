@@ -507,17 +507,18 @@ export const content = {
     },
     sipsAndSmoothies: {
         hero: {
-            h1: "The AI CEO Sips & Smoothies Cocktail Party",
-            subtitle: "An Exclusive Invitation-Only Social Evening for Growth-Minded CEOs, Hosted by Your Neighbor Tim Booker, CEO of Mindfinders AI",
+            eyebrow: "Limited to 20 Executives",
+            h1: ["The AI CEO", "Sips & Smoothies", "Cocktail Party"],
+            subtitle: "Exclusive Invitation-Only Social Evening\nfor Growth-Minded CEOs\n\nHosted by Your Neighbor Tim Booker, CEO of MindFinders AI",
             details: [
-                "February 28 | 5:00–7:00 PM",
+                "March 5 | 5:00–7:00 PM",
                 "The Capital Grille, McLean, VA"
             ],
-            description: "This is a relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and productivity.",
+            description: "Join fellow CEOs from middle-market companies and innovative small businesses with 30 or more employees in this relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and increase productivity.",
             cta: "Request an Invitation"
         },
         socialContext: {
-            h2: "This Is an Executive Social, Not a Conference",
+            h2: ["This Is an", "Executive Social,", "Not a Conference"],
             body: "The AI CEO Sips & Smoothies cocktail party is a social, peer-level experience, not a formal presentation or sales event.",
             offerings: [
                 "Handcrafted cocktails and wine, if you choose to drink",
@@ -525,16 +526,28 @@ export const content = {
                 "Curated hors d’oeuvres and small plates",
                 "A comfortable, upscale setting that encourages real conversation"
             ],
-            footer: "All hosted at The Capital Grille, one of the city's premier steakhouse destinations."
+            footer: "Hosted at The Capital Grille, one of the city's premier steakhouse destinations."
         },
         benefits: {
             h2: "Why CEOs Enjoy This Format",
-            intro: "Most AI events are loud, crowded, and transactional. This one is different. The goal is to create an environment where CEOs can:",
+            intro: "Most AI events are loud and transactional. This one is different. This is an evening designed for CEOs to unwind and connect through high-impact conversation.",
             items: [
-                "Unwind after the workday",
-                "Have meaningful conversations with peers, including CEOs who may turn into referral partners",
-                "Enjoy high-quality food and drinks",
-                "Leave with practical Growth and AI insights they can actually use"
+                {
+                    title: "Strategic Downtime",
+                    text: "Unwind after the workday in a high-caliber setting designed for reflection and connection."
+                },
+                {
+                    title: "Peer-Level Networking",
+                    text: "Have meaningful conversations with fellow CEOs who understand your challenges and may become referral partners."
+                },
+                {
+                    title: "Premium Hospitality",
+                    text: "Enjoy a curated selection of food and drinks at The Capital Grille, ensuring a quality experience from start to finish."
+                },
+                {
+                    title: "Practical AI ROI",
+                    text: "Leave with tangible, field-tested AI insights that you can implement in your business immediately."
+                }
             ],
             footer: "No stage. No pressure. Just a well-hosted evening with the right people in the room."
         },
@@ -542,57 +555,62 @@ export const content = {
             h2: "What You’ll Experience During the Evening",
             flow: {
                 title: "A Relaxed Social Flow",
-                text: "Arrive, grab a drink or a smoothie, and settle in. Conversation happens naturally throughout the space. No forced networking. No awkward formats."
+                text: "Arrive, grab a drink or a smoothie, and settle in. Conversation happens naturally throughout the upscale space. No forced networking. No awkward formats. Simply a well-hosted evening with the right people."
             },
             demos: {
                 title: "8 AI Demos in 8 Minutes",
-                text: "At a natural break in the evening, you’ll see eight fast, practical AI demos. These are real tools and prompts CEOs are using to save time, improve productivity, and help teams perform at a higher level.",
+                text: [
+                    "At a natural break in the evening, you’ll see eight fast, practical AI demos. These are real tools and prompts CEOs are using to save time, improve productivity, and help teams perform at a higher level.",
+                    "For example, you will see a quick demo of how to use AI to take an unperforming asset and turn it into cash. Many companies have invested hundreds of thousands to millions in leads that never converted into sales. You will learn how a debt consolidation company in the financial services space made $600,000 within 90 days by using AI and SMS to convert these old dead leads into sales.",
+
+                ],
                 footer: "No theory. Just quick, tangible ideas."
             }
         },
         referrals: {
             h2: "Generate Referrals From Other Businesses Targeting the Same Affluent Consumers in the DMV Area",
-            body: "This event is uniquely curated for CEOs of companies serving affluent consumers in the D.C. metro area, including automobile dealers and financial services, as well as law, accounting, home services, and more.",
+            imagine: "Imagine,",
+            body: "This event is uniquely curated for CEOs of companies serving affluent consumers \nin the D.C. metro area, including automobile dealers and financial services, \nas well as law, accounting, home services, and more.",
             valueProp: "When you put CEOs in a room who share a high-value client base, something powerful happens. You create a natural environment for building referral partnerships and exploring structured joint ventures.",
             scenarios: [
-                "A luxury auto dealer connects with a solar installer, and they agree to co-market to each other’s customers.",
-                "A financial advisor partners with a top-tier home services CEO."
+                "A luxury auto dealer connects with a solar installer, and \nthey agree to co-market to each other’s customers.",
+                "A CEO of a financial advisory partners or joint ventures \nwith a top-tier home services CEO."
             ],
             conclusion: "Every conversation is an opportunity to build mutually beneficial relationships and generate new business with peers who understand your market and clientele."
         },
         matchmaking: {
             h2: "Smarter CEO Introductions Powered by AI",
-            body: "We also use AI-powered matchmaking to introduce you to other CEOs based on industry, role, growth priorities, and personal hobbies and interests.",
-            value: "It removes the awkwardness, makes the social time more valuable, and may lead to a profitable business relationship or a new friendship."
+            body: "We also use AI-powered matchmaking to introduce you to other CEOs \nbased on industry, role, growth priorities, and personal interests.",
+            value: "It removes the awkwardness and makes the social time more valuable, \nleading to a profitable business relationship or a new friendship."
         },
         audience: {
             h2: "Who This Event Is Designed For",
             items: [
-                "Value peer-to-peer conversations",
-                "Appreciate high-quality venues and experiences",
-                "Are curious about AI but want practical, grounded insight",
+                "CEOs who value peer-to-peer conversations",
+                "CEOs who appreciate high-quality venues and experiences",
+                "CEOs who are curious about AI but want practical, grounded insight",
                 "CEOs of mid-market companies or innovative small businesses with 30 or more employees"
             ],
             limitation: "Attendance is intentionally limited to 20 CEOs to ensure a personalized experience."
         },
         details: {
             h2: "Event Details",
-            event: "AI CEO Sips & Smoothies",
-            date: "February 28",
+            event: "AI CEO Sips & Smoothies Cocktail Party",
+            date: "March 5",
             time: "5:00–7:00 PM",
-            location: "The Capital Grille, 1861 International Dr, McLean, VA 22102",
-            amenities: "Cocktails, smoothies, mocktails, and hors d’oeuvres provided."
+            location: "The Capital Grille \n1861 International Dr \nMcLean, VA 22102",
+            amenities: "Cocktails, smoothies, mocktails, and \nhors d’oeuvres will be served."
         },
         howToAttend: {
-            h2: "How to Attend",
-            body: "This event is by invitation only and is limited to 20 CEOs of middle-market companies or trailblazing small businesses with 30 or more employees.",
+            h2: "The Invitation Process",
+            body: "Limited to 20 CEOs of companies with 30+ employees \nto ensure high-value, peer-level connections for all.",
             steps: [
-                "Click below to request an invitation",
-                "Review the details",
-                "Confirm your interest"
+                "Request Invitation",
+                "Brief Compatibility Review",
+                "Official Invitation Secured"
             ],
             cta: "Request an Invitation",
-            alternative: "If the timing for this event doesn't work for you, please contact us to be added to the list for the next one."
+            alternative: "If the timing for this session doesn't work, \ncontact us to join the next event’s waitlist."
         },
         host: {
             h2: "About Your Host",
@@ -610,13 +628,13 @@ export const content = {
                 "We assist leaders in leveraging AI to accelerate business growth and enhance operational efficiency. By working closely with executives, MindFinders AI develops and implements customized AI solutions that drive growth, automate essential tasks, and improve customer experiences, all without extensive coding or large technical teams.",
                 "Our approach streamlines operations, reduces inefficiencies, and boosts productivity, enabling CEOs to execute faster and align teams more effectively.",
                 "MindFinders AI also supports workforce transformation by upskilling talent and deploying AI-ready teams, ensuring organizations are equipped for measurable performance and sustainable success.",
-                "MindFinders AI is a leading partner of GrowersCloud.ai, an AI-powered business operating system that helps CEOs accelerate growth and boost productivity.",
-                "GrowersCloud.ai empowers executive teams to uncover hidden profits, optimize processes, and align strategy with execution.",
+                "MindFinders AI is a leading partner of GrowersCloud.AI, an AI-powered business \noperating system that helps CEOs accelerate growth and boost productivity.",
+                "GrowersCloud.AI empowers executive teams to uncover hidden profits, \noptimize processes, and align strategy with execution.",
                 "Together, we deliver AI-driven solutions that transform companies and help CEOs build future-ready enterprises."
             ]
         },
         finalThought: {
-            body: "If you enjoy good conversation, great food and drinks, and learning how other CEOs are using AI in the real world, this evening will be worth your time.",
+            body: "If you enjoy good conversation, great food and drinks, and learning \nhow other CEOs use AI in the real world, this evening \nwill be very worth your time.",
             cta: "Request an Invitation"
         }
     }

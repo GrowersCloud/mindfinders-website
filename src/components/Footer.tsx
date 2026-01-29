@@ -50,8 +50,18 @@ export default function Footer() {
                     </nav>
                 </div>
 
-                <div className="mt-12 text-center text-xs text-gray-400 border-t border-gray-200 pt-8">
-                    Powered by GrowersCloud
+                <div className="mt-8 flex flex-col items-center justify-center space-y-2 border-t border-gray-200 pt-6">
+                    <span className="text-sm font-bold text-gray-900 uppercase tracking-widest opacity-90">
+                        Powered By
+                    </span>
+                    <Link href="https://GrowersCloud.ai" target="_blank" rel="noopener noreferrer" className="relative w-72 h-20 transition-transform hover:scale-105 opacity-100 hover:opacity-80">
+                        <Image
+                            src="/growers-cloud-logo.png"
+                            alt="Growers Cloud AI"
+                            fill
+                            className="object-contain"
+                        />
+                    </Link>
                 </div>
             </div>
         </footer>
