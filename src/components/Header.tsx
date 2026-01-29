@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -11,6 +12,12 @@ export default function Header() {
     const pathname = usePathname();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSubmenu, setActiveSubmenu] = useState<Submenu>(null);
+    const [mounted, setMounted] = useState(false);
+
+    // Set mounted to true on client (for Portal SSR safety)
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Close mobile menu on route change
     useEffect(() => {
@@ -191,220 +198,245 @@ export default function Header() {
                 </button>
             </div>
 
-            {/* Full-Screen Mobile Menu */}
-            <div
-                className={`fixed inset-0 z-[100] bg-white lg:hidden transition-transform duration-300 ease-out ${
-                    mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
-                aria-hidden={!mobileMenuOpen}
-            >
-                {/* Menu Header */}
-                <div className="flex justify-between items-center px-6 h-20 border-b border-gray-100">
-                    <span className="font-bold text-xl text-[var(--accent)]">Menu</span>
-                    <button
-                        onClick={closeMenu}
-                        className="p-2 -mr-2"
-                        aria-label="Close menu"
-                    >
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+            {/* Mobile Menu - Rendered via Portal to document.body */}
+            {mounted && createPortal(
+                <MobileMenu
+                    isOpen={mobileMenuOpen}
+                    activeSubmenu={activeSubmenu}
+                    setActiveSubmenu={setActiveSubmenu}
+                    closeMenu={closeMenu}
+                />,
+                document.body
+            )}
+        </header>
+    );
+}
 
-                {/* Two-Level Navigation Container */}
-                <div className="relative h-[calc(100%-5rem)] overflow-x-hidden overflow-y-auto">
-                    {/* Level 1: Main Menu */}
-                    <div
-                        className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                            activeSubmenu ? '-translate-x-full' : 'translate-x-0'
-                        }`}
-                    >
-                        <nav className="flex flex-col gap-2">
-                            <Link
-                                href="/"
-                                onClick={closeMenu}
-                                className="flex items-center py-4 text-xl font-medium border-b border-gray-100"
-                            >
-                                Home
-                            </Link>
+// Mobile Menu Component - Rendered via Portal to escape header stacking context
+function MobileMenu({
+    isOpen,
+    activeSubmenu,
+    setActiveSubmenu,
+    closeMenu,
+}: {
+    isOpen: boolean;
+    activeSubmenu: 'services' | 'agents' | 'programs' | null;
+    setActiveSubmenu: (submenu: 'services' | 'agents' | 'programs' | null) => void;
+    closeMenu: () => void;
+}) {
+    return (
+        <div
+            className={`fixed inset-0 z-[100] bg-white lg:hidden flex flex-col transition-transform duration-300 ease-out ${
+                isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
+            }`}
+            aria-hidden={!isOpen}
+        >
+            {/* Menu Header */}
+            <div className="flex-shrink-0 flex justify-between items-center px-6 h-20 border-b border-gray-100">
+                <span className="font-bold text-xl text-[var(--accent)]">Menu</span>
+                <button
+                    onClick={closeMenu}
+                    className="p-2 -mr-2"
+                    aria-label="Close menu"
+                >
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
 
-                            <button
-                                onClick={() => setActiveSubmenu('services')}
-                                className="flex items-center justify-between py-4 text-xl font-medium border-b border-gray-100 w-full text-left"
-                            >
-                                Services
-                                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
+            {/* Two-Level Navigation Container */}
+            <div className="flex-1 relative overflow-hidden">
+                {/* Level 1: Main Menu */}
+                <div
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
+                        activeSubmenu ? '-translate-x-full' : 'translate-x-0'
+                    }`}
+                >
+                    <nav className="flex flex-col gap-2">
+                        <Link
+                            href="/"
+                            onClick={closeMenu}
+                            className="flex items-center py-4 text-xl font-medium border-b border-gray-100"
+                        >
+                            Home
+                        </Link>
 
-                            <button
-                                onClick={() => setActiveSubmenu('agents')}
-                                className="flex items-center justify-between py-4 text-xl font-medium border-b border-gray-100 w-full text-left"
-                            >
-                                AI Agents
-                                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
+                        <button
+                            onClick={() => setActiveSubmenu('services')}
+                            className="flex items-center justify-between py-4 text-xl font-medium border-b border-gray-100 w-full text-left"
+                        >
+                            Services
+                            <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
 
-                            <button
-                                onClick={() => setActiveSubmenu('programs')}
-                                className="flex items-center justify-between py-4 text-xl font-medium border-b border-gray-100 w-full text-left"
-                            >
-                                Programs
-                                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
+                        <button
+                            onClick={() => setActiveSubmenu('agents')}
+                            className="flex items-center justify-between py-4 text-xl font-medium border-b border-gray-100 w-full text-left"
+                        >
+                            AI Agents
+                            <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
 
-                            <Link
-                                href="/training-and-talent"
-                                onClick={closeMenu}
-                                className="flex items-center py-4 text-xl font-medium border-b border-gray-100"
-                            >
-                                Training & Talent
-                            </Link>
-
-                            <Link
-                                href="/about"
-                                onClick={closeMenu}
-                                className="flex items-center py-4 text-xl font-medium border-b border-gray-100"
-                            >
-                                About
-                            </Link>
-                        </nav>
+                        <button
+                            onClick={() => setActiveSubmenu('programs')}
+                            className="flex items-center justify-between py-4 text-xl font-medium border-b border-gray-100 w-full text-left"
+                        >
+                            Programs
+                            <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
 
                         <Link
-                            href="/get-started"
+                            href="/training-and-talent"
                             onClick={closeMenu}
-                            className="mt-8 text-center py-4 bg-[var(--primary)] text-white text-lg font-medium rounded-lg"
+                            className="flex items-center py-4 text-xl font-medium border-b border-gray-100"
                         >
-                            Get Started
+                            Training & Talent
                         </Link>
-                    </div>
 
-                    {/* Level 2: Services Submenu */}
-                    <div
-                        className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                            activeSubmenu === 'services' ? 'translate-x-0' : 'translate-x-full'
-                        }`}
-                    >
-                        <button
-                            onClick={() => setActiveSubmenu(null)}
-                            className="flex items-center gap-2 text-[var(--primary)] font-medium mb-6"
+                        <Link
+                            href="/about"
+                            onClick={closeMenu}
+                            className="flex items-center py-4 text-xl font-medium border-b border-gray-100"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                            Back
-                        </button>
+                            About
+                        </Link>
+                    </nav>
 
-                        <h2 className="text-2xl font-bold mb-6">Services</h2>
-
-                        <nav className="flex flex-col gap-1">
-                            <Link href="/services" onClick={closeMenu} className="py-3 text-lg text-[var(--primary)] font-semibold">
-                                View All Services
-                            </Link>
-
-                            <p className="text-xs uppercase text-gray-400 font-bold mt-4 mb-2">AI Solutions</p>
-                            <Link href="/services#voice-ai" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Voice AI & Virtual Assistants
-                            </Link>
-                            <Link href="/services#smart-automations" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Smart Automations & Workflows
-                            </Link>
-                            <Link href="/services#funnel-optimization" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Funnel & CRM Optimization
-                            </Link>
-
-                            <p className="text-xs uppercase text-gray-400 font-bold mt-4 mb-2">Workforce Solutions</p>
-                            <Link href="/services#workforce-optimization" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Workforce Optimization
-                            </Link>
-                            <Link href="/services#executive-advisory" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Executive Advisory
-                            </Link>
-                            <Link href="/services#change-management" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Change Management
-                            </Link>
-                        </nav>
-                    </div>
-
-                    {/* Level 2: AI Agents Submenu */}
-                    <div
-                        className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                            activeSubmenu === 'agents' ? 'translate-x-0' : 'translate-x-full'
-                        }`}
+                    <Link
+                        href="/get-started"
+                        onClick={closeMenu}
+                        className="mt-8 text-center py-4 bg-[var(--primary)] text-white text-lg font-medium rounded-lg"
                     >
-                        <button
-                            onClick={() => setActiveSubmenu(null)}
-                            className="flex items-center gap-2 text-[var(--primary)] font-medium mb-6"
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                            Back
-                        </button>
+                        Get Started
+                    </Link>
+                </div>
 
-                        <h2 className="text-2xl font-bold mb-6">AI Agents</h2>
-
-                        <nav className="flex flex-col gap-1">
-                            <Link href="/ai-agents" onClick={closeMenu} className="py-3 text-lg text-[var(--primary)] font-semibold">
-                                View All Agents
-                            </Link>
-                            <Link href="/ai-agents#ai-interview-agent" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                AI Interview Agents
-                            </Link>
-                            <Link href="/ai-agents#database-reactivation" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Database Reactivation
-                            </Link>
-                            <Link href="/ai-agents#speed-to-lead" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Speed to Lead
-                            </Link>
-                            <Link href="/ai-agents#out-of-hours" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Out of Hours
-                            </Link>
-                            <Link href="/ai-agents#google-reviews" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Google Reviews
-                            </Link>
-                            <Link href="/ai-agents#voice" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Voice Agents
-                            </Link>
-                            <Link href="/ai-agents#abandoned-cart" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                Abandoned Cart
-                            </Link>
-                        </nav>
-                    </div>
-
-                    {/* Level 2: Programs Submenu */}
-                    <div
-                        className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                            activeSubmenu === 'programs' ? 'translate-x-0' : 'translate-x-full'
-                        }`}
+                {/* Level 2: Services Submenu */}
+                <div
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
+                        activeSubmenu === 'services' ? 'translate-x-0' : 'translate-x-full'
+                    }`}
+                >
+                    <button
+                        onClick={() => setActiveSubmenu(null)}
+                        className="flex items-center gap-2 text-[var(--primary)] font-medium mb-6"
                     >
-                        <button
-                            onClick={() => setActiveSubmenu(null)}
-                            className="flex items-center gap-2 text-[var(--primary)] font-medium mb-6"
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                            Back
-                        </button>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
 
-                        <h2 className="text-2xl font-bold mb-6">Programs</h2>
+                    <h2 className="text-2xl font-bold mb-6">Services</h2>
 
-                        <nav className="flex flex-col gap-1">
-                            <p className="text-xs uppercase text-gray-400 font-bold mb-2">Events</p>
-                            <Link href="/sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
-                                AI CEO Sips & Smoothies
-                            </Link>
-                        </nav>
-                    </div>
+                    <nav className="flex flex-col gap-1">
+                        <Link href="/services" onClick={closeMenu} className="py-3 text-lg text-[var(--primary)] font-semibold">
+                            View All Services
+                        </Link>
+
+                        <p className="text-xs uppercase text-gray-400 font-bold mt-4 mb-2">AI Solutions</p>
+                        <Link href="/services#voice-ai" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Voice AI & Virtual Assistants
+                        </Link>
+                        <Link href="/services#smart-automations" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Smart Automations & Workflows
+                        </Link>
+                        <Link href="/services#funnel-optimization" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Funnel & CRM Optimization
+                        </Link>
+
+                        <p className="text-xs uppercase text-gray-400 font-bold mt-4 mb-2">Workforce Solutions</p>
+                        <Link href="/services#workforce-optimization" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Workforce Optimization
+                        </Link>
+                        <Link href="/services#executive-advisory" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Executive Advisory
+                        </Link>
+                        <Link href="/services#change-management" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Change Management
+                        </Link>
+                    </nav>
+                </div>
+
+                {/* Level 2: AI Agents Submenu */}
+                <div
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
+                        activeSubmenu === 'agents' ? 'translate-x-0' : 'translate-x-full'
+                    }`}
+                >
+                    <button
+                        onClick={() => setActiveSubmenu(null)}
+                        className="flex items-center gap-2 text-[var(--primary)] font-medium mb-6"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+
+                    <h2 className="text-2xl font-bold mb-6">AI Agents</h2>
+
+                    <nav className="flex flex-col gap-1">
+                        <Link href="/ai-agents" onClick={closeMenu} className="py-3 text-lg text-[var(--primary)] font-semibold">
+                            View All Agents
+                        </Link>
+                        <Link href="/ai-agents#ai-interview-agent" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            AI Interview Agents
+                        </Link>
+                        <Link href="/ai-agents#database-reactivation" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Database Reactivation
+                        </Link>
+                        <Link href="/ai-agents#speed-to-lead" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Speed to Lead
+                        </Link>
+                        <Link href="/ai-agents#out-of-hours" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Out of Hours
+                        </Link>
+                        <Link href="/ai-agents#google-reviews" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Google Reviews
+                        </Link>
+                        <Link href="/ai-agents#voice" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Voice Agents
+                        </Link>
+                        <Link href="/ai-agents#abandoned-cart" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            Abandoned Cart
+                        </Link>
+                    </nav>
+                </div>
+
+                {/* Level 2: Programs Submenu */}
+                <div
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
+                        activeSubmenu === 'programs' ? 'translate-x-0' : 'translate-x-full'
+                    }`}
+                >
+                    <button
+                        onClick={() => setActiveSubmenu(null)}
+                        className="flex items-center gap-2 text-[var(--primary)] font-medium mb-6"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+
+                    <h2 className="text-2xl font-bold mb-6">Programs</h2>
+
+                    <nav className="flex flex-col gap-1">
+                        <p className="text-xs uppercase text-gray-400 font-bold mb-2">Events</p>
+                        <Link href="/sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            AI CEO Sips & Smoothies
+                        </Link>
+                    </nav>
                 </div>
             </div>
-        </header>
+        </div>
     );
 }

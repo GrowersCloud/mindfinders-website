@@ -8,18 +8,30 @@ All deployments to production are documented here. **Update this file after ever
 
 ## KNOWN ISSUES (for next session)
 
-### 1. Mobile Menu Bug - STILL BROKEN
-- **Status**: FIX ATTEMPTED BUT DID NOT WORK - needs re-investigation
-- **Problem**: Mobile menu navigation links are cut off when menu is opened (user cannot see nav items)
-- **Attempted Fix**: Changed `overflow-hidden` to `overflow-x-hidden overflow-y-auto` in Header.tsx (lines 216, 219, 290, 337, 383)
-- **Result**: Deployed via `vercel --prod` but mobile menu STILL NOT WORKING
-- **Next Steps**: Re-examine Header.tsx mobile menu implementation, test locally, find actual root cause
-
-### 2. Vercel Auto-Deploy Not Working
+### 1. Vercel Auto-Deploy Not Working
 - **Status**: Git pushes trigger deployments but they immediately get "Canceled"
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-01-29] - Mobile Menu Fix (SUCCESSFUL)
+
+### Fixed
+- **Mobile menu now displays all navigation items** when hamburger is clicked
+- Root cause: Mobile menu was nested inside `<header>` with `sticky top-0`, creating a stacking context that clipped the menu content
+- Solution: Used React Portal (`createPortal`) to render mobile menu directly to `document.body`, escaping the header's stacking context
+
+### Technical Changes
+- Added `createPortal` import from `react-dom`
+- Added `mounted` state for SSR safety
+- Extracted mobile menu into separate `MobileMenu` component
+- Changed nav container from `h-[calc(100vh-5rem)]` to `flex-1` for reliable height
+- Menu now renders outside DOM hierarchy via portal
+
+### Files Modified
+- `src/components/Header.tsx`
 
 ---
 
