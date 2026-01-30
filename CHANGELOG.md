@@ -16,6 +16,32 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-01-30] - Robust Calendar Embed Component
+**Commit**: `PENDING`
+
+### Added
+- Installed `react-iframe` package for better cross-browser iframe support
+- Loading spinner while calendar loads
+- Error state with "Try Again" and "Email Us Instead" fallback options
+- 10-second loading timeout with graceful error handling
+
+### Changed
+- Rewrote `CalendarEmbed` component using `react-iframe` library
+- Centralized calendar configuration (URL, script URL, height, timeout)
+- Added opacity transition for smooth loading experience
+
+### Technical Details
+- Uses `react-iframe` npm package for reliable iframe rendering
+- Script loading with duplicate detection
+- Proper cleanup and error boundaries
+
+### Files Modified
+- `src/app/sips-and-smoothies/reservation/page.tsx`
+- `package.json` (added react-iframe dependency)
+- `CHANGELOG.md`
+
+---
+
 ## [2026-01-30] - Reservation Page & CTA Links
 **Commit**: `819849a`
 
