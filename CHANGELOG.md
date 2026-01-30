@@ -16,28 +16,29 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
-## [2026-01-30] - Robust Calendar Embed Component
-**Commit**: `0427028`
+## [2026-01-30] - Calendar Embed Fix (Static HTML Isolation)
+**Commit**: `PENDING`
+
+### Fixed
+- Calendar widget now displays reliably using static HTML isolation pattern
+- Prevents React rendering lifecycle from interfering with GrowersCloud embed
 
 ### Added
-- Installed `react-iframe` package for better cross-browser iframe support
-- Loading spinner while calendar loads
-- Error state with "Try Again" and "Email Us Instead" fallback options
-- 10-second loading timeout with graceful error handling
+- `public/calendar-embed.html` - Static HTML file containing GrowersCloud embed code (iframe + script)
+- This file is completely outside React and will never be affected by React re-renders
 
 ### Changed
-- Rewrote `CalendarEmbed` component using `react-iframe` library
-- Centralized calendar configuration (URL, script URL, height, timeout)
-- Added opacity transition for smooth loading experience
+- `CalendarEmbed` component now iframes the static HTML file instead of embedding directly
+- Increased calendar container height to 1100px for better visibility
 
 ### Technical Details
-- Uses `react-iframe` npm package for reliable iframe rendering
-- Script loading with duplicate detection
-- Proper cleanup and error boundaries
+- **Problem**: React's rendering lifecycle conflicted with GrowersCloud's form_embed.js script, causing calendar to appear then disappear
+- **Solution**: Isolate the embed in a static HTML file that React never touches
+- **Pattern**: Use this approach for any third-party embeds that include their own scripts
 
 ### Files Modified
+- `public/calendar-embed.html` (new)
 - `src/app/sips-and-smoothies/reservation/page.tsx`
-- `package.json` (added react-iframe dependency)
 - `CHANGELOG.md`
 
 ---
