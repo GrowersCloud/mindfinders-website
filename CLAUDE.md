@@ -72,6 +72,7 @@ See [package.json](package.json) for complete scripts.
 - `/about` - [src/app/about/page.tsx](src/app/about/page.tsx)
 - `/get-started` - [src/app/get-started/page.tsx](src/app/get-started/page.tsx)
 - `/sips-and-smoothies` - [src/app/sips-and-smoothies/page.tsx](src/app/sips-and-smoothies/page.tsx) (Marketing Landing Page)
+- `/sips-and-smoothies/reservation` - [src/app/sips-and-smoothies/reservation/page.tsx](src/app/sips-and-smoothies/reservation/page.tsx) (Calendar Booking)
 - `/faq`, `/privacy-policy`, `/terms-of-service` - Legal/support pages
 
 **Navigation Patterns:**

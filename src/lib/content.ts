@@ -636,6 +636,38 @@ export const content = {
         finalThought: {
             body: "If you enjoy good conversation, great food and drinks, and learning \nhow other CEOs use AI in the real world, this evening \nwill be very worth your time.",
             cta: "Request an Invitation"
+        },
+        reservation: {
+            eyebrow: "EXCLUSIVE INVITATION",
+            hero: {
+                preHeadline: "Join 20 of the D.C. Metro Area's Most Innovative CEOs for an Evening of High-Impact Connection.",
+                title: [
+                    "Plus Meaningful Conversation",
+                    "on How to Use AI to Accelerate Growth,",
+                    "Improve Productivity, Increase Your",
+                    "Valuation, and Build the Company",
+                    "of the Future."
+                ],
+                valuesStack: ["Growth • Valuation • Future"],
+                cta: "Scroll down to secure your seat",
+                microCopy: "Only 20 seats available"
+            },
+            instructions: "Select your time below to confirm your invitation.",
+            benefits: [
+                {
+                    title: "Practical AI Insights",
+                    text: "No theory. Just real-world examples of how AI is driving growth and efficiency in companies like yours right now."
+                },
+                {
+                    title: "Peer-Level Networking",
+                    text: "Connect with fellow mid-market CEOs and business owners who share your challenges and understand your market."
+                },
+                {
+                    title: "High-End Experience",
+                    text: "Enjoy a curated selection of cocktails, smoothies, and premium hors d’oeuvres and small plates at The Capital Grille."
+                }
+            ],
+            footer: "This is an invitation-only gathering limited to 20 executives. We respect your time and promise an evening of genuine value, not a sales pitch."
         }
     }
 };

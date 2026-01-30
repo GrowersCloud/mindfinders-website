@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-01-29
+> Last verified: 2026-01-30
 
 ---
 
@@ -13,6 +13,32 @@ All deployments to production are documented here. **Update this file after ever
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-01-30] - Reservation Page & CTA Links
+**Commit**: `PENDING`
+
+### Added
+- New **Reservation Page** at `/sips-and-smoothies/reservation`
+  - "Velvet Rope" hero design with exclusive invitation messaging
+  - Embedded GrowersCloud calendar widget for booking
+  - Benefits section (Practical AI Insights, Peer-Level Networking, High-End Experience)
+  - Theme 3: Premium Executive styling consistent with parent page
+- Reservation content section in `content.ts` with hero copy, benefits, and footer
+
+### Changed
+- **Sips & Smoothies page**: Converted all CTA buttons to `<Link>` components pointing to `/sips-and-smoothies/reservation`
+  - Hero CTA button → Link
+  - "How to Attend" section CTA → Link
+  - Host section CTA → Link
+  - Final CTA section → Link
+
+### Files Modified
+- `src/app/sips-and-smoothies/reservation/page.tsx` (new)
+- `src/app/sips-and-smoothies/page.tsx`
+- `src/lib/content.ts`
+- `CHANGELOG.md`
 
 ---
 
