@@ -17,7 +17,7 @@ All deployments to production are documented here. **Update this file after ever
 ---
 
 ## [2026-01-30] - Reservation Page & CTA Links
-**Commit**: `PENDING`
+**Commit**: `819849a`
 
 ### Added
 - New **Reservation Page** at `/sips-and-smoothies/reservation`
