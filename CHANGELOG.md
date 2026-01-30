@@ -17,7 +17,7 @@ All deployments to production are documented here. **Update this file after ever
 ---
 
 ## [2026-01-30] - Robust Calendar Embed Component
-**Commit**: `PENDING`
+**Commit**: `0427028`
 
 ### Added
 - Installed `react-iframe` package for better cross-browser iframe support
