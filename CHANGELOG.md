@@ -17,7 +17,7 @@ All deployments to production are documented here. **Update this file after ever
 ---
 
 ## [2026-01-30] - Calendar Embed Fix (Static HTML Isolation)
-**Commit**: `PENDING`
+**Commit**: `40d4334`
 
 ### Fixed
 - Calendar widget now displays reliably using static HTML isolation pattern
