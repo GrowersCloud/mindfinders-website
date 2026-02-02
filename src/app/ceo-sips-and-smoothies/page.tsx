@@ -74,7 +74,7 @@ export default function SipsAndSmoothiesPage() {
                             {sips.hero.description}
                         </p>
 
-                        <Link href="/sips-and-smoothies/reservation" className="group relative px-10 py-5 bg-[var(--primary)] text-white rounded-lg font-bold text-xl hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 animate-fade-in-up delay-300 overflow-hidden shadow-[0_0_30px_rgba(219,24,41,0.3)] inline-block">
+                        <Link href="/ceo-sips-and-smoothies/reservation" className="group relative px-10 py-5 bg-[var(--primary)] text-white rounded-lg font-bold text-xl hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 animate-fade-in-up delay-300 overflow-hidden shadow-[0_0_30px_rgba(219,24,41,0.3)] inline-block">
                             <span className="relative z-10">{sips.hero.cta}</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         </Link>
@@ -264,7 +264,7 @@ export default function SipsAndSmoothiesPage() {
 
                                     {/* Moved CTA Button - Left Aligned Under Image */}
                                     <div className="mt-8 text-center lg:text-left">
-                                        <Link href="/sips-and-smoothies/reservation" className="group relative px-8 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-[0_0_20px_rgba(219,24,41,0.2)] inline-block">
+                                        <Link href="/ceo-sips-and-smoothies/reservation" className="group relative px-8 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-[0_0_20px_rgba(219,24,41,0.2)] inline-block">
                                             <span className="relative z-10">{sips.howToAttend.cta}</span>
                                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                         </Link>
@@ -364,7 +364,7 @@ export default function SipsAndSmoothiesPage() {
 
                             {/* Moved CTA Button - Left Column Center Aligned with Spacing */}
                             <div className="relative w-full text-center mt-8 pb-4">
-                                <Link href="/sips-and-smoothies/reservation" className="group relative px-8 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-lg inline-block">
+                                <Link href="/ceo-sips-and-smoothies/reservation" className="group relative px-8 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-lg inline-block">
                                     <span className="relative z-10">{sips.howToAttend.cta}</span>
                                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                 </Link>
@@ -529,7 +529,7 @@ export default function SipsAndSmoothiesPage() {
 
                     <div className="flex flex-col items-center space-y-6">
                         <div className="relative group">
-                            <Link href="/sips-and-smoothies/reservation" className="px-10 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 shadow-lg inline-block">
+                            <Link href="/ceo-sips-and-smoothies/reservation" className="px-10 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 shadow-lg inline-block">
                                 {sips.howToAttend.cta}
                             </Link>
                             <div className="absolute -top-3 -right-6 bg-[var(--secondary)] text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-lg">
@@ -656,7 +656,7 @@ export default function SipsAndSmoothiesPage() {
                                 Join us for a highly profitable evening
                             </h3>
                             <button className="group relative px-10 py-5 bg-[var(--primary)] text-white rounded-lg font-bold text-xl hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-[0_0_30px_rgba(219,24,41,0.3)]">
-                                <Link href="/sips-and-smoothies/reservation" className="absolute inset-0 z-20"></Link>
+                                <Link href="/ceo-sips-and-smoothies/reservation" className="absolute inset-0 z-20"></Link>
                                 <span className="relative z-10">{sips.howToAttend.cta}</span>
                                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                             </button>

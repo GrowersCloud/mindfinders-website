@@ -148,7 +148,7 @@ export default function Header() {
                             <div>
                                 <h3 className="font-bold mb-4 text-[var(--primary)] uppercase text-sm tracking-wider">Events</h3>
                                 <ul className="space-y-2 text-sm">
-                                    <li><Link href="/sips-and-smoothies" className="hover:text-[var(--primary)] block py-1">AI CEO Sips & Smoothies</Link></li>
+                                    <li><Link href="/ceo-sips-and-smoothies" className="hover:text-[var(--primary)] block py-1">AI CEO Sips & Smoothies</Link></li>
                                 </ul>
                             </div>
 
@@ -431,7 +431,7 @@ function MobileMenu({
 
                     <nav className="flex flex-col gap-1">
                         <p className="text-xs uppercase text-gray-400 font-bold mb-2">Events</p>
-                        <Link href="/sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                        <Link href="/ceo-sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
                             AI CEO Sips & Smoothies
                         </Link>
                     </nav>
