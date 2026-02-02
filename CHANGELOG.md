@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-01-30
+> Last verified: 2026-02-02
 
 ---
 
@@ -13,6 +13,22 @@ All deployments to production are documented here. **Update this file after ever
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-02-02] - Route Rename: sips-and-smoothies → ceo-sips-and-smoothies
+**Commit**: `604310b`
+
+### Changed
+- Renamed route `/sips-and-smoothies` to `/ceo-sips-and-smoothies` for better SEO and brand clarity
+- Updated all internal navigation links in Header component
+- Updated all CTA links within the landing page to use new reservation path
+
+### Files Modified
+- `src/app/ceo-sips-and-smoothies/page.tsx` (renamed from sips-and-smoothies)
+- `src/app/ceo-sips-and-smoothies/reservation/page.tsx` (renamed from sips-and-smoothies/reservation)
+- `src/components/Header.tsx`
+- `CLAUDE.md`
 
 ---
 
