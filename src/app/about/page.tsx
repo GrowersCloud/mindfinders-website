@@ -1,5 +1,11 @@
 import { content } from "@/lib/content";
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
+
+export const metadata: Metadata = {
+    title: "About Us",
+    description: "With 25 years of experience, MindFinders is pioneering the future of work by combining human expertise with powerful AI solutions and AI workers.",
+};
 
 export default function AboutPage() {
     const { about } = content;

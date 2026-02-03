@@ -1,5 +1,10 @@
 import PageShell from "@/components/PageShell";
+import type { Metadata } from "next";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "Privacy Policy",
+};
 
 export default function PrivacyPolicyPage() {
     const { privacyPolicy } = content.legal;

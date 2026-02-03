@@ -1,6 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "AI Agents & Digital Teammates",
+    description: "Deploy intelligent AI workers to automate sales, recruiting, and operations. Our AI teammates work 24/7 to scale your business efficiency.",
+};
 
 export default function AiAgentsPage() {
     const { aiAgents } = content;

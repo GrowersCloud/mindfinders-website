@@ -1,6 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "AI Talent & Upskilling Programs",
+    description: "Prepare your human workforce for the AI era. We provide specialized training and place top-tier talent to work alongside your new AI teammates.",
+};
 
 export default function TrainingAndTalentPage() {
     const { trainingAndTalent } = content;

@@ -1,7 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import FAQAccordion from "@/components/FAQAccordion";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "FAQ - AI Implementation & Strategy",
+    description: "Common questions about deploying AI workers, integrating AI, and our strategic advisory services.",
+};
 
 export default function FAQPage() {
     const { faq } = content;

@@ -1,6 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "MindFinders AI - Growth and AI Strategic Advisors",
+  description: "MindFinders helps organizations redesign work with AI workers, upskill talent, and deploy AI-ready teams that deliver measurable performance.",
+};
 
 export default function Home() {
   const { home } = content;

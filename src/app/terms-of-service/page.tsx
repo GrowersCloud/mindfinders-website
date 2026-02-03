@@ -1,5 +1,10 @@
 import PageShell from "@/components/PageShell";
+import type { Metadata } from "next";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "Terms of Service",
+};
 
 export default function TermsOfServicePage() {
     const { termsOfService } = content.legal;

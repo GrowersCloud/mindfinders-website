@@ -1,5 +1,11 @@
 import PageShell from "@/components/PageShell";
+import type { Metadata } from "next";
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "AI Solutions & Workforce Consulting",
+    description: "Comprehensive AI solutions and strategic advisory. We help you integrate AI workers, optimize workflows, and build a future-ready hybrid workforce.",
+};
 
 export default function ServicesPage() {
     const { services } = content as any;

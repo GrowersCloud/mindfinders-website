@@ -1,7 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import { content } from "@/lib/content";
+
+export const metadata: Metadata = {
+    title: "Start Your AI Journey",
+    description: "Take the first step towards AI-led growth. Get a custom assessment and discover how AI can transform your organization.",
+};
 
 export default function GetStartedPage() {
     const { getStarted } = content;

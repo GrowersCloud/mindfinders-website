@@ -561,7 +561,7 @@ export const content = {
                 title: "8 AI Demos in 8 Minutes",
                 text: [
                     "At a natural break in the evening, you’ll see eight fast, practical AI demos. These are real tools and prompts CEOs are using to save time, improve productivity, and help teams perform at a higher level.",
-                    "For example, you will see a quick demo of how to use AI to take an unperforming asset and turn it into cash. Many companies have invested hundreds of thousands to millions in leads that never converted into sales. You will learn how a debt consolidation company in the financial services space made $600,000 within 90 days by using AI and SMS to convert these old dead leads into sales.",
+                    "For example, you will see a quick demo of how to use AI to take an underperforming asset and turn it into cash. Many companies have invested hundreds of thousands to millions in leads that never converted into sales. You will learn how a debt consolidation company in the financial services space made $600,000 within 90 days by using AI and SMS to convert these old dead leads into sales.",
 
                 ],
                 footer: "No theory. Just quick, tangible ideas."

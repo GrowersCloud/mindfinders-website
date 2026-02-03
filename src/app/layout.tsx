@@ -20,8 +20,12 @@ const ptSerif = PT_Serif({
 import TopBar from "@/components/TopBar";
 
 export const metadata: Metadata = {
-  title: "MindFinders AI - Growth and Strategic Advisor",
-  description: "MindFinders helps organizations redesign work, upskill talent, and deploy AI-ready teams that deliver measurable performance.",
+  title: {
+    template: "%s | MindFinders AI",
+    default: "MindFinders AI - Growth and AI Strategic Advisors",
+  },
+  description: "MindFinders helps organizations redesign work with AI workers, upskill talent, and deploy AI-ready teams that deliver measurable performance.",
+  metadataBase: new URL('https://mindfinders.ai'),
 };
 
 export default function RootLayout({
