@@ -17,10 +17,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 1. Make changes in this folder
 2. Test: `npm run dev`
 3. Build: `npm run build`
-4. Stage: `git add <files>`
-5. Commit: `git commit -m "message"`
-6. Push: `git push origin master`
-7. **Update [CHANGELOG.md](CHANGELOG.md)** with date, commit hash, and changes
+4. **Wait for user approval before proceeding**
+5. Stage: `git add <files>`
+6. Commit: `git commit -m "message"`
+7. Push: `git push origin master`
+8. Deploy: `vercel --prod` (auto-deploy may be unreliable)
+9. **Update [CHANGELOG.md](CHANGELOG.md)** with date, commit hash, and changes
+
+**IMPORTANT:** Do NOT commit to Git or deploy to Vercel without explicit user approval.
 
 ### Post-Deployment Checklist
 - [ ] Verify Vercel deployment succeeded

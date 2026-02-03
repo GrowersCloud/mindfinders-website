@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-02-02
+> Last verified: 2026-02-03
 
 ---
 
@@ -13,6 +13,31 @@ All deployments to production are documented here. **Update this file after ever
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-02-03] - Homepage Hero Update
+**Commit**: `3f992c7`
+
+### Changed
+- Added "with AI." as third line of homepage hero headline
+- Reduced hero section height from 90vh to 85vh to keep CTA above fold
+- Adjusted button margin from mt-10 to mt-8
+
+### Files Modified
+- `src/app/page.tsx`
+
+---
+
+## [2026-02-03] - Footer Partnership Badge Update
+**Commit**: `31ca884`
+
+### Changed
+- Updated footer text from "Powered By" to "MindFinders.ai is a Silver Partner of"
+- GrowersCloud logo and link remain unchanged
+
+### Files Modified
+- `src/components/Footer.tsx`
 
 ---
 
