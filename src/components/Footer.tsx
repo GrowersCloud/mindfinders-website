@@ -52,7 +52,7 @@ export default function Footer() {
 
                 <div className="mt-8 flex flex-col items-center justify-center space-y-2 border-t border-gray-200 pt-6">
                     <span className="text-sm font-bold text-gray-900 uppercase tracking-widest opacity-90">
-                        Powered By
+                        MindFinders.ai is a Silver Partner of
                     </span>
                     <Link href="https://GrowersCloud.ai" target="_blank" rel="noopener noreferrer" className="relative w-72 h-20 transition-transform hover:scale-105 opacity-100 hover:opacity-80">
                         <Image
