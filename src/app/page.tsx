@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-black">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -30,9 +30,12 @@ export default function Home() {
               <span className="block text-4xl md:text-6xl lg:text-7xl font-medium text-gray-100 animate-fade-in-up delay-100">
                 Grow Faster and Hire Better
               </span>
+              <span className="block text-4xl md:text-6xl lg:text-7xl font-medium text-gray-100 animate-fade-in-up delay-200">
+                with AI.
+              </span>
             </h1>
 
-            <div className="mt-10 animate-fade-in-up delay-200">
+            <div className="mt-8 animate-fade-in-up delay-300">
               <Link
                 href="/get-started"
                 className="inline-block bg-[var(--primary)] text-white px-8 py-4 rounded text-lg font-bold hover:bg-white hover:text-[var(--primary)] transition-colors shadow-lg"
