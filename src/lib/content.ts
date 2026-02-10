@@ -735,6 +735,34 @@ export const content = {
             body: "This Roundtable is convened through a personal invitation from Tim Booker, reflecting a shared belief that enduring growth begins with clarity of strategy—and that AI delivers its greatest value when embedded within that clarity.",
             name: "Tim Booker, CEO of MindFinders and Mindfinders AI",
             cta: "Request an Invitation"
+        },
+        registration: {
+            eyebrow: "EXECUTIVE ROUNDTABLE REGISTRATION",
+            hero: {
+                preHeadline: "You have been selected to join an exclusive gathering of enterprise leaders.",
+                title: [
+                    "Request Your",
+                    "Invitation to the",
+                    "Executive Roundtable"
+                ],
+                valuesStack: ["Strategy", "Growth", "AI Excellence"]
+            },
+            instructions: "Complete the Form Below to Request Your Invitation",
+            benefits: [
+                {
+                    title: "Strategy-First Approach",
+                    text: "Learn the Growth2X Framework used by high-performing enterprises to align leadership, resources, and execution before technology decisions."
+                },
+                {
+                    title: "Peer-Level Dialogue",
+                    text: "Connect with CEOs, CIOs, COOs, and CFOs across the United States and Africa in candid, executive-only discussions."
+                },
+                {
+                    title: "Actionable Roadmap",
+                    text: "Leave with a practical AI strategy tied to business outcomes, not just theoretical frameworks."
+                }
+            ],
+            footer: "Participation is complimentary and granted by invitation only. We will review your request and respond within 48 hours."
         }
     }
 };

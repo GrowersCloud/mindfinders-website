@@ -67,7 +67,7 @@ export default function AIExecutiveRoundtablePage() {
                             {roundtable.hero.description}
                         </p>
 
-                        <Link href="/contact" className="group relative px-10 py-5 bg-[var(--primary)] text-white rounded-lg font-bold text-xl hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 animate-fade-in-up delay-300 overflow-hidden shadow-[0_0_30px_rgba(219,24,41,0.3)] inline-block">
+                        <Link href="/ai-executive-roundtable/register" className="group relative px-10 py-5 bg-[var(--primary)] text-white rounded-lg font-bold text-xl hover:bg-[#d01829] transition-all transform hover:scale-105 active:scale-95 animate-fade-in-up delay-300 overflow-hidden shadow-[0_0_30px_rgba(219,24,41,0.3)] inline-block">
                             <span className="relative z-10">{roundtable.hero.cta}</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         </Link>
@@ -201,7 +201,7 @@ export default function AIExecutiveRoundtablePage() {
                             {roundtable.host.name.split(',').slice(1).join(',')}
                         </div>
 
-                        <Link href="/contact" className="px-10 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 shadow-xl">
+                        <Link href="/ai-executive-roundtable/register" className="px-10 py-4 bg-[var(--primary)] text-white rounded-lg font-bold text-lg hover:bg-[#d01829] transition-all transform hover:scale-105 shadow-xl">
                             {roundtable.host.cta}
                         </Link>
                     </div>
