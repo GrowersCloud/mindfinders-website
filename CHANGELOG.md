@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-02-03
+> Last verified: 2026-02-10
 
 ---
 
@@ -13,6 +13,28 @@ All deployments to production are documented here. **Update this file after ever
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-02-10] - AI Executive Roundtable Registration Page
+**Commit**: `52d2b9d`
+
+### Added
+- **Registration Page**: New page at `/ai-executive-roundtable/register`
+  - Form embed using static HTML isolation pattern (prevents React interference)
+  - Premium Executive (Theme 3) design matching parent page
+  - Benefits section and invitation-only messaging
+- **Form Embed**: `public/roundtable-form-embed.html` with GrowersCloud form
+
+### Changed
+- Updated CTA buttons on `/ai-executive-roundtable` to link to registration page
+- Added registration content to `content.ts`
+
+### Files Modified
+- `src/app/ai-executive-roundtable/register/page.tsx` (new)
+- `public/roundtable-form-embed.html` (new)
+- `src/app/ai-executive-roundtable/page.tsx`
+- `src/lib/content.ts`
 
 ---
 
