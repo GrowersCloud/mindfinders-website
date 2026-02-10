@@ -669,5 +669,72 @@ export const content = {
             ],
             footer: "This is an invitation-only gathering limited to 20 executives. We respect your time and promise an evening of genuine value, not a sales pitch."
         }
+    },
+    executiveRoundtable: {
+        hero: {
+            eyebrow: "Mindfinders Growth & AI Strategic Advisor Practice",
+            h1: "Defining the Standard for Strategy in the AI-Enabled Enterprise",
+            subtitle: "Founding Pilot Webinar + Executive Workshop\n\nThe MindFinders.ai Executive Roundtable is an invitation-only forum convening a select group of CEOs, CIOs, COOs, and CFOs across the United States and Africa.",
+            dates: [
+                "Feb 17th | 11:00 AM EST (Webinar)",
+                "Feb 19th | 11:00 AM - 2:00 PM EST (Workshop)"
+            ],
+            description: "Designed for leaders responsible for enterprise growth and long-term value creation, this private experience introduces a disciplined approach to strategy design, one that precedes technology decisions and scales with the organization.\n\nParticipation is complimentary and granted by invitation only.",
+            cta: "Request an Invitation"
+        },
+        strategicLens: {
+            h2: "The Strategic Lens",
+            body: [
+                "High-performing enterprises do not treat strategy, operations, and technology as separate conversations. They operate from a unified growth logic, one that aligns leadership decisions, resource allocation, and execution discipline before introducing advanced tools.",
+                "The Executive Roundtable introduces that logic through the Growth2X Framework, a structured, evidence-based approach to designing business strategy in complex, global environments. The framework establishes a shared executive language for growth while creating clarity around where technology, specifically AI, can responsibly and measurably amplify outcomes."
+            ]
+        },
+        objectives: {
+            h2: "Executive Roundtable Objectives",
+            intro: "The MindFinders.ai Executive Roundtable is a strategic, invitation-only initiative designed to achieve a focused set of outcomes across leadership alignment, strategy design, and enterprise AI adoption.",
+            items: [
+                {
+                    title: "1. Build Executive Advocates and Ambassadors",
+                    text: "Cultivate a trusted network of executive advocates across the United States and Africa who understand, validate, and champion the GrowersCloud and MindFinders.AI platforms through peer-to-peer engagement and firsthand exposure to strategy-led AI deployment."
+                },
+                {
+                    title: "2. Establish the Growth2X Framework as Standard",
+                    text: "Position the Growth2X Business Management System as the preferred framework for enterprise business planning, grounded in the analysis of over 200 successful organizations and proven business realities."
+                },
+                {
+                    title: "3. Validate the 14 Growth Levers",
+                    text: "Introduce the 14 Growth Levers as the most effective model for building, assessing, and refining enterprise strategy, translating strategy into executable priorities and compounding growth."
+                },
+                {
+                    title: "4. Demonstrate Proven Enterprise AI Execution",
+                    text: "Demonstrate ability to deliver enterprise-wide AI solutions that scale across complex organizations, integrate seamlessly, and align with governance and security requirements."
+                },
+                {
+                    title: "5. Transition Ambassadors into Strategic Clients",
+                    text: "Create a natural pathway from advocacy to long-term partnership, positioning participants to engage MindFinders.ai as long-term Growth & AI strategic advisors."
+                }
+            ]
+        },
+        programStructure: {
+            h2: "Program Structure",
+            part1: {
+                title: "Part I: AI Hypergrowth",
+                subtitle: "The New Science of Scaling in the Age of AI",
+                date: "Tuesday, Feb 17th at 11:00 am EST",
+                description: "A no-fluff, executive-level webinar for CEOs and senior leaders. Learn the Growth2X methodology and meet three AI agents designed to drive revenue and reduce costs. A clear plan you can act on immediately."
+            },
+            part2: {
+                title: "Part II: The Journey to AI-Led Business Growth",
+                subtitle: "Executive Workshop",
+                date: "Thursday, Feb 19th at 11:00 am - 2:00 pm",
+                description: "A 3-hour executive workshop walking through the Journey to AI-Led Growth Strategy Map. Develop a 1st draft high-level Growth and AI strategy tied to business outcomes and leave with a practical roadmap."
+            }
+        },
+        host: {
+            h2: "A Personal Invitation",
+            body: "This Roundtable is convened through a personal invitation from Tim Booker, reflecting a shared belief that enduring growth begins with clarity of strategy—and that AI delivers its greatest value when embedded within that clarity.",
+            name: "Tim Booker, CEO of MindFinders and Mindfinders AI",
+            cta: "Request an Invitation"
+        }
     }
 };

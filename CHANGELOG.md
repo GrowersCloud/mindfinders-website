@@ -16,6 +16,30 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-02-10] - AI Executive Roundtable Page
+**Commit**: `ai-executive-roundtable`
+
+### Added
+- **AI Executive Roundtable Page**: New landing page at `/ai-executive-roundtable`
+  - Premium Executive (Theme 3) design
+  - Glassmorphism effects and cinematic imagery
+  - Strategic Lens visualization and Program Structure breakdown
+- **Navigation Update**: Added "AI Executive Roundtable" to "Programs" mega-menu (Desktop) and Mobile Menu
+- **Assets**: Added 3 new high-quality images:
+  - `boardroom_hero.png`: Cinematic boardroom hero image
+  - `strategy_lens.png`: Strategic Growth2X framework visualization
+  - `workshop_collab.png`: Realistic executive collaboration photo
+
+### Files Modified
+- `src/app/ai-executive-roundtable/page.tsx` (new)
+- `src/lib/content.ts` (added executiveRoundtable section)
+- `src/components/Header.tsx` (navigation updates)
+- `public/boardroom_hero.png` (new)
+- `public/strategy_lens.png` (new)
+- `public/workshop_collab.png` (new)
+
+---
+
 ## [2026-02-03] - SEO & Metadata Refinement
 **Commit**: `metadata-update`
 

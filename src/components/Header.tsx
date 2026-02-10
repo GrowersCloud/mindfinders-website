@@ -149,6 +149,7 @@ export default function Header() {
                                 <h3 className="font-bold mb-4 text-[var(--primary)] uppercase text-sm tracking-wider">Events</h3>
                                 <ul className="space-y-2 text-sm">
                                     <li><Link href="/ceo-sips-and-smoothies" className="hover:text-[var(--primary)] block py-1">AI CEO Sips & Smoothies</Link></li>
+                                    <li><Link href="/ai-executive-roundtable" className="hover:text-[var(--primary)] block py-1">AI Executive Roundtable</Link></li>
                                 </ul>
                             </div>
 
@@ -226,9 +227,8 @@ function MobileMenu({
 }) {
     return (
         <div
-            className={`fixed inset-0 z-[100] bg-white lg:hidden flex flex-col transition-transform duration-300 ease-out ${
-                isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
-            }`}
+            className={`fixed inset-0 z-[100] bg-white lg:hidden flex flex-col transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
+                }`}
             aria-hidden={!isOpen}
         >
             {/* Menu Header */}
@@ -249,9 +249,8 @@ function MobileMenu({
             <div className="flex-1 relative overflow-hidden">
                 {/* Level 1: Main Menu */}
                 <div
-                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                        activeSubmenu ? '-translate-x-full' : 'translate-x-0'
-                    }`}
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${activeSubmenu ? '-translate-x-full' : 'translate-x-0'
+                        }`}
                 >
                     <nav className="flex flex-col gap-2">
                         <Link
@@ -320,9 +319,8 @@ function MobileMenu({
 
                 {/* Level 2: Services Submenu */}
                 <div
-                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                        activeSubmenu === 'services' ? 'translate-x-0' : 'translate-x-full'
-                    }`}
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${activeSubmenu === 'services' ? 'translate-x-0' : 'translate-x-full'
+                        }`}
                 >
                     <button
                         onClick={() => setActiveSubmenu(null)}
@@ -367,9 +365,8 @@ function MobileMenu({
 
                 {/* Level 2: AI Agents Submenu */}
                 <div
-                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                        activeSubmenu === 'agents' ? 'translate-x-0' : 'translate-x-full'
-                    }`}
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${activeSubmenu === 'agents' ? 'translate-x-0' : 'translate-x-full'
+                        }`}
                 >
                     <button
                         onClick={() => setActiveSubmenu(null)}
@@ -413,9 +410,8 @@ function MobileMenu({
 
                 {/* Level 2: Programs Submenu */}
                 <div
-                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${
-                        activeSubmenu === 'programs' ? 'translate-x-0' : 'translate-x-full'
-                    }`}
+                    className={`absolute inset-0 flex flex-col px-6 py-8 overflow-y-auto transition-transform duration-300 ease-out ${activeSubmenu === 'programs' ? 'translate-x-0' : 'translate-x-full'
+                        }`}
                 >
                     <button
                         onClick={() => setActiveSubmenu(null)}
@@ -433,6 +429,9 @@ function MobileMenu({
                         <p className="text-xs uppercase text-gray-400 font-bold mb-2">Events</p>
                         <Link href="/ceo-sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
                             AI CEO Sips & Smoothies
+                        </Link>
+                        <Link href="/ai-executive-roundtable" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                            AI Executive Roundtable
                         </Link>
                     </nav>
                 </div>
