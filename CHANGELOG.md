@@ -16,6 +16,20 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-02-11] - LMS Demo Branding Fix
+**Commit**: `fix-lms-branding`
+
+### Changed
+- **LMS Demo**: Reverted unapproved "For Sale" branding.
+- **Content**: Restored personalized "Welcome back, Samra" greeting.
+- **Components**: Updated demo watermark to "DEMO" instead of "FOR SALE".
+
+### Files Modified
+- `src/app/employee-tool-preview-secret-x9/page.tsx`
+- `src/app/employee-tool-preview-secret-x9/layout.tsx`
+
+---
+
 ## [2026-02-10] - CEO Sips & Smoothies Date Update
 **Commit**: `b49d749`
 

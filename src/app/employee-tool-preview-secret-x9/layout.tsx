@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Employee Tool for Sale | Secret Preview",
-    description: "Confidential internal tool preview.",
+    title: "LMS Solution Demo | MindFinders",
+    description: "Interactive demo of the MindFinders LMS solution.",
     robots: {
         index: false,
         follow: false,

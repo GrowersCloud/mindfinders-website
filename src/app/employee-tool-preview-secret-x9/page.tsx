@@ -98,14 +98,14 @@ export default function LmsDemoPage() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl relative">
             {/* Massive Watermark */}
-            <div className="absolute -top-20 -left-10 text-[100px] md:text-[140px] font-black text-white/5 select-none pointer-events-none leading-none z-0">
-              FOR SALE
+            <div className="absolute -top-20 -left-10 text-[150px] md:text-[200px] font-black text-white/5 select-none pointer-events-none leading-none z-0">
+              DEMO
             </div>
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-2">
                 <div className="bg-[#ED1B2F] text-white font-bold px-3 py-1 text-sm tracking-widest uppercase rounded">
-                  Global Asset
+                  Interactive Demo
                 </div>
                 <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
                   <Settings className="w-4 h-4 text-gray-400" />
@@ -114,8 +114,8 @@ export default function LmsDemoPage() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 leading-tight">
-                Employee Tool for Sale
-                <span className="block text-2xl md:text-3xl text-gray-500 font-medium mt-2">White-Label LMS Solution (Demo)</span>
+                Welcome back, Samra.
+                <span className="block text-xl md:text-2xl text-gray-400 font-medium mt-2 font-serif italic">Medical Billing Specialist</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-300 font-light mb-8 font-serif italic max-w-2xl">
