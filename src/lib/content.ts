@@ -511,7 +511,7 @@ export const content = {
             h1: ["The AI CEO", "Sips & Smoothies", "Cocktail Party"],
             subtitle: "Exclusive Invitation-Only Social Evening\nfor Growth-Minded CEOs\n\nHosted by Your Neighbor Tim Booker, CEO of MindFinders AI",
             details: [
-                "March 12 | 5:00–7:00 PM",
+                "March 26 | 5:00–7:00 PM",
                 "The Capital Grille, McLean, VA"
             ],
             description: "Join fellow CEOs from middle-market companies and innovative small businesses with 30 or more employees in this relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and increase productivity.",
@@ -596,7 +596,7 @@ export const content = {
         details: {
             h2: "Event Details",
             event: "AI CEO Sips & Smoothies Cocktail Party",
-            date: "March 12",
+            date: "March 26",
             time: "5:00–7:00 PM",
             location: "The Capital Grille \n1861 International Dr \nMcLean, VA 22102",
             amenities: "Cocktails, smoothies, mocktails, and \nhors d’oeuvres will be served."
