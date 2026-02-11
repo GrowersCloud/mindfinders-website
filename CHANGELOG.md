@@ -16,6 +16,18 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-02-10] - CEO Sips & Smoothies Date Update
+**Commit**: `b49d749`
+
+### Changed
+- Updated event date from March 12 to **March 26**
+- Updated in both hero section and event details section
+
+### Files Modified
+- `src/lib/content.ts`
+
+---
+
 ## [2026-02-10] - AI Executive Roundtable Registration Page
 **Commit**: `52d2b9d`
 
