@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-02-10
+> Last verified: 2026-02-12
 
 ---
 
@@ -17,7 +17,7 @@ All deployments to production are documented here. **Update this file after ever
 ---
 
 ## [2026-02-11] - LMS Demo Branding Fix
-**Commit**: `fix-lms-branding`
+**Commit**: `f8e7c62`
 
 ### Changed
 - **LMS Demo**: Reverted unapproved "For Sale" branding.
