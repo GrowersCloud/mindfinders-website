@@ -16,6 +16,18 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-02-18] - AI Executive Roundtable Date Update
+**Commit**: `c163f6f`
+
+### Changed
+- Updated Session 1 (Webinar): **March 26th at 11:00 AM EST**
+- Updated Session 2 (Workshop): **March 31st at 11:00 AM - 2:00 PM EST**
+
+### Files Modified
+- `src/lib/content.ts`
+
+---
+
 ## [2026-02-11] - LMS Demo Branding Fix
 **Commit**: `f8e7c62`
 
