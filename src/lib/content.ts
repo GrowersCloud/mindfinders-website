@@ -676,8 +676,8 @@ export const content = {
             h1: "Defining the Standard for Strategy in the AI-Enabled Enterprise",
             subtitle: "Founding Pilot Webinar + Executive Workshop\n\nThe MindFinders.ai Executive Roundtable is an invitation-only forum convening a select group of CEOs, CIOs, COOs, and CFOs across the United States and Africa.",
             dates: [
-                "Feb 17th | 11:00 AM EST (Webinar)",
-                "Feb 19th | 11:00 AM - 2:00 PM EST (Workshop)"
+                "March 26th | 11:00 AM EST (Webinar)",
+                "March 31st | 11:00 AM - 2:00 PM EST (Workshop)"
             ],
             description: "Designed for leaders responsible for enterprise growth and long-term value creation, this private experience introduces a disciplined approach to strategy design, one that precedes technology decisions and scales with the organization.\n\nParticipation is complimentary and granted by invitation only.",
             cta: "Request an Invitation"
@@ -720,13 +720,13 @@ export const content = {
             part1: {
                 title: "Part I: AI Hypergrowth",
                 subtitle: "The New Science of Scaling in the Age of AI",
-                date: "Tuesday, Feb 17th at 11:00 am EST",
+                date: "Thursday, March 26th at 11:00 am EST",
                 description: "A no-fluff, executive-level webinar for CEOs and senior leaders. Learn the Growth2X methodology and meet three AI agents designed to drive revenue and reduce costs. A clear plan you can act on immediately."
             },
             part2: {
                 title: "Part II: The Journey to AI-Led Business Growth",
                 subtitle: "Executive Workshop",
-                date: "Thursday, Feb 19th at 11:00 am - 2:00 pm",
+                date: "Tuesday, March 31st at 11:00 am - 2:00 pm",
                 description: "A 3-hour executive workshop walking through the Journey to AI-Led Growth Strategy Map. Develop a 1st draft high-level Growth and AI strategy tied to business outcomes and leave with a practical roadmap."
             }
         },
