@@ -148,8 +148,8 @@ export default function Header() {
                             <div>
                                 <h3 className="font-bold mb-4 text-[var(--primary)] uppercase text-sm tracking-wider">Events</h3>
                                 <ul className="space-y-2 text-sm">
-                                    <li><Link href="/ceo-sips-and-smoothies" className="hover:text-[var(--primary)] block py-1">AI CEO Sips & Smoothies</Link></li>
-                                    <li><Link href="/ai-executive-roundtable" className="hover:text-[var(--primary)] block py-1">AI Executive Roundtable</Link></li>
+                                    <li><Link href="/programs/ceo-sips-and-smoothies" className="hover:text-[var(--primary)] block py-1">AI CEO Sips & Smoothies</Link></li>
+                                    <li><Link href="/programs/ai-executive-roundtable" className="hover:text-[var(--primary)] block py-1">AI Executive Roundtable</Link></li>
                                 </ul>
                             </div>
 
@@ -427,10 +427,10 @@ function MobileMenu({
 
                     <nav className="flex flex-col gap-1">
                         <p className="text-xs uppercase text-gray-400 font-bold mb-2">Events</p>
-                        <Link href="/ceo-sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                        <Link href="/programs/ceo-sips-and-smoothies" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
                             AI CEO Sips & Smoothies
                         </Link>
-                        <Link href="/ai-executive-roundtable" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
+                        <Link href="/programs/ai-executive-roundtable" onClick={closeMenu} className="py-3 text-lg border-b border-gray-50">
                             AI Executive Roundtable
                         </Link>
                     </nav>

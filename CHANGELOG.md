@@ -16,6 +16,27 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-04-08] - Programs Routing Refactor
+**Commit**: `pending`
+
+### Added
+- **Programs Index Page**: New page at `/programs` summarizing events
+
+### Changed
+- Moved top-level routes `ceo-sips-and-smoothies` and `ai-executive-roundtable` inside `programs/` structural folder
+- Implemented `/programs` scalable parent directory architecture
+- Updated Header navigation to point to `programs/` equivalents
+- Added 301 wild-card redirects to `next.config.ts` to forward previous links
+
+### Files Modified
+- `src/app/programs/page.tsx` (new)
+- `src/app/programs/ceo-sips-and-smoothies/page.tsx` (moved)
+- `src/app/programs/ai-executive-roundtable/page.tsx` (moved)
+- `src/components/Header.tsx`
+- `next.config.ts`
+
+---
+
 ## [2026-02-18] - AI Executive Roundtable Date Update
 **Commit**: `c163f6f`
 
