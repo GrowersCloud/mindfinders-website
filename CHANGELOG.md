@@ -17,7 +17,7 @@ All deployments to production are documented here. **Update this file after ever
 ---
 
 ## [2026-04-08] - Programs Routing Refactor
-**Commit**: `pending`
+**Commit**: `7fa3583`
 
 ### Added
 - **Programs Index Page**: New page at `/programs` summarizing events
