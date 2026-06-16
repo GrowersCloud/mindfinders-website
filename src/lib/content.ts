@@ -508,10 +508,10 @@ export const content = {
     sipsAndSmoothies: {
         hero: {
             eyebrow: "Limited to 20 Executives",
-            h1: ["The AI CEO", "Sips, Smoothies & Growth", "Cocktail Party"],
+            h1: ["The AI CEO", "Sips & Growth", "Cocktail Party"],
             subtitle: "Exclusive Invitation-Only Social Evening\nfor Growth-Minded CEOs\n\nHosted by Your Neighbor Tim Booker, CEO of MindFinders AI",
             details: [
-                "March 26 | 5:00–7:00 PM",
+                "August 6 | 5:00–7:00 PM",
                 "The Capital Grille, McLean, VA"
             ],
             description: "Join fellow CEOs from middle-market companies and innovative small businesses with 30 or more employees in this relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and increase productivity.",
@@ -519,7 +519,7 @@ export const content = {
         },
         socialContext: {
             h2: ["This Is an", "Executive Social,", "Not a Conference"],
-            body: "The AI CEO Sips, Smoothies & Growth cocktail party is a social, peer-level experience, not a formal presentation or sales event.",
+            body: "The AI CEO Sips & Growth cocktail party is a social, peer-level experience, not a formal presentation or sales event.",
             offerings: [
                 "Handcrafted cocktails and wine, if you choose to drink",
                 "Fresh smoothies and mocktails for those who don’t",
@@ -595,8 +595,8 @@ export const content = {
         },
         details: {
             h2: "Event Details",
-            event: "AI CEO Sips, Smoothies & Growth Cocktail Party",
-            date: "March 26",
+            event: "AI CEO Sips & Growth Cocktail Party",
+            date: "August 6",
             time: "5:00–7:00 PM",
             location: "The Capital Grille \n1861 International Dr \nMcLean, VA 22102",
             amenities: "Cocktails, smoothies, mocktails, and \nhors d’oeuvres will be served."
