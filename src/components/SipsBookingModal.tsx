@@ -13,9 +13,11 @@ import { X, ExternalLink } from "lucide-react";
  * own snippet (its <iframe> markup plus an eager <script src=".../form_embed.js">) into
  * the page is exactly what that avoids; we take the embed's src and nothing else.
  *
- * The widget is a GHL *form*, not a booking calendar. form_embed.js drives auto-resize
- * for /widget/form/ the same way it does for /widget/booking/, so there is no height
- * handling to special-case.
+ * The widget is a GHL *form*, not a booking calendar, and that difference does matter for
+ * sizing. The port spec assumed form_embed.js would auto-resize /widget/form/ the same way
+ * it does /widget/booking/. It does not: iframe-resizer posts a single init on load and
+ * then never drives the height. So the modal sizes itself to the form rather than handing
+ * the form a viewport-sized box to rattle around in. See FORM_HEIGHT_PX.
  */
 
 // MindFinders' GHL is hosted on the GrowersCloud domain - that is intentional, not a
@@ -27,6 +29,11 @@ const FORM_EMBED_SCRIPT = `${GHL_ORIGIN}/js/form_embed.js`;
 
 // If the widget has not painted by now, assume it is not coming and show a way through.
 const LOAD_TIMEOUT_MS = 10000;
+
+// Height of the GHL form. Measured, not guessed: GHL reports the form as 650x549 and it
+// renders at ~580px tall once the consent paragraph wraps. See the note by the iframe -
+// this widget does not auto-resize, so the height is ours to set.
+const FORM_HEIGHT_PX = 640;
 
 type LoadState = "loading" | "loaded" | "failed";
 
@@ -50,6 +57,7 @@ export default function SipsBookingModal({ open, onClose, title }: SipsBookingMo
 
 function BookingDialog({ onClose, title }: { onClose: () => void; title: string }) {
     const [loadState, setLoadState] = useState<LoadState>("loading");
+    const iframeRef = useRef<HTMLIFrameElement>(null);
     const panelRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -93,6 +101,40 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
         };
     }, []);
 
+    /*
+      form_embed.js does not just load the widget - it reaches back into our iframe after
+      load and overwrites BOTH the height (to ~720px) and the scrolling attribute (back to
+      "yes"). That is where the dead space and the stray scrollbar came from: a ~580px form
+      in a 720px box, overflowing by a few pixels because GHL's page sizes itself to
+      whatever viewport it is handed. Static JSX props cannot win that argument, so we
+      re-assert after it has had its turn.
+
+      Safe to do: iframe-resizer writes once at init and then goes quiet - it ignored three
+      manual height changes afterwards - so this is a single correction, not a tug of war.
+      The counter is a backstop in case a future GHL build starts fighting back.
+    */
+    useEffect(() => {
+        const el = iframeRef.current;
+        if (!el) return;
+
+        let corrections = 0;
+        const enforce = () => {
+            if (el.getAttribute("scrolling") !== "no") el.setAttribute("scrolling", "no");
+            if (el.style.height !== `${FORM_HEIGHT_PX}px`) el.style.height = `${FORM_HEIGHT_PX}px`;
+        };
+
+        const observer = new MutationObserver(() => {
+            if (corrections++ > 20) {
+                observer.disconnect();
+                return;
+            }
+            enforce();
+        });
+
+        observer.observe(el, { attributes: true, attributeFilter: ["style", "scrolling", "height"] });
+        return () => observer.disconnect();
+    }, []);
+
     // GHL posts resize and completion events from its own origin. Anything from elsewhere
     // is not ours, so check the origin before reading the payload.
     useEffect(() => {
@@ -123,7 +165,15 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
         >
             <div
                 ref={panelRef}
-                className="flex flex-col w-full max-w-4xl h-[92vh] max-h-[92vh] bg-white rounded-none border-[3px] border-[var(--secondary)] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] overflow-hidden"
+                /*
+                  Sized to the form, not to the viewport. GHL reports this widget as 650px
+                  wide; at max-w-4xl with a 92vh height the modal was 896x787 around a
+                  ~650x580 form, which read as a small form marooned in a large white box.
+                  Width caps just above GHL's own, and the height follows the content.
+                  95vh rather than 92vh so the whole thing clears more short laptop
+                  windows before the body has to scroll at all.
+                */
+                className="flex flex-col w-full max-w-[700px] max-h-[95vh] bg-white rounded-none border-[3px] border-[var(--secondary)] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] overflow-hidden"
             >
                 <div className="flex items-center justify-between gap-4 px-5 sm:px-6 py-4 border-b-[2px] border-[var(--secondary)] bg-white shrink-0">
                     <h2
@@ -143,20 +193,29 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
                     </button>
                 </div>
 
-                <div className="relative flex-1 bg-white overflow-y-auto">
+                {/*
+                    min-h matters: in the failed state the iframe is unmounted, and without a
+                    floor this box collapses to zero height, taking the absolutely-positioned
+                    fallback with it.
+                */}
+                <div className="relative flex-1 min-h-[320px] bg-white overflow-y-auto">
                     {/*
                         GHL widgets hide themselves via inline styles set by form_embed.js
                         (opacity: 0; visibility: hidden; pointer-events: none; left: -9999px).
                         The iframe needs a unique id and an !important override targeting that
                         id, or the widget loads and stays invisible.
 
-                        height: 100% fills the modal body and lets form_embed.js resize the
-                        frame to the form's real height over postMessage. Do not give it a
-                        fixed minHeight - if the floor is taller than the content, form_embed
-                        cannot shrink below it and GHL centres its card in the oversized frame,
-                        leaving dead space above the form and forcing the modal to scroll. Do
-                        not position: absolute it either - a pinned iframe cannot grow for
-                        taller forms.
+                        The height is set explicitly because this widget does NOT auto-resize.
+                        form_embed.js loads iframe-resizer, which posts one
+                        [iFrameSizer]...:init on load and then goes silent - it never drives
+                        the height, and the child does not answer a re-measure request either.
+                        Verified in the browser, not assumed.
+
+                        So height: 100% is wrong here. GHL's page fills whatever height it is
+                        handed and reports that back, so tying the iframe to a 92vh panel just
+                        pads the form out to the viewport. FORM_HEIGHT_PX fits the current
+                        form; the container scrolls if GHL ever makes it taller, so a stale
+                        value degrades to a scrollbar rather than a clipped form.
                     */}
                     <style>{`
                         iframe#ghl-sips-form-iframe {
@@ -171,11 +230,22 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
 
                     {loadState !== "failed" && (
                         <iframe
+                            ref={iframeRef}
                             src={FORM_IFRAME_SRC}
                             id="ghl-sips-form-iframe"
                             title={title}
                             onLoad={handleIframeLoad}
-                            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                            /*
+                              scrolling="no" kills a scrollbar that is GHL's, not ours: their
+                              page overflows whatever height it is handed by a few pixels, so
+                              one appeared at 640, 720 and 760 alike. We cannot restyle
+                              cross-origin content, so the attribute is the only lever - and
+                              form_embed.js resets it, which is what the observer above is
+                              for. FORM_HEIGHT_PX clears the form's real height, so hiding
+                              the scrollbar cannot clip it.
+                            */
+                            scrolling="no"
+                            style={{ width: "100%", height: FORM_HEIGHT_PX, border: "none", display: "block" }}
                         />
                     )}
 
