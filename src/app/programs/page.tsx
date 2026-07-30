@@ -26,7 +26,7 @@ export default function ProgramsPage() {
                     </p>
                     <div className="flex gap-4">
                         <Link
-                            href="/programs/ceo-sips-and-smoothies"
+                            href="/programs/ai-ceo-sips-and-growth-executive-reception"
                             className="inline-block px-6 py-3 bg-[var(--primary)] text-white rounded hover:bg-opacity-90 transition-colors font-medium"
                         >
                             View Program Details

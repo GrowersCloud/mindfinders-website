@@ -75,8 +75,8 @@ See [package.json](package.json) for complete scripts.
 - `/training-and-talent` - [src/app/training-and-talent/page.tsx](src/app/training-and-talent/page.tsx)
 - `/about` - [src/app/about/page.tsx](src/app/about/page.tsx)
 - `/get-started` - [src/app/get-started/page.tsx](src/app/get-started/page.tsx)
-- `/ceo-sips-and-smoothies` - [src/app/ceo-sips-and-smoothies/page.tsx](src/app/ceo-sips-and-smoothies/page.tsx) (Marketing Landing Page)
-- `/ceo-sips-and-smoothies/reservation` - [src/app/ceo-sips-and-smoothies/reservation/page.tsx](src/app/ceo-sips-and-smoothies/reservation/page.tsx) (Calendar Booking)
+- `/programs/ai-ceo-sips-and-growth-executive-reception` - [src/app/programs/ai-ceo-sips-and-growth-executive-reception/page.tsx](src/app/programs/ai-ceo-sips-and-growth-executive-reception/page.tsx) (Marketing Landing Page). Ported from GrowersCloud, which is the source of truth for its copy and layout. Slug matches theirs. Registration is a modal, not a sub-route. `/ceo-sips-and-smoothies` and `/programs/ceo-sips-and-smoothies` both 308 here - keep them, they were given out widely.
+- `/programs/ai-executive-roundtable` - [src/app/programs/ai-executive-roundtable/page.tsx](src/app/programs/ai-executive-roundtable/page.tsx)
 - `/faq`, `/privacy-policy`, `/terms-of-service` - Legal/support pages
 
 **Navigation Patterns:**
