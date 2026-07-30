@@ -44,13 +44,31 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
+/*
+  Headings default to the heading face. This MUST live in @layer base.
+
+  Written unlayered - as it was - it beat Tailwind's font-serif utility and every heading
+  rendered Libre Franklin regardless of what the markup asked for. Three across the site were
+  affected: the home page h3, the roundtable's closing h2 and the Sips page's closing h2, all
+  asking for PT Serif and all silently ignored.
+
+  The lever is the layer, not the specificity. Cascade layers outrank specificity outright, and
+  unlayered styles sit above every layer - so an unlayered rule beats a layered utility even at
+  zero specificity. Wrapping the selector in :where() does nothing here; only moving it into
+  base, which Tailwind orders below utilities, lets the utility win.
+
+  Inheritance from `body` still loses to this, so headings keep defaulting correctly.
+*/
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
 }
 
 .container {
@@ -101,20 +119,6 @@ h6 {
 
 .delay-500 {
   animation-delay: 0.5s;
-}
-
-/*
-  The h1-h6 rule above is unlayered, so it outranks Tailwind's font-serif utility and every
-  heading renders in --font-heading regardless of what the markup asks for. The ported Sips
-  page closes on a font-serif h2, which should be PT Serif (GrowersCloud sets Playfair there).
-
-  Scoped to this page on purpose. Two other headings on the site - the home page's h3 and the
-  roundtable's closing h2 - hit the same rule and are also silently rendering Libre Franklin
-  when they ask for serif. That is worth fixing, but it changes pages outside this port, so
-  it is left alone here rather than folded in silently.
-*/
-.sips-page :is(h1, h2, h3, h4, h5, h6).font-serif {
-  font-family: var(--font-serif);
 }
 
 /*

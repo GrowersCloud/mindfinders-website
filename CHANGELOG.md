@@ -52,9 +52,11 @@ Spec and verification checklist live in [docs/ai-ceo-sips-port-spec.md](docs/ai-
   GrowersCloud checkout.
 
 ### Fixed
-- `font-serif` never rendered PT Serif. The unlayered `h1-h6` rule in `globals.css` outranks
-  Tailwind's utility. Fixed for this page only - **the home page `h3` and the roundtable's
-  closing `h2` are still affected** and need a decision.
+- `font-serif` never rendered PT Serif anywhere on the site. The `h1-h6` rule in `globals.css`
+  was unlayered, and unlayered styles outrank every cascade layer - so it beat Tailwind's
+  utility and all headings rendered Libre Franklin regardless of markup. Moving the rule into
+  `@layer base` fixes it for all three affected headings: the home page `h3`, the roundtable's
+  closing `h2` and the Sips page's closing `h2`. The other 96 headings are unchanged.
 - Booking modal sized to the form rather than the viewport, removing large white margins and a
   scrollbar. `form_embed.js` overwrites the iframe height and scrolling attribute after load, so
   a MutationObserver re-asserts them.
@@ -73,6 +75,12 @@ Spec and verification checklist live in [docs/ai-ceo-sips-port-spec.md](docs/ai-
 - GHL-side: the phone field defaults to a non-US country flag. Check the form's post-submit
   redirect does not point at an old slug.
 - On a 1280x720 window the modal body scrolls ~28px; a 700px modal cannot fit a 720px screen.
+
+> **Deploy note:** `git push` alone did not update the live site. The push-triggered build was
+> Canceled (see KNOWN ISSUES), and `vercel --prod` built successfully but left
+> `www.mindfinders.ai` pinned to a 44-day-old deployment - it aliased only the `.vercel.app`
+> URL. `vercel promote <deployment-url>` was required to move the domain. Verify against the
+> real domain after deploying, not the CLI output.
 
 ---
 

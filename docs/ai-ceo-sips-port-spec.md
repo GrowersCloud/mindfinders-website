@@ -582,11 +582,23 @@ mechanism as §8.8: it outranks Tailwind's `font-serif` utility, so **every head
 Franklin no matter what the markup asks for**.
 
 The ported page closes on a `font-serif` h2 (Playfair on GrowersCloud, PT Serif here). The source
-looks correct; only the computed style in a browser reveals it. Scope an override to the page.
+looks correct; only the computed style in a browser reveals it.
 
-**This is a pre-existing site-wide bug**, not something the port introduced: MindFinders' home page
-`h3` and the roundtable's closing `h2` both ask for serif and both render Libre Franklin. Fixing it
-globally is one line but changes pages outside the port — flag it, don't fold it in.
+**✅ Fixed site-wide 2026-07-30.** It was a pre-existing bug, not something the port introduced —
+the home page `h3` and the roundtable's closing `h2` were silently affected too. The heading rule
+now lives in `@layer base`.
+
+> **The lever is the layer, not the specificity.** The first attempt at this wrapped the selector
+> in `:where()` to drop it to zero specificity. **That does nothing.** Cascade layers outrank
+> specificity outright, and unlayered styles sit above every layer — so an unlayered rule beats a
+> layered utility even at zero specificity. Only moving the rule into `base`, which Tailwind
+> orders below `utilities`, lets the utility win.
+>
+> Same reasoning applies to §8.8: that is why `.sips-container` had to be declared in
+> `@layer components` rather than just given a weaker selector.
+
+Verified in a browser across five pages: the three `font-serif` headings render PT Serif; the
+other 96 headings still render Libre Franklin.
 
 ---
 

@@ -62,7 +62,7 @@ export default function SipsAndGrowthExecutiveReceptionPage() {
     );
 
     return (
-        <main className="sips-page min-h-screen bg-white">
+        <main className="min-h-screen bg-white">
 
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center pt-16 pb-16 overflow-hidden bg-[#231F20] text-[#F2F1EB]">
