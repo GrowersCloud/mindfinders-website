@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { content } from "@/lib/content";
 
-const thanks = content.thankYou;
+const thanks = content.thankYou.aiCeoSips;
 
 /**
  * Post-submission confirmation, reached by a redirect configured on the GHL form itself.

@@ -804,13 +804,17 @@ export const content = {
             footer: "Participation is complimentary and granted by invitation only. We will review your request and respond within 48 hours."
         }
     },
+    // One entry per form. Every form gets its own confirmation page, so copy here is
+    // event-specific and must never be shared between two forms.
     thankYou: {
-        eyebrow: "Request Received",
-        h1: "Thank you. Your request is in.",
-        body: "We have your details. Kelli reviews every request personally, so you will hear from us shortly.",
-        microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
-        eventLine: "Thursday, August 6 · 5:00‑8:00 PM · The Capital Grille, McLean VA",
-        backLabel: "Return to MindFinders.ai",
-        backHref: "/"
+        aiCeoSips: {
+            eyebrow: "Request Received",
+            h1: "Thank you. Your request is in.",
+            body: "We have your details. Kelli reviews every request personally, so you will hear from us shortly.",
+            microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
+            eventLine: "Thursday, August 6 · 5:00‑8:00 PM · The Capital Grille, McLean VA",
+            backLabel: "Return to MindFinders.ai",
+            backHref: "/"
+        }
     }
 };
