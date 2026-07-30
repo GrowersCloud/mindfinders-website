@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/*
+  Keep documentation out of the compiled CSS.
+
+  Tailwind 4 auto-detects source files across the project, and docs/ai-ceo-sips-port-spec.md
+  quotes GrowersCloud class names as examples (bg-[#88C52A], shadow-[...#2F2F2F]). Without this
+  exclusion Tailwind treats those as real utilities and emits them, which silently reintroduces
+  GrowersCloud green into the stylesheet and breaks the colour check in that spec's section 9.
+  Caught exactly that way - the check failed the moment the docs were added to the repo.
+*/
+@source not "../../docs";
+
 @theme {
   --color-primary: #ED1B2F;
   --color-secondary: #231F20;

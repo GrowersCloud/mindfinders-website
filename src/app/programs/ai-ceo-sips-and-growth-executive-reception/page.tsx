@@ -15,7 +15,7 @@
  * brand colours (#ED1B2F / #231F20) and fonts are MindFinders'. Do not reword the agenda
  * or "What You Walk Away With" copy - it is authored sales copy, and content.ts is the
  * only place it should ever be edited. See
- * Growers_Cloud_Full_Stack/Docs/partner-sites/mindfinders-sips-port-spec.md
+ * frontend-next/docs/ai-ceo-sips-port-spec.md
  */
 
 import Image from 'next/image';

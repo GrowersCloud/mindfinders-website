@@ -17,7 +17,8 @@ import { X, ExternalLink } from "lucide-react";
  * sizing. The port spec assumed form_embed.js would auto-resize /widget/form/ the same way
  * it does /widget/booking/. It does not: iframe-resizer posts a single init on load and
  * then never drives the height. So the modal sizes itself to the form rather than handing
- * the form a viewport-sized box to rattle around in. See FORM_HEIGHT_PX.
+ * the form a viewport-sized box to rattle around in. See FORM_HEIGHT_PX, and
+ * frontend-next/docs/ai-ceo-sips-port-spec.md §8.7 for the full write-up.
  */
 
 // MindFinders' GHL is hosted on the GrowersCloud domain - that is intentional, not a

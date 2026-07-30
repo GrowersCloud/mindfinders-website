@@ -411,6 +411,7 @@ export const content = {
 
 For detailed requirements beyond this architectural overview:
 
+- **AI CEO Sips page:** [docs/ai-ceo-sips-port-spec.md](docs/ai-ceo-sips-port-spec.md) — **read before touching that page.** It is a literal port of GrowersCloud's, which remains the source of truth for its copy and layout. The agenda and "What You Walk Away With" copy is authored sales copy that must not be reworded (§3.2), several duration claims are load-bearing (§4), and §8 documents nine traps including two invisible characters that must survive editing. Companion: [docs/ai-ceo-sips-content-snapshot.json](docs/ai-ceo-sips-content-snapshot.json), the verbatim copy payload and the fallback if the text is ever damaged.
 - **Design System:** [../mindfinders-style.md](../mindfinders-style.md) (authoritative style guide)
 - **Website Copy:** [../final_mindfinders-website-copy.md](../final_mindfinders-website-copy.md)
 - **Getting Started:** [README.md](README.md)
