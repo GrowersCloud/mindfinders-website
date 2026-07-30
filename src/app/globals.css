@@ -93,6 +93,20 @@ h6 {
 }
 
 /*
+  The h1-h6 rule above is unlayered, so it outranks Tailwind's font-serif utility and every
+  heading renders in --font-heading regardless of what the markup asks for. The ported Sips
+  page closes on a font-serif h2, which should be PT Serif (GrowersCloud sets Playfair there).
+
+  Scoped to this page on purpose. Two other headings on the site - the home page's h3 and the
+  roundtable's closing h2 - hit the same rule and are also silently rendering Libre Franklin
+  when they ask for serif. That is worth fixing, but it changes pages outside this port, so
+  it is left alone here rather than folded in silently.
+*/
+.sips-page :is(h1, h2, h3, h4, h5, h6).font-serif {
+  font-family: var(--font-serif);
+}
+
+/*
   Container geometry for the ported AI CEO Sips page.
 
   That page is a literal port of the GrowersCloud original, which runs Tailwind 3 with
