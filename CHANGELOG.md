@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-02-12
+> Last verified: 2026-07-30
 
 ---
 
@@ -13,6 +13,74 @@ All deployments to production are documented here. **Update this file after ever
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-07-30] - AI CEO Sips Page Ported from GrowersCloud
+**Commits**: `0caad38` `3710a6d` `847c6f2` `ce18579` `1c60a8b` `3d1e8b2` `3bedcfb` `060556d`
+
+The Sips page is now a literal port of GrowersCloud's, which is the source of truth for its
+copy and layout. Only brand colours and fonts are MindFinders'. **This is a visible redesign
+of that page, not a refresh** - the neo-brutalist treatment (thick borders, hard offset
+shadows) now runs throughout.
+
+Spec and verification checklist live in [docs/ai-ceo-sips-port-spec.md](docs/ai-ceo-sips-port-spec.md).
+83/83 checks pass against rendered HTML and built CSS.
+
+### Changed
+- **URL moved** to `/programs/ai-ceo-sips-and-growth-executive-reception`, matching GrowersCloud.
+  Both older paths still land, in one hop: `/ceo-sips-and-smoothies` and
+  `/programs/ceo-sips-and-smoothies` 308 to the new slug. These were given out widely, so they
+  must not be removed.
+- **Content**: replaced only the `sipsAndSmoothies` key in `content.ts`. The other nine keys are
+  byte-identical - verified by diffing the untouched line ranges. Copy was generated from the
+  canonical JSON, never retyped.
+- **Colours**: 184 occurrences swapped, `#88C52A`→`#ED1B2F`, `#2F2F2F`→`#231F20`,
+  `#7AB52E`→`#C4162A`. All three GrowersCloud hexes return zero in the built CSS.
+- **Nav label**: "AI CEO Sips, Smoothies & Growth" was two event names out of date; now matches
+  the page heading.
+- **Registration** is a click-to-open modal on the page. The `/reservation` sub-route is retired
+  and 307s to `/` under every slug it has ever had.
+
+### Added
+- 16 images, copied byte-for-byte (checksums verified), not re-exported.
+- `robots: noindex, nofollow` + canonical to GrowersCloud. This page must not appear in Google:
+  it would compete with GrowersCloud's for the same event. No `Event` JSON-LD anywhere on the
+  site, for the same reason. **Do not add a robots.txt `Disallow` for this route** - a page
+  Google cannot crawl is one whose noindex it cannot read.
+- `docs/` with the port spec and content snapshot, so the project no longer depends on the
+  GrowersCloud checkout.
+
+### Fixed
+- `font-serif` never rendered PT Serif. The unlayered `h1-h6` rule in `globals.css` outranks
+  Tailwind's utility. Fixed for this page only - **the home page `h3` and the roundtable's
+  closing `h2` are still affected** and need a decision.
+- Booking modal sized to the form rather than the viewport, removing large white margins and a
+  scrollbar. `form_embed.js` overwrites the iframe height and scrolling attribute after load, so
+  a MutationObserver re-asserts them.
+- Tailwind 4 was compiling class names quoted as examples inside `docs/`, putting GrowersCloud
+  green back into the stylesheet from a markdown file. Excluded via `@source not`.
+
+### Files Modified
+- `src/lib/content.ts`, `src/app/programs/ai-ceo-sips-and-growth-executive-reception/{page,layout}.tsx`
+- `src/components/SipsBookingModal.tsx` (new), `src/components/Header.tsx`, `src/app/programs/page.tsx`
+- `src/app/globals.css`, `next.config.ts`, `docs/` (new), `README.md`, `CLAUDE.md`
+- Deleted: `src/app/programs/ceo-sips-and-smoothies/reservation/page.tsx`
+
+### Follow-ups (not blocking)
+- `public/calendar-embed.html` is orphaned by the reservation retirement but still publicly
+  reachable. Delete once confirmed the URL was never circulated.
+- GHL-side: the phone field defaults to a non-US country flag. Check the form's post-submit
+  redirect does not point at an old slug.
+- On a 1280x720 window the modal body scrolls ~28px; a 700px modal cannot fit a 720px screen.
+
+---
+
+## [2026-06-16] - CEO Sips Event Update
+**Commit**: `087fbf5`
+**Changes**:
+- Renamed event to "The AI CEO Sips & Growth Cocktail Party"
+- Changed event date from March 26 to August 6
 
 ---
 

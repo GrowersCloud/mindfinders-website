@@ -1,6 +1,6 @@
 # MindFinders Website
 
-A production-ready marketing website for MindFinders built with **Next.js 14+ (App Router)**, **TypeScript**, and **Tailwind CSS**.
+A production-ready marketing website for MindFinders built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS 4**.
 
 ## 🚀 Getting Started
 
@@ -35,6 +35,9 @@ A production-ready marketing website for MindFinders built with **Next.js 14+ (A
   - `FAQAccordion.tsx`: Client-side accordion component
 - **`src/lib`**: Utilities and Data.
   - `content.ts`: **Single Source of Truth** for website copy.
+- **`docs`**: Specs for pages that carry rules the code cannot express.
+  - `ai-ceo-sips-port-spec.md`: **Read before editing the AI CEO Sips page.**
+  - `ai-ceo-sips-content-snapshot.json`: verbatim copy payload for that page.
 
 ## 📝 How to Edit Content
 
@@ -44,6 +47,13 @@ All text content is centered in `src/lib/content.ts`. This makes it easy to upda
 2. Find the section you want to edit (e.g., `home`, `services`, `about`).
 3. Update the text strings.
 4. Save - the site updates instantly in dev mode.
+
+> ⚠️ **One exception: `sipsAndSmoothies`.** That copy is a verbatim port of GrowersCloud's
+> page and is not free-form. The agenda and "What You Walk Away With" text is authored sales
+> copy that must not be reworded, several duration claims are load-bearing (change one time and
+> at least three sentences elsewhere become false), and two invisible characters in the ticket
+> line stop it breaking on narrow phones. Read [docs/ai-ceo-sips-port-spec.md](docs/ai-ceo-sips-port-spec.md)
+> first; §§3.2, 3.3 and 4 are the ones that bite.
 
 ## 🎨 Design System
 
