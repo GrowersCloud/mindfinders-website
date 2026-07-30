@@ -83,3 +83,63 @@ h6 {
 .delay-300 {
   animation-delay: 0.3s;
 }
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+/*
+  Container geometry for the ported AI CEO Sips page.
+
+  That page is a literal port of the GrowersCloud original, which runs Tailwind 3 with
+  `container: { center: true, padding: '2rem', screens: { '2xl': '1400px' } }`. The rules
+  below reproduce that exactly.
+
+  It gets its own class rather than reusing `.container` for one reason: `.container` above
+  is unlayered, so it outranks every Tailwind utility. The ported markup leans on `max-w-3xl`,
+  `max-w-6xl`, `max-w-7xl` and `px-4` sitting on the container element, and those would all be
+  swallowed. Declaring this in @layer components puts it below the utilities layer, so the
+  page's own utilities win the same way they do on GrowersCloud - and the site-wide
+  `.container` the other nine pages depend on is left alone.
+*/
+@layer components {
+  .sips-container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .sips-container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .sips-container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sips-container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .sips-container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .sips-container {
+      max-width: 1400px;
+    }
+  }
+}

@@ -507,81 +507,145 @@ export const content = {
     },
     sipsAndSmoothies: {
         hero: {
-            eyebrow: "Limited to 20 Executives",
-            h1: ["The AI CEO", "Sips & Growth", "Cocktail Party"],
-            subtitle: "Exclusive Invitation-Only Social Evening\nfor Growth-Minded CEOs\n\nHosted by Your Neighbor Tim Booker, CEO of MindFinders AI",
+            eyebrow: "Limited to 15 CEOs",
+            h1: [
+                "The AI CEO",
+                "Sips & Growth",
+                "Executive Reception",
+            ],
+            subtitle: "A private, closed-door evening for DMV area CEOs running $3 million to $1 billion businesses.\n\nYou'll get three concise executive briefings from Samuel Salter, each followed by a moderated CEO question, covering how to:\n• Create CEO-to-CEO strategic partnerships\n• Protect your valuation from AI data risks\n• Deploy AI agents that drive bottom-line growth\n\nThese are proven strategies that can increase your valuation. You'll meet 14 peer CEOs, many of whom target the exact same customers you do.\n\nYou'll see two of the hottest AI tools demonstrated live. Plus, you could walk out with a single strategic partnership worth three months of top-line revenue.",
             details: [
-                "August 6 | 5:00–8:00 PM",
-                "The Capital Grille, McLean, VA"
+                "Thursday, August 6 | 5:00‑8:00 PM",
+                "The Capital Grille, McLean, VA",
             ],
             description: "Join fellow CEOs from middle-market companies and innovative small businesses with 30 or more employees in this relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and increase productivity.",
-            cta: "Request an Invitation"
+            cta: "Request an Invitation",
         },
         socialContext: {
-            h2: ["This Is an", "Executive Social,", "Not a Conference"],
-            body: "The AI CEO Sips & Growth cocktail party is a social, peer-level experience, not a formal presentation or sales event.",
-            offerings: [
-                "Handcrafted cocktails and wine, if you choose to drink",
-                "Fresh smoothies and mocktails for those who don’t",
-                "Curated hors d’oeuvres and small plates",
-                "A comfortable, upscale setting that encourages real conversation"
+            h2: [
+                "An Executive Social.",
+                "Not a Pitch.",
             ],
-            footer: "Hosted at The Capital Grille, one of the city's premier steakhouse destinations."
+            body: "The AI CEO Sips & Growth Executive Reception is a social, peer-level experience, not a formal presentation or sales event.",
+            offerings: [
+                "Hand-crafted cocktails and wine, if you choose to drink",
+                "Fresh smoothies and mocktails for those who don't",
+                "The Capital Grille's signature appetizers, small plates, and hors d'oeuvres",
+                "A comfortable, upscale setting that encourages real conversation",
+            ],
+            footer: "Hosted at The Capital Grille - McLean's premier steakhouse destination.",
         },
-        benefits: {
-            h2: "Why CEOs Enjoy This Format",
-            intro: "Most AI events are loud and transactional. This one is different. This is an evening designed for CEOs to unwind and connect through high-impact conversation.",
+        walkAway: {
+            h2: "What You Walk Away With",
+            intro: "Most AI events run 90 minutes of slides and ten minutes of mingling. This one inverts that: you get 30 minutes of strategic insights to help you build an AI future-ready company, which includes three executive briefings, a moderated CEO question after each, and two live AI tool demos. Then 2 hours and 30 minutes of structured and free networking with rotating tables. You will leave with a few ideas you can implement right away.",
             items: [
                 {
-                    title: "Strategic Downtime",
-                    text: "Unwind after the workday in a high-caliber setting designed for reflection and connection."
+                    title: "One Strategic Alliance Worth Pursuing",
+                    text: "One CEO-to-CEO partnership idea, vetted by us and impossible to find on LinkedIn. It is the kind of alliance that could become a referral channel, a co-marketing deal, or a strategic acquisition conversation.",
                 },
                 {
-                    title: "Peer-Level Networking",
-                    text: "Have meaningful conversations with fellow CEOs who understand your challenges and may become referral partners."
+                    title: "Three Executive Briefings From Samuel Salter",
+                    text: "Strategic partnerships, data ownership, and AI agents. Three minutes each, followed by three minutes of moderated Q&A. This is the thinking that separates a $100M exit from a $120M exit when a buyer asks who owns your data and where it is stored.",
                 },
                 {
-                    title: "Premium Hospitality",
-                    text: "Enjoy a curated selection of food and drinks at The Capital Grille, ensuring a quality experience from start to finish."
+                    title: "Demos of Two of the Hottest AI Tools in Action",
+                    text: "Live demos of how to set up your own AI Brain and Personal Assistant, and the database-reactivation play that converted dead leads into $600K in 90 days.",
                 },
                 {
-                    title: "Practical AI ROI",
-                    text: "Leave with tangible, field-tested AI insights that you can implement in your business immediately."
-                }
+                    title: "An Evening At The Capital Grille",
+                    text: "The DMV's premier steakhouse hosts the room; expect signature appetizers and small plates, hand-crafted cocktails, fresh smoothies for those who don't drink, and the right setting for the right conversations. Hospitality is curated. You focus on who you came to meet.",
+                },
             ],
-            footer: "No stage. No pressure. Just a well-hosted evening with the right people in the room."
+            footer: "No stage. No pressure. Just a well-hosted evening with the right people in the room.",
         },
-        experience: {
-            h2: "What You’ll Experience During the Evening",
-            flow: {
-                title: "A Relaxed Social Flow",
-                text: "Arrive, grab a drink or a smoothie, and settle in. Conversation happens naturally throughout the upscale space. No forced networking. No awkward formats. Simply a well-hosted evening with the right people."
-            },
-            demos: {
-                title: "8 AI Demos in 8 Minutes",
-                text: [
-                    "At a natural break in the evening, you’ll see eight fast, practical AI demos. These are real tools and prompts CEOs are using to save time, improve productivity, and help teams perform at a higher level.",
-                    "For example, you will see a quick demo of how to use AI to take an underperforming asset and turn it into cash. Many companies have invested hundreds of thousands to millions in leads that never converted into sales. You will learn how a debt consolidation company in the financial services space made $600,000 within 90 days by using AI and SMS to convert these old dead leads into sales.",
-
-                ],
-                footer: "No theory. Just quick, tangible ideas."
-            }
+        eveningProgram: {
+            h2: "What You'll Experience During the Evening",
+            intro: "Three hours designed around meaningful CEO-to-CEO conversation. Only 30 minutes of it is content. The other 2 hours and 30 minutes is open networking and rotating tables. Samuel Salter will deliver three concise executive briefings, each followed by one moderated question, before demonstrating two AI tools live.",
+            items: [
+                {
+                    number: "01",
+                    time: "5:00 PM",
+                    title: "Arrival & Casual Networking",
+                    subtitle: "The First Hour Sets the Tone",
+                    description: "Doors open at 5:00. Pick up your name tag at the door, grab your first cocktail or fresh smoothie, and start your first conversation. Every CEO here was hand-selected for the room; there are no strangers, only CEOs you haven't met yet. Kelli (your evening host) introduces you to the right people on arrival",
+                    imageType: "scene",
+                    imageDirection: "/arrival-scene.webp",
+                },
+                {
+                    number: "02",
+                    time: "5:50 PM",
+                    title: "Kelli's Welcome",
+                    subtitle: "The Format. The Question.",
+                    description: "Hear a few minutes from your on-site co-host and moderator, Kelli Gilmore, COO of MindFinders.ai. She sets the format, plants the icebreaker question we'll trade across the tables later, and introduces Samuel Salter, who joins remotely to deliver three concise executive briefings.",
+                    imageType: "host_photo",
+                    imageDirection: "/kelli-gilmore.webp",
+                },
+                {
+                    number: "03",
+                    time: "6:00 PM",
+                    title: "Executive Briefing #1:\nHow AI Makes CEO-to-CEO Strategic Partnerships 10× Easier.\nWhy This Could Be Your Biggest 2026 Growth Lever.",
+                    subtitle: "The 2026 Strategic Partnership Thesis · 3 Min + 3 Min Q&A",
+                    description: "Samuel Salter joins remotely to present the strategic partnership thesis. Strategic partnerships used to take months of partner discovery, manual matching, and due diligence. AI collapses that to a few days. The Anthropic + xAI deal, the OpenAI + Microsoft alliance, the Anthropic + Amazon partnership - every one of them is a CEO-to-CEO deal that's driving billions. The CEOs who learn to operate strategic partnerships at AI-enabled speed in 2026 are going to grow 3-5× faster than the ones still doing it like it's 2015. Kelli then moderates one focused question from the room.",
+                    imageType: "custom_concept",
+                    imageDirection: "/strategic-alliance-venn.webp",
+                },
+                {
+                    number: "04",
+                    time: "6:07 PM",
+                    title: "Executive Briefing #2: Why Your Data Is Your Business and Why Buyers and Investors Are Starting to Value It That Way.",
+                    subtitle: "Own Your Business, Own Your Data · 3 Min + 3 Min Q&A",
+                    description: "Samuel Salter on the screen for the second strategic briefing. Your AI brain, customer history, operational signals, and pricing patterns are part of your company's intellectual property. It's the layer business buyers and investors are starting to value companies by. If your growth is built on rented intelligence such as Claude, ChatGPT, or Gemini, your enterprise value is rented too. Kelli then moderates one focused question from the room.",
+                    imageType: "",
+                    imageDirection: "",
+                },
+                {
+                    number: "05",
+                    time: "6:14 PM",
+                    title: "Executive Briefing #3:\nAI Agents - The Ultimate Growth Lever",
+                    subtitle: "The Three Agents Every Company Will Be Deploying · 3 Min + 3 Min Q&A",
+                    description: "Sam closes the executive briefings block with the AI agent moves most companies are making. He will cover three agent types, sales, operations, and customer service. He will provide specific use cases and real numbers. Kelli then moderates one focused question from the room.",
+                    imageType: "",
+                    imageDirection: "",
+                },
+                {
+                    number: "06",
+                    time: "6:20 PM",
+                    title: "The Hottest AI Tools: 2 AI Tool Demos, 10 Minutes",
+                    subtitle: "From Strategy to Show",
+                    description: "The strategic part is over. Now for the show. Two of the hottest AI tools in action - back to back, live in the room. The strategic insights you just heard are what move your valuation. The demos are how you start moving Monday morning. You'll see how a debt-consolidation company converted dead leads into $600,000 in 90 days using AI sales and database reactivation agents. You'll see an AI Brain run a CEO's morning briefing, providing status and insights on all key projects and metrics.",
+                    imageType: "demo_scene",
+                    imageDirection: "/demo-scene.webp",
+                },
+                {
+                    number: "07",
+                    time: "6:30 PM",
+                    title: "The Networking Block: Rotating Tables + Free Mingling",
+                    subtitle: "90 Minutes Designed to Send You Home With One Possible Strategic Partnership or New Friend",
+                    description: "The session features two rotating-table rounds (15 minutes each) and group icebreaker questions, ensuring everyone in the room has an optional opportunity to get to know each other. After two rounds, the structure dissolves into 60 minutes of free mingling.",
+                    imageType: "scene",
+                    imageDirection: "/networking-scene.webp",
+                },
+            ],
         },
         referrals: {
-            h2: "Generate Referrals From Other Businesses Targeting the Same Affluent Consumers in the DMV Area",
-            imagine: "Imagine,",
-            body: "This event is uniquely curated for CEOs of companies serving affluent consumers \nin the D.C. metro area, including automobile dealers and financial services, \nas well as law, accounting, home services, and more.",
-            valueProp: "When you put CEOs in a room who share a high-value client base, something powerful happens. You create a natural environment for building referral partnerships and exploring structured joint ventures.",
-            scenarios: [
-                "A luxury auto dealer connects with a solar installer, and \nthey agree to co-market to each other’s customers.",
-                "A CEO of a financial advisory partners or joint ventures \nwith a top-tier home services CEO."
+            h2: "Create Strategic Partnerships with CEOs Targeting the Same Affluent DMV Customers & Businesses That You Do.",
+            imagine: "Imagine:",
+            body: "This event is uniquely curated for CEOs of companies serving affluent consumers and businesses in the D.C. metro area.",
+            bullets: [
+                "B2C: Automobile dealers, financial services, HVAC providers, solar, law, accounting, and more.",
+                "B2B: Cybersecurity, Managed Service Providers (MSPs), SaaS, payroll processors, and more.",
             ],
-            conclusion: "Every conversation is an opportunity to build mutually beneficial relationships and generate new business with peers who understand your market and clientele."
+            valueProp: "When you put CEOs in a room who share a high-value client base, something powerful happens. You create a natural environment for building referral partnerships and exploring structured strategic partnerships.",
+            scenarios: [
+                "A luxury auto dealer connects with a solar installer, and they agree to co-market to each other's customers.",
+                "The CEO of a cybersecurity company forms a strategic partnership or joint venture with a top-tier payroll provider.",
+            ],
+            conclusion: "One strategic partnership, created because you attended this event, can be worth more than every AI conference you'll attend this year. That's the math we're betting on.",
         },
         matchmaking: {
             h2: "Smarter CEO Introductions Powered by AI",
-            body: "We also use AI-powered matchmaking to introduce you to other CEOs \nbased on industry, role, growth priorities, and personal interests.",
-            value: "It removes the awkwardness and makes the social time more valuable, \nleading to a profitable business relationship or a new friendship."
+            body: "We also use AI-powered matchmaking to introduce you to other CEOs based on industry, role, growth priorities, and personal interests.",
+            value: "You spend less time on small-talk introductions and more time on the conversation that earns the evening back.",
         },
         audience: {
             h2: "Who This Event Is Designed For",
@@ -589,86 +653,61 @@ export const content = {
                 "CEOs who value peer-to-peer conversations",
                 "CEOs who appreciate high-quality venues and experiences",
                 "CEOs who are curious about AI but want practical, grounded insight",
-                "CEOs of mid-market companies or innovative small businesses with 30 or more employees"
+                "CEOs of mid-market companies or innovative small businesses with 30 or more employees",
             ],
-            limitation: "Attendance is intentionally limited to 20 CEOs to ensure a personalized experience."
+            limitation: "Attendance is intentionally limited to 15 CEOs to ensure a personalized experience.",
         },
         details: {
             h2: "Event Details",
-            event: "AI CEO Sips & Growth Cocktail Party",
+            event: "AI CEO Sips & Growth Executive Reception",
             date: "August 6",
-            time: "5:00–8:00 PM",
+            time: "5:00-8:00 PM",
             location: "The Capital Grille \n1861 International Dr \nMcLean, VA 22102",
-            amenities: "Cocktails, smoothies, mocktails, and \nhors d’oeuvres will be served."
+            amenities: "Hand-crafted cocktails, fresh smoothies, mocktails, and The Capital Grille's signature appetizers and small plates.",
         },
         howToAttend: {
             h2: "The Invitation Process",
-            body: "Limited to 20 CEOs of companies with 30+ employees \nto ensure high-value, peer-level connections for all.",
+            body: "Limited to 15 CEOs of companies with 30+ employees \nto ensure high-value, peer-level connections for all.",
             steps: [
                 "Request Invitation",
                 "Brief Compatibility Review",
-                "Official Invitation Secured"
+                "Official Invitation Secured",
             ],
             cta: "Request an Invitation",
-            alternative: "If the timing for this session doesn't work, \ncontact us to join the next event’s waitlist."
+            alternative: "If the timing for this session doesn't work, \ncontact us to join the next event's waitlist.",
         },
-        host: {
-            h2: "About Your Host",
-            name: "Tim Booker, CEO of MindFinders and Mindfinders AI",
-            bio: "Tim has over three decades of proven leadership experience in IT and staffing. Before founding MindFinders in 2001, he led teams of more than 700 consultants and managed $80 million in annual revenue as the Regional Vice President at Robert Half. He has successfully built and scaled high-performing teams across 26 offices in 8 states, consistently delivering results for both federal and commercial clients. Under his leadership, MindFinders has thrived for over 25 years, earning a reputation for excellence, innovation, and real-world impact in the industry."
+        eveningHost: {
+            h2: "Your On-Site Co-Host & Moderator",
+            name: "Kelli Gilmore",
+            title: "Chief Operating Officer, MindFinders.ai",
+            photoPlaceholder: "/kelli-gilmore.webp",
+            bio: "Kelli has spent over a decade at MindFinders, where she now leads operations for the firm's AI consulting arm.\n\nHer career has been built running large-budget operations and executive-grade programs - from $1.5M annual event budgets at Ernst & Young to corporate travel operations at BET Networks. At MindFinders, Kelli manages operations across budgets ranging from $550,000 to $25 million, with deep specialization in financial planning, contract compliance, and program delivery.\n\nShe runs the AI CEO Sips & Growth Executive Reception on the ground. She greets every CEO at the door, makes the introductions that matter most, moderates the three focused Q&A segments, and keeps the program tight. If something at the event surfaces a follow-up worth having, Kelli sets it.",
         },
-        aboutMindFinders: {
-            h2: "About MindFinders Inc",
-            body: "MindFinders, a prominent staffing and IT consulting firm based in Washington, D.C., was recently recognized by the Washington Business Journal as one of the 25 largest temporary staffing companies in both 2022 and 2023. Since 2001, MindFinders has specialized in connecting top technical talent with government and commercial clients, consistently prioritizing integrity, compliance, and results. Their vision is to make hiring and project delivery seamless and human-centered by leveraging MindFinders AI and their comprehensive staffing solutions. They are committed to helping organizations and individuals succeed."
-        },
-        aboutMindFindersAI: {
-            h2: "About MindFinders AI",
-            body: [
-                "MindFinders AI acts as a strategic advisor and management consultant for CEOs and their executive teams, focusing on growth and AI integration.",
-                "We assist leaders in leveraging AI to accelerate business growth and enhance operational efficiency. By working closely with executives, MindFinders AI develops and implements customized AI solutions that drive growth, automate essential tasks, and improve customer experiences, all without extensive coding or large technical teams.",
-                "Our approach streamlines operations, reduces inefficiencies, and boosts productivity, enabling CEOs to execute faster and align teams more effectively.",
-                "MindFinders AI also supports workforce transformation by upskilling talent and deploying AI-ready teams, ensuring organizations are equipped for measurable performance and sustainable success.",
-                "MindFinders AI is a leading partner of GrowersCloud.AI, an AI-powered business \noperating system that helps CEOs accelerate growth and boost productivity.",
-                "GrowersCloud.AI empowers executive teams to uncover hidden profits, \noptimize processes, and align strategy with execution.",
-                "Together, we deliver AI-driven solutions that transform companies and help CEOs build future-ready enterprises."
-            ]
+        coHosts: {
+            h2: "Your Co-Hosts",
+            growersCloud: {
+                name: "GrowersCloud.ai",
+                leaderName: "Samuel Salter",
+                leaderTitle: "Founder, CEO & Chief AI Officer",
+                logoPlaceholder: "/Growers_Cloud_Logo.webp",
+                photoPlaceholder: "/sam-salter-headshot-18.webp",
+                reaganPhoto: "/about/Sam_Salter_President_Reagan.webp",
+                bio: "Samuel Salter is the creator of the Growth2x.AI methodology and an Enterprise Salesforce CRM and AI Architect who has built systems for Boeing, SunPower, Kaiser Permanente, and Cision. **He was honored by President Reagan in 1983 with the first-ever 'Young Entrepreneur of the Year' award from the U.S. Small Business Administration.**\n\nGrowersCloud.ai is an AI-powered business operating system on a mission to help 100,000 CEOs use superior strategy, systems, and AI to build great companies. Sam delivers three concise executive briefings live via the room’s screen.",
+            },
+            mindFinders: {
+                name: "MindFinders & MindFinders.ai",
+                leaderName: "Tim Booker",
+                leaderTitle: "Founder & CEO",
+                logoPlaceholder: "/mindfinders-ai-logo.webp",
+                photoPlaceholder: "/tim-booker-real.webp",
+                bio: "Tim has over three decades of proven leadership experience in IT and staffing. Before founding MindFinders in 2001, he led teams of more than 700 consultants and managed $80 million in annual revenue as the Regional Vice President at Robert Half.\n\nHe has successfully built and scaled high-performing teams across 26 offices in 8 states, consistently delivering results for both federal and commercial clients.\n\nUnder his leadership, MindFinders has thrived for over 25 years, earning a reputation for excellence, innovation, and real-world impact in the industry.",
+            },
         },
         finalThought: {
-            body: "If you enjoy good conversation, great food and drinks, and learning \nhow other CEOs use AI in the real world, this evening \nwill be very worth your time.",
-            cta: "Request an Invitation"
+            body: "You came to this page because something on it caught your attention - strategic alliances, AI agents, the room, the venue, the chance to meet 14 CEOs you haven't met yet. Fifteen seats. August 6. The Capital Grille.",
+            cta: "Request Your Invitation",
+            microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
         },
-        reservation: {
-            eyebrow: "EXCLUSIVE INVITATION",
-            hero: {
-                preHeadline: "Join 20 of the D.C. Metro Area's Most Innovative CEOs for an Evening of High-Impact Connection.",
-                title: [
-                    "Plus Meaningful Conversation",
-                    "on How to Use AI to Accelerate Growth,",
-                    "Improve Productivity, Increase Your",
-                    "Valuation, and Build the Company",
-                    "of the Future."
-                ],
-                valuesStack: ["Growth • Valuation • Future"],
-                cta: "Scroll down to secure your seat",
-                microCopy: "Only 20 seats available"
-            },
-            instructions: "Select your time below to confirm your invitation.",
-            benefits: [
-                {
-                    title: "Practical AI Insights",
-                    text: "No theory. Just real-world examples of how AI is driving growth and efficiency in companies like yours right now."
-                },
-                {
-                    title: "Peer-Level Networking",
-                    text: "Connect with fellow mid-market CEOs and business owners who share your challenges and understand your market."
-                },
-                {
-                    title: "High-End Experience",
-                    text: "Enjoy a curated selection of cocktails, smoothies, and premium hors d’oeuvres and small plates at The Capital Grille."
-                }
-            ],
-            footer: "This is an invitation-only gathering limited to 20 executives. We respect your time and promise an evening of genuine value, not a sales pitch."
-        }
     },
     executiveRoundtable: {
         hero: {
