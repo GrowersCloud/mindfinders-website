@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-07-30
+> Last verified: 2026-07-31
 
 ---
 
@@ -13,6 +13,30 @@ All deployments to production are documented here. **Update this file after ever
 - **Investigated**: Reconnected GitHub integration, checked settings - no ignored build step found
 - **Manual deploy works**: `vercel --prod` successfully deploys
 - **Action needed**: Check Vercel dashboard settings or contact Vercel support
+
+---
+
+## [2026-07-31] - Sips Hero Subtitle Focused on the Benefit
+**Commit**: `3de7ca6`
+
+### Changed
+- Sips reception hero subtitle drops the speaker name and the Q&A format, so the hero leads with
+  the benefit rather than the mechanics. "You'll get three concise executive briefings from
+  Samuel Salter, each followed by a moderated CEO question, covering how to:" becomes "You'll get
+  three concise executive briefings covering how to:". The three bullets beneath it are unchanged.
+
+**Deliberately not changed:** the same framing still appears four times further down the page and
+stays there by decision - the section heading "Three Executive Briefings From Samuel Salter", the
+agenda intro, and the two agenda items naming Samuel Salter and Kelli's moderated question
+(`content.ts` lines 547, 563, 579, 597). The hero was retargeted at the benefit; the agenda is
+still where the format is explained. Do not "fix" this as an inconsistency.
+
+### Files Modified
+- `src/lib/content.ts` (one line, the `sipsAndSmoothies.hero.subtitle` key)
+
+> **Deploy note:** contrary to the 2026-07-30 entry below, `vercel --prod` aliased
+> `www.mindfinders.ai` on its own this time - no `vercel promote` was needed. Verified by
+> grepping the live HTML on the real domain, not from the CLI output.
 
 ---
 
