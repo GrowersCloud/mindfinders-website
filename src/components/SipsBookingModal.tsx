@@ -31,10 +31,22 @@ const FORM_EMBED_SCRIPT = `${GHL_ORIGIN}/js/form_embed.js`;
 // If the widget has not painted by now, assume it is not coming and show a way through.
 const LOAD_TIMEOUT_MS = 10000;
 
-// Height of the GHL form. Measured, not guessed: GHL reports the form as 650x549 and it
-// renders at ~580px tall once the consent paragraph wraps. See the note by the iframe -
-// this widget does not auto-resize, so the height is ours to set.
+// Height of the GHL form ON DESKTOP. Measured, not guessed: GHL reports the form as 650x549 and
+// it renders at ~580px tall once the consent paragraph wraps. This widget does not auto-resize,
+// so the height is ours to set.
+//
+// This number does NOT hold on a phone. The fields stack and the consent paragraph wraps to
+// roughly twenty lines, so the form runs far taller than any phone viewport. Pinning the iframe
+// to this height on mobile stranded the submit button off-screen: the outer container was the
+// only thing that could scroll, and on touch devices dragging over a cross-origin iframe does
+// not scroll the parent. Reported from a real phone, with the submit button sliced off the top
+// and no way back to it.
 const FORM_HEIGHT_PX = 640;
+
+// Below this width, hand scrolling to the iframe instead (see `compact` in BookingDialog): the
+// panel fills the screen, the iframe fills the panel, and the GHL page scrolls natively inside
+// it. One scroll context, driven by the element the finger is actually on.
+const COMPACT_MAX_WIDTH_PX = 640;
 
 type LoadState = "loading" | "loaded" | "failed";
 
@@ -58,6 +70,11 @@ export default function SipsBookingModal({ open, onClose, title }: SipsBookingMo
 
 function BookingDialog({ onClose, title }: { onClose: () => void; title: string }) {
     const [loadState, setLoadState] = useState<LoadState>("loading");
+
+    // Narrow screens get a different scroll model entirely - see COMPACT_MAX_WIDTH_PX. Starts
+    // true so a phone never paints the desktop layout first; desktop corrects on mount, where a
+    // one-frame difference is invisible, rather than leaving a phone with an unreachable button.
+    const [compact, setCompact] = useState(true);
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const panelRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -79,6 +96,16 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
             document.body.style.overflow = previousOverflow;
         };
     }, [onClose]);
+
+    // Track the breakpoint live, so rotating a phone to landscape does not leave it in the wrong
+    // scroll model.
+    useEffect(() => {
+        const query = window.matchMedia(`(max-width: ${COMPACT_MAX_WIDTH_PX}px)`);
+        const sync = () => setCompact(query.matches);
+        sync();
+        query.addEventListener("change", sync);
+        return () => query.removeEventListener("change", sync);
+    }, []);
 
     // Inject GHL's helper script on first open, then leave it in place for the session.
     useEffect(() => {
@@ -118,11 +145,23 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
         const el = iframeRef.current;
         if (!el) return;
 
+        // Two scroll models, and the observer has to defend whichever one is in play.
+        //   compact: iframe fills the panel and scrolls itself, so the finger is always on the
+        //            thing that scrolls. Letting form_embed pin a 720px height here would
+        //            overflow the panel and strand the submit button again.
+        //   desktop: iframe is exactly as tall as the form and never scrolls.
+        const wantedHeight = compact ? "100%" : `${FORM_HEIGHT_PX}px`;
+        const wantedScrolling = compact ? "yes" : "no";
+
         let corrections = 0;
         const enforce = () => {
-            if (el.getAttribute("scrolling") !== "no") el.setAttribute("scrolling", "no");
-            if (el.style.height !== `${FORM_HEIGHT_PX}px`) el.style.height = `${FORM_HEIGHT_PX}px`;
+            if (el.getAttribute("scrolling") !== wantedScrolling) {
+                el.setAttribute("scrolling", wantedScrolling);
+            }
+            if (el.style.height !== wantedHeight) el.style.height = wantedHeight;
         };
+
+        enforce();
 
         const observer = new MutationObserver(() => {
             if (corrections++ > 20) {
@@ -134,7 +173,7 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
 
         observer.observe(el, { attributes: true, attributeFilter: ["style", "scrolling", "height"] });
         return () => observer.disconnect();
-    }, []);
+    }, [compact]);
 
     // GHL posts resize and completion events from its own origin. Anything from elsewhere
     // is not ours, so check the origin before reading the payload.
@@ -167,14 +206,19 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
             <div
                 ref={panelRef}
                 /*
-                  Sized to the form, not to the viewport. GHL reports this widget as 650px
-                  wide; at max-w-4xl with a 92vh height the modal was 896x787 around a
-                  ~650x580 form, which read as a small form marooned in a large white box.
-                  Width caps just above GHL's own, and the height follows the content.
-                  95vh rather than 92vh so the whole thing clears more short laptop
-                  windows before the body has to scroll at all.
+                  Desktop: sized to the form, not the viewport. GHL reports this widget as 650px
+                  wide; at max-w-4xl with a 92vh height the modal was 896x787 around a ~650x580
+                  form, which read as a small form marooned in a large white box. Width caps just
+                  above GHL's own and the height follows the content, with 95vh clearing most
+                  short laptop windows before the body has to scroll at all.
+
+                  Compact: fills the screen instead. The form is taller than any phone, so the
+                  panel takes the full height to give the iframe as much room as possible, and
+                  the scrolling happens inside the iframe.
                 */
-                className="flex flex-col w-full max-w-[700px] max-h-[95vh] bg-white rounded-none border-[3px] border-[var(--secondary)] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] overflow-hidden"
+                className={`flex flex-col w-full max-w-[700px] bg-white rounded-none border-[3px] border-[var(--secondary)] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] overflow-hidden ${
+                    compact ? "h-[95vh]" : "max-h-[95vh]"
+                }`}
             >
                 <div className="flex items-center justify-between gap-4 px-5 sm:px-6 py-4 border-b-[2px] border-[var(--secondary)] bg-white shrink-0">
                     <h2
@@ -199,7 +243,11 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
                     floor this box collapses to zero height, taking the absolutely-positioned
                     fallback with it.
                 */}
-                <div className="relative flex-1 min-h-[320px] bg-white overflow-y-auto">
+                <div
+                    className={`relative flex-1 min-h-[320px] bg-white ${
+                        compact ? "overflow-hidden" : "overflow-y-auto"
+                    }`}
+                >
                     {/*
                         GHL widgets hide themselves via inline styles set by form_embed.js
                         (opacity: 0; visibility: hidden; pointer-events: none; left: -9999px).
@@ -212,11 +260,15 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
                         the height, and the child does not answer a re-measure request either.
                         Verified in the browser, not assumed.
 
-                        So height: 100% is wrong here. GHL's page fills whatever height it is
-                        handed and reports that back, so tying the iframe to a 92vh panel just
-                        pads the form out to the viewport. FORM_HEIGHT_PX fits the current
-                        form; the container scrolls if GHL ever makes it taller, so a stale
-                        value degrades to a scrollbar rather than a clipped form.
+                        On desktop that means FORM_HEIGHT_PX and no scrolling: the form fits
+                        exactly, and handing GHL a taller box just pads it out with white.
+
+                        On a phone the form is far taller than the screen, so the iframe fills
+                        the panel and scrolls itself. Note this box is overflow-hidden in that
+                        mode ON PURPOSE. Two nested scrollers is what broke it: the outer one
+                        scrolled, then a finger on the iframe could not scroll it back, leaving
+                        the submit button stranded above the fold. Exactly one thing scrolls,
+                        and it is the thing under the finger.
                     */}
                     <style>{`
                         iframe#ghl-sips-form-iframe {
@@ -237,16 +289,25 @@ function BookingDialog({ onClose, title }: { onClose: () => void; title: string 
                             title={title}
                             onLoad={handleIframeLoad}
                             /*
-                              scrolling="no" kills a scrollbar that is GHL's, not ours: their
-                              page overflows whatever height it is handed by a few pixels, so
-                              one appeared at 640, 720 and 760 alike. We cannot restyle
-                              cross-origin content, so the attribute is the only lever - and
-                              form_embed.js resets it, which is what the observer above is
-                              for. FORM_HEIGHT_PX clears the form's real height, so hiding
-                              the scrollbar cannot clip it.
+                              On desktop, scrolling="no" kills a scrollbar that is GHL's, not
+                              ours: their page overflows whatever height it is handed by a few
+                              pixels, so one appeared at 640, 720 and 760 alike. We cannot
+                              restyle cross-origin content, so the attribute is the only lever,
+                              and FORM_HEIGHT_PX clears the form's real height so hiding it
+                              cannot clip anything.
+
+                              On a phone the form genuinely does not fit and scrolling must stay
+                              ON, or the submit button is unreachable. form_embed.js rewrites
+                              both of these after load, so the observer above is what actually
+                              makes them stick; these are the initial values.
                             */
-                            scrolling="no"
-                            style={{ width: "100%", height: FORM_HEIGHT_PX, border: "none", display: "block" }}
+                            scrolling={compact ? "yes" : "no"}
+                            style={{
+                                width: "100%",
+                                height: compact ? "100%" : FORM_HEIGHT_PX,
+                                border: "none",
+                                display: "block",
+                            }}
                         />
                     )}
 
