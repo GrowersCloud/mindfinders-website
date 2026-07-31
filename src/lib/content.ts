@@ -513,7 +513,7 @@ export const content = {
                 "Sips & Growth",
                 "Executive Reception",
             ],
-            subtitle: "A private, closed-door evening for DMV area CEOs running $3 million to $1 billion businesses.\n\nYou'll get three concise executive briefings from Samuel Salter, each followed by a moderated CEO question, covering how to:\n• Create CEO-to-CEO strategic partnerships\n• Protect your valuation from AI data risks\n• Deploy AI agents that drive bottom-line growth\n\nThese are proven strategies that can increase your valuation. You'll meet 14 peer CEOs, many of whom target the exact same customers you do.\n\nYou'll see two of the hottest AI tools demonstrated live. Plus, you could walk out with a single strategic partnership worth three months of top-line revenue.",
+            subtitle: "A private, closed-door evening for DMV area CEOs running $3 million to $1 billion businesses.\n\nYou'll get three concise executive briefings covering how to:\n• Create CEO-to-CEO strategic partnerships\n• Protect your valuation from AI data risks\n• Deploy AI agents that drive bottom-line growth\n\nThese are proven strategies that can increase your valuation. You'll meet 14 peer CEOs, many of whom target the exact same customers you do.\n\nYou'll see two of the hottest AI tools demonstrated live. Plus, you could walk out with a single strategic partnership worth three months of top-line revenue.",
             details: [
                 "Thursday, August 6 | 5:00‑8:00 PM",
                 "The Capital Grille, McLean, VA",
