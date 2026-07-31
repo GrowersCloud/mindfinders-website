@@ -45,7 +45,7 @@ export default function Header() {
     const isActive = (path: string) => pathname === path;
 
     return (
-        <header data-site-chrome className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[var(--border)] shadow-sm transition-all duration-300">
+        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[var(--border)] shadow-sm transition-all duration-300">
             <div className="container mx-auto px-4 h-20 flex justify-between items-center">
                 {/* Logo */}
                 {/* Logo */}

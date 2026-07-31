@@ -1,6 +1,6 @@
 export default function TopBar() {
     return (
-        <div data-site-chrome className="bg-black text-white py-2 border-b border-gray-800 block">
+        <div className="bg-black text-white py-2 border-b border-gray-800 block">
             <div className="container mx-auto px-4 flex justify-center md:justify-end items-center">
                 <a href="tel:2024002602" className="text-xs font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-2 tracking-wide">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

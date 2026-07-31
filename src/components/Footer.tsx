@@ -4,7 +4,7 @@ import { content } from '@/lib/content';
 
 export default function Footer() {
     return (
-        <footer data-site-chrome className="bg-gray-50 text-gray-600 py-12 border-t border-gray-200">
+        <footer className="bg-gray-50 text-gray-600 py-12 border-t border-gray-200">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left gap-10 lg:gap-0">
 
