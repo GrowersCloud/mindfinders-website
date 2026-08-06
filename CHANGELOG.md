@@ -40,6 +40,59 @@ still where the format is explained. Do not "fix" this as an inconsistency.
 
 ---
 
+## [2026-07-30] - Sips Thank-You Page + Mobile Booking Modal Fix
+**Commits**: `33203d5` `847c492` `e0af6fc` `6413628`
+
+Shipped the same day as the port below, after the modal went live and the form was tested on a
+real phone.
+
+### Added
+- **Thank-you page** at `/thank-you/ai-ceo-sips`, the redirect target set on the GHL form.
+  Copy lives in `content.ts` under `thankYou.aiCeoSips`, reusing the already-authored 48-hour
+  microcopy from the Sips page so the two cannot drift.
+- `noindex, nofollow` on it: thin content that should not surface in search, and anyone arriving
+  cold has skipped the form.
+
+> **EVERY FORM GETS ITS OWN THANK-YOU PAGE.** `/thank-you` itself is deliberately a 404. Do not
+> add a page there and do not point two forms at one URL: the copy names a specific event (date,
+> venue, what happens next), so a shared page shows the wrong details to half the people who
+> reach it. A new form means a new sibling route under `src/app/thank-you/` plus a new key under
+> `thankYou`. The rule is repeated in the route's `layout.tsx`.
+>
+> The roundtable form still has no thank-you page. It needs its own, not this one.
+
+### Fixed
+- **Submit button was unreachable in the booking modal on a phone.** After ticking the consent
+  box you could not scroll back up to submit. Two causes, both from the port:
+  `FORM_HEIGHT_PX = 640` was measured on desktop (on a phone the fields stack and the consent
+  paragraph wraps to ~20 lines, so the form is far taller than the screen), and `scrolling="no"`
+  left the outer container as the only scroller. On touch devices, dragging over a cross-origin
+  iframe does not scroll its parent, so the container scrolled once and the button was stranded.
+- Below 640px the modal now uses a different scroll model: the panel fills the screen, the
+  iframe fills the panel, and the GHL page scrolls natively inside it. The body is
+  `overflow-hidden` in that mode **on purpose** - two nested scrollers is what broke it. Exactly
+  one thing scrolls and it is the thing under the finger. Desktop is unchanged at 700x712.
+
+### Corrected from the entry below
+- That entry, and the code comments at the time, said GHL's post-submit redirect stays inside the
+  iframe. **It does not: it navigates the top window.** The conclusion came from reading
+  `form_embed.js`, whose only parent-navigation hook calls `history.replaceState` - but that is
+  only the parent-side script, and the widget page inside the iframe does the top-level
+  navigation itself. Testing a real submission was the only way to settle it. This is why the
+  thank-you page is a full page with the normal site header and footer, not a compact panel.
+
+### Files Modified
+- `src/app/thank-you/layout.tsx`, `src/app/thank-you/ai-ceo-sips/page.tsx` (new)
+- `src/components/SipsBookingModal.tsx`, `src/lib/content.ts`
+
+### Still open (GHL side, not code)
+- The form's submit button sits **above** the consent checkbox, which is why the journey needs
+  any scrolling back at all. Reordering so submit comes last would remove the dependency on the
+  fix above behaving perfectly on every device.
+- The phone field still defaults to a non-US country flag.
+
+---
+
 ## [2026-07-30] - AI CEO Sips Page Ported from GrowersCloud
 **Commits**: `0caad38` `3710a6d` `847c6f2` `ce18579` `1c60a8b` `3d1e8b2` `3bedcfb` `060556d`
 
