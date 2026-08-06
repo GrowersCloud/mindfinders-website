@@ -16,6 +16,77 @@ All deployments to production are documented here. **Update this file after ever
 
 ---
 
+## [2026-08-06] - Sips Parity Update + Partnership Section Moved Up
+**Commits**: `45dcc2d` `160074d`
+
+Executed from GrowersCloud's 2026-08-05 work order
+(`Growers_Cloud_Full_Stack/Docs/partner-sites/mindfinders-2026-08-05-update-brief.md`), which
+carried three changes already live on `www.growerscloud.ai`. Plus one section reorder Sam asked
+for in the same session.
+
+### Changed
+- **Event date: Thursday August 6 → Wednesday October 7 2026.** Four fields, not the three the
+  work order listed - see the warning below.
+- **`socialContext` copy.** The h2 is now two full sentences ("No stage. No pitch from us." /
+  "The only selling in the room is CEO-to-CEO.") instead of two short fragments, and the body
+  leads on the pre-matched partnership rather than describing the format.
+- **The `EXECUTIVE SOCIAL` eyebrow is now a section title.** Title case, typed identically to the
+  "What You Walk Away With" h2, and it inherits the default dark text rather than carrying
+  `#ED1B2F` - it is a title now, not an accent.
+- **"Create Strategic Partnerships" moved above the agenda**, directly under Executive Social.
+
+### Fixed
+- The `socialContext` h2 lost `lg:whitespace-nowrap` and stepped down from `lg:text-7xl` to
+  `lg:text-5xl`. The new lines are full sentences (43 characters, up from 20) and the section is a
+  two-column grid, so from `lg` up the text column is only about half the container - `nowrap` was
+  survivable at 20 characters and pushed the new lines straight out of it.
+
+> ⚠️ **THE EVENT DATE IS A FOUR-FIELD CHANGE, AND THE FOURTH IS ON ANOTHER ROUTE.**
+> `sipsAndSmoothies.hero.details[0]`, `.details.date`, `.finalThought.body`, **and
+> `thankYou.aiCeoSips.eventLine`**. That last one drives `/thank-you/ai-ceo-sips`, so it is
+> outside any check scoped to the Sips page's rendered HTML - and it is exactly where this page's
+> form sends everyone who converts. Left stale it confirms the wrong date to every registrant.
+> Grep `content.ts` for the old date rather than working from a field list, and check both routes.
+
+> ⚠️ **The section label is hardcoded in `page.tsx`, not `content.ts`.** Every other change here
+> rides along with the `sipsAndSmoothies` key. This one does not. A clean content swap ships
+> everything else correctly and silently leaves the old red eyebrow in place - no type error, no
+> build warning, no missing key. See port spec §12.2 for how to measure it rather than eyeball it.
+
+> ⚠️ The non-breaking hyphen (U+2011) and non-breaking space (U+00A0) from port spec §3.3 live in
+> two of those four strings. They were preserved by editing only the day/date prefix and never
+> retyping the rest. Do it that way - retyping invites an editor to normalise them to ASCII.
+
+**Deliberate divergence from GrowersCloud:** the section reorder is the first intentional layout
+difference between the two pages. Their order runs executive social → agenda → CEO network effect.
+Port spec §1 and §9 are annotated. Phase 2 auto-sync is unaffected (it syncs the content key only).
+
+**Known cosmetic consequence, left for Sam:** the page alternates section backgrounds, and the
+white agenda section used to separate Executive Social from CEO network effect. Both use the same
+translucent grey and they are now adjacent, so they render as one continuous band with no seam.
+Flipping the CEO network effect section to a white background restores the rhythm.
+
+**Found, not fixed - pre-existing §8.1 bug in the hero `h1`.** Its three spans have no separator,
+so the accessible text content of the page's most important heading reads
+`The AI CEOSips & GrowthExecutive Reception`. Same defect the port spec documents and the same
+one-line fix the `socialContext` h2 already uses a few lines below it. Flagged to Sam, awaiting a
+decision.
+
+### Files Modified
+- `src/lib/content.ts` (six values across `sipsAndSmoothies` and `thankYou.aiCeoSips`)
+- `src/app/programs/ai-ceo-sips-and-growth-executive-reception/page.tsx` (label, h2 classes, reorder)
+- `docs/ai-ceo-sips-content-snapshot.json` (refreshed from the GrowersCloud payload, `reservation` dropped)
+- `docs/ai-ceo-sips-port-spec.md` (**appended** §12, not overwritten - our copy carries §0, §8.7-8.9 and §11 that GrowersCloud's does not)
+
+**Note back to GrowersCloud:** the work order warned that our snapshot carries a `matchmaking` key
+theirs does not and that a blind refresh would delete it. That is a false alarm -
+`mindfinders-sips-content.json` does contain `matchmaking`, byte-identical to ours. The refresh was
+verified key-for-key: nothing lost, nothing gained, exactly four sections changed. Separately,
+`matchmaking` is dead content either way - no component reads it since the CRO pass removed that
+section.
+
+---
+
 ## [2026-07-31] - Sips Hero Subtitle Focused on the Benefit
 **Commit**: `3de7ca6`
 
