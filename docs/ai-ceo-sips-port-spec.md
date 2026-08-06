@@ -187,7 +187,7 @@ Two shape notes when you swap the key in:
 | Key | What it drives |
 |---|---|
 | `hero` | eyebrow, h1 lines, subtitle, ticket details, CTA label |
-| `socialContext` | "An Executive Social. Not a Pitch." + offerings |
+| `socialContext` | "No stage. No pitch from us. …" + offerings (§12) |
 | `walkAway` | intro + 4 benefit cards + footer quote |
 | `eveningProgram` | intro + **7 agenda cards** |
 | `referrals` | CEO Network Effect section |
@@ -224,7 +224,8 @@ Phrases that must survive the port intact:
 
 ### 3.3 Two invisible characters that matter
 
-`hero.details[0]` is `"Thursday, August 6 | 5:00\u20118:00\u00A0PM"`.
+`hero.details[0]` is `"Wednesday, October 7 | 5:00\u20118:00\u00A0PM"`.
+(Was `"Thursday, August 6 | \u2026"` until the 2026-08-06 date change \u2014 see \u00A712.)
 
 - `\u2011` is a **non-breaking hyphen**
 - `\u00A0` is a **non-breaking space**
@@ -266,7 +267,9 @@ Change any single time and at least three sentences elsewhere on the page become
   never presented as a speaker.
 - Three briefings, 3 minutes each, each followed by **one** Kelli-moderated question (not open Q&A).
 - **Two** live demos, 10 minutes total.
-- **15 CEOs.** Event runs 5:00–8:00 PM, Thursday August 6 2026, The Capital Grille, McLean VA.
+- **15 CEOs.** Event runs 5:00–8:00 PM, **Wednesday October 7 2026**, The Capital Grille, McLean VA.
+  (Moved from Thursday August 6 on 2026-08-06 — see §12. The times above are unaffected: only the
+  calendar date moved, so every duration claim in this section still holds.)
 
 ### 🚫 Phrases that must not appear anywhere
 
@@ -433,6 +436,30 @@ which widget they arrived through.
 
 **GrowersCloud is not changing.** It keeps its booking calendar. Do not touch it.
 
+### After submission — the redirect leaves the page
+
+GHL's post-submit behaviour is a **redirect to a URL you configure on the form**, and that
+redirect **navigates the top window**, not the iframe. The visitor leaves the modal behind and
+lands on a normal full page.
+
+> ⚠️ Do not try to establish this by reading `form_embed.js`. That is only the parent-side
+> script, and its sole parent-navigation hook (`modify-parent-url`) calls `history.replaceState`,
+> which rewrites the address bar without navigating. Reading it leads you confidently to the
+> wrong answer — it did here. The widget page *inside* the iframe does the top-level navigation
+> itself. Only a real submission settles it.
+
+Current destination: `/thank-you/ai-ceo-sips`.
+
+**Every form gets its own thank-you page.** `/thank-you` itself is deliberately a 404. The copy
+on these pages names a specific event — date, venue, what happens next — so two forms sharing one
+URL shows the wrong details to half the people who reach it. A new form means a new sibling route
+under `src/app/thank-you/` plus a new key under `thankYou` in `content.ts`. The rule is repeated
+in that route's `layout.tsx`.
+
+These are full pages: normal site header and footer, `noindex` (thin content, and anyone arriving
+cold has skipped the form). Because the browser genuinely lands on a distinct URL, it is also a
+clean conversion trigger if GA4 or a pixel is ever added — no `postMessage` plumbing needed.
+
 ### CTA placement
 
 **Every section ends with a "Request an Invitation" button — 9 sections, 9 buttons.** This was
@@ -539,6 +566,32 @@ Two knock-on notes:
 - At a 1280×720 window a ~700px modal cannot fit; ~28px of scroll remains. That is geometry, not
   a bug.
 
+### 8.7c 🚨 That desktop height made the form unsubmittable on a phone
+
+The fix above is correct **on desktop only**, and shipping it unqualified broke mobile. Reported
+from a real phone: after ticking the consent box, the submit button could not be scrolled back
+to. It sat above the fold, permanently out of reach.
+
+Two things combined:
+
+- The measured height is a **desktop** measurement. On a phone the fields stack and the consent
+  paragraph wraps to roughly twenty lines, so the form runs far taller than the screen. A fixed
+  640px iframe cannot show it.
+- With `scrolling="no"`, the outer container is the only scroller — and **on touch devices,
+  dragging over a cross-origin iframe does not scroll its parent.** So the container scrolled
+  once, and then a finger on the form could not bring it back.
+
+**The rule: exactly one thing scrolls, and it must be the thing under the finger.** Two nested
+scrollers around a cross-origin iframe is the bug, not the layout.
+
+Below 640px wide, hand scrolling to the iframe: panel fills the screen, iframe fills the panel,
+`scrolling="yes"`, and the outer body goes `overflow-hidden`. Desktop keeps the snug fit. The
+`MutationObserver` has to defend **whichever model is active** — left defending the desktop one,
+it re-pins 720px on mobile and strands the button again.
+
+Test it by scrolling *down to the consent box and back up to submit*, at 375/390/430. Checking
+that the form renders is not enough; it rendered fine the whole time it was unsubmittable.
+
 ### 8.7b 😅 This document put GrowersCloud green back into the stylesheet
 
 Worth knowing, because it is invisible and it defeats the §9 grep check.
@@ -616,7 +669,8 @@ GrowersCloud before release.
 - [ ] The modal loads `/widget/form/fehFJkNbVkqrJVrDORNO` and the form renders and submits
 - [ ] No `form_embed.js` `<script>` tag sits at page level — the modal injects it on open
 - [ ] GrowersCloud's calendar ID (`fZ0oyUjeAkW7L0ZPOchJ`) appears nowhere in the MindFinders repo
-- [ ] "An Executive Social. Not a Pitch." has a space in the **text content**, not just visually
+- [ ] The `socialContext` h2 ("No stage. No pitch from us." / "The only selling in the room is
+      CEO-to-CEO.") has a space in the **text content**, not just visually
 - [ ] `robots: noindex, nofollow` present; canonical points at GrowersCloud
 - [ ] **No** Event JSON-LD on the page
 - [ ] Route absent from sitemap; **not** disallowed in robots.txt
@@ -625,15 +679,23 @@ GrowersCloud before release.
 - [ ] `/reservation` returns 307 **under every slug the page has ever had**
 - [ ] Both old slugs 308 to the current one, **in one hop**, and `/reservation` is not swallowed
       by the slug wildcards (see the ordering warning in §7)
-- [ ] Booking modal: form fills it with no dead space and **no scrollbar** — the widget does not
-      auto-resize and `form_embed.js` overwrites your height and `scrolling`. See §8.7
+- [ ] Booking modal on desktop: form fills it with no dead space and **no scrollbar** — the
+      widget does not auto-resize and `form_embed.js` overwrites your height and `scrolling`.
+      See §8.7
+- [ ] Booking modal on a phone (375 / 390 / 430): scroll **down to the consent box and back up
+      to submit**. Rendering correctly is not the test — it rendered fine the whole time the
+      submit button was unreachable. See §8.7c
+- [ ] Submitting redirects to `/thank-you/ai-ceo-sips` as a **full page**, not inside the modal
+- [ ] `/thank-you` (bare) is a 404, and no two forms share a thank-you URL
 - [ ] No horizontal scroll at 320 / 360 / 375 / 390 / 430 px
 - [ ] **Grep the built CSS for `88C52A`, `7AB52E` and `2F2F2F` — all three must return zero**
 - [ ] `font-heading` renders Libre Franklin, `font-serif` renders PT Serif
 - [ ] `animate-fade-in-up` and `delay-*` actually animate (they are custom CSS, easy to forget)
 - [ ] `.container` gutters match — agenda cards sit at the intended width, not edge-to-edge
-- [ ] Layout matches GrowersCloud section for section: hero → executive social → agenda →
-      CEO network effect → walk away → audience → invitation process → hosts → final thought
+- [ ] Layout matches GrowersCloud section for section — **except the CEO network effect section,
+      which MindFinders deliberately moved above the agenda on 2026-08-06 (§12).** Current order:
+      hero → executive social → CEO network effect → agenda → walk away → audience →
+      invitation process → hosts → final thought
 - [ ] MindFinders' other nine `content.ts` keys are untouched (home, services, aiAgents,
       trainingAndTalent, getStarted, about, faq, legal, executiveRoundtable)
 - [ ] All 16 images resolve (no 404s, no broken `next/image`)
@@ -684,3 +746,168 @@ JSON beside it.
 The form is named `Direct - AI CEO Sips and Growth Executive Social` — note it says **Social**
 while the event is called **Executive Reception** everywhere else, and the name carries a leading
 space. Neither is user-facing; both will look untidy in GHL reporting once there are more events.
+
+---
+
+## 12. Revision — 2026-08-06: parity update + section reorder
+
+Executed from GrowersCloud's work order
+(`Growers_Cloud_Full_Stack/Docs/partner-sites/mindfinders-2026-08-05-update-brief.md`),
+which brought three changes already live on `www.growerscloud.ai`. Plus one local reorder Sam
+asked for in the same session. Appended, not merged over — this file keeps §0 and §8.7–8.9,
+which GrowersCloud's copy does not have.
+
+### What changed
+
+| # | Change | Where |
+|---|---|---|
+| 1 | `socialContext.h2` / `.body` replaced. h2 is now two full **sentences**. | `content.ts` |
+| 2 | The `EXECUTIVE SOCIAL` eyebrow became a **section title**. | `page.tsx` |
+| 3 | Event date Thursday August 6 → **Wednesday October 7 2026**. | `content.ts` ×3 + 1 |
+| 4 | CEO network effect section **moved above the agenda**. | `page.tsx` |
+
+### 12.1 The h2 had to be retyped down, not just refilled
+
+The new h2 lines are full sentences (up to 43 characters, from 20). The old markup rendered each
+line at `lg:text-7xl` with `lg:whitespace-nowrap`, and this section is a two-column grid
+(`grid lg:grid-cols-2 gap-20`), so from `lg` up the text column is only about half the container.
+`nowrap` was survivable at 20 characters and pushes the new lines straight out of the column.
+
+```
+h2 wrapper : text-4xl md:text-5xl lg:text-7xl leading-[0.95]
+          -> text-3xl md:text-4xl lg:text-5xl leading-[1.05]
+each span  : block lg:whitespace-nowrap
+          -> block text-balance
+```
+
+The `{line}{i < arr.length - 1 ? ' ' : ''}` separator from §8.1 was **kept**. It is still the only
+thing putting a real space between the two sentences in the text content — verified in the built
+HTML, where React emits `No stage. No pitch from us.<!-- --> ` before the second span.
+
+### 12.2 🚨 The section label is hardcoded in the JSX, not in `content.ts`
+
+**This is the trap in this update.** Every other change here rides along with the
+`sipsAndSmoothies` content key. This one does not — the label is literal JSX. A clean content swap
+ships every other change correctly and leaves the stale red eyebrow behind, and **nothing fails to
+signal it**: no type error, no build warning, no missing key.
+
+The label went from an eyebrow (small, red, uppercase, wide-tracked) to a section title typed
+identically to the `walkAway` h2 — `text-4xl md:text-6xl font-bold font-heading leading-tight
+tracking-tighter text-balance block mb-4` — and the text from `EXECUTIVE SOCIAL` to
+`Executive Social`.
+
+Four things it depends on:
+
+1. **Title case.** It is a title now, so `Executive Social`, not `EXECUTIVE SOCIAL`.
+2. **No colour class at all.** It inherits the default dark text. GrowersCloud's is simply the
+   inherited black; the instruction is to match that *behaviour*, not to swap the red for
+   `#231F20` literally.
+3. **Still a `<span>`.** The section already has an `h2`; a second would muddle the outline.
+4. **Typed identically to the `walkAway` h2** — that is the whole target.
+
+The two eyebrow devices must not come back. At 60px, caps carry far more visual mass (every glyph
+at cap height, no descenders), and 0.3em tracking adds ~18px per character, which pushes the two
+words past the column unaided. On GrowersCloud the caps version measured *identical* to the
+`walkAway` h2 on `fontSize` and still read clearly oversized — which is why `textTransform` belongs
+in the check below, not just size.
+
+**Verify by measuring, not by eye.** Run on the rendered page; the two strings must match *each
+other*:
+
+```js
+const pick = t => [...document.querySelectorAll('h2, span')]
+  .find(e => e.textContent.trim().startsWith(t));
+[pick('Executive Social'), pick('What You Walk Away With')]
+  .map(e => { const s = getComputedStyle(e);
+    return `${s.fontSize} | ${s.letterSpacing} | ${s.lineHeight} | ${s.textTransform}`; });
+```
+
+Do **not** chase GrowersCloud's absolute numbers (`60px | -3px | 60px | none`). We run Tailwind 4
+with our own `@theme` scale, so our px may legitimately differ. Matching their pixels is not the
+requirement and will send you after a false failure.
+
+### 12.3 The date lives in four places, not three
+
+The work order lists three fields. There is a fourth it did not cover:
+
+| Field | Value |
+|---|---|
+| `sipsAndSmoothies.hero.details[0]` | `Wednesday, October 7 \| 5:00[U+2011]8:00[U+00A0]PM` |
+| `sipsAndSmoothies.details.date` | `October 7` |
+| `sipsAndSmoothies.finalThought.body` | `…Fifteen seats. October 7. The Capital Grille.` |
+| **`thankYou.aiCeoSips.eventLine`** | `Wednesday, October 7 · 5:00[U+2011]8:00[U+00A0]PM · …` |
+
+`thankYou.aiCeoSips` is a **different route** (`/thank-you/ai-ceo-sips`), so it is outside any
+check scoped to "the Sips page's rendered HTML" — and it is exactly where this page's form sends
+every person who converts. Left alone it would have confirmed the wrong date to every registrant.
+
+**Rule going forward: the event date is a four-field change.** Grep `content.ts` for the old date
+rather than working from a field list, and check both rendered routes.
+
+⚠️ The non-breaking hyphen (U+2011) and non-breaking space (U+00A0) from §3.3 appear in **two** of
+those strings. Both were preserved by editing only the day/date prefix and never retyping the rest
+of the string. Do it that way — retyping invites an editor to normalise them to ASCII. Verified
+present in the built HTML for both routes.
+
+### 12.4 Section reorder — a deliberate divergence from GrowersCloud
+
+Sam asked for the CEO network effect ("Create Strategic Partnerships…") section to sit directly
+under Executive Social. It now does, ahead of the agenda:
+
+```
+hero -> executive social -> CEO network effect -> agenda -> walk away ->
+audience -> invitation process -> hosts -> final thought
+```
+
+It reads well with the new copy: Executive Social now closes on "the only selling in the room is
+CEO-to-CEO", and this section is what that selling actually looks like, so the two run as one
+argument before the agenda backs it up.
+
+**But it breaks §1's "GrowersCloud is the source of truth" for layout, and §9's "matches
+GrowersCloud section for section".** Both have been annotated. This is the first intentional
+layout divergence between the two pages — if GrowersCloud reorders, the two will need reconciling
+by hand rather than by a straight content sync (§10 Phase 2 syncs the content key only, so it is
+unaffected).
+
+**Open cosmetic consequence:** the page alternates section backgrounds
+(gray / white / gray / white…). Executive Social and CEO network effect are **both** the same
+translucent grey, and the white agenda section used to separate them. They are now adjacent, so
+they render as one continuous grey band with no seam. Flipping the CEO network effect section to a
+white background restores the rhythm. Not done — it is a visual call for Sam.
+
+### 12.5 Two notes back to GrowersCloud
+
+1. **The `matchmaking` warning in the work order is a false alarm.** It says our content snapshot
+   carries a `matchmaking` key theirs does not, and that a blind refresh would delete it.
+   `mindfinders-sips-content.json` **does** contain `matchmaking`, byte-identical to ours. The
+   refresh was verified key-for-key: nothing lost, nothing gained, exactly four sections changed
+   (`hero`, `socialContext`, `details`, `finalThought`).
+
+   Separately: `matchmaking` is **dead content on our side either way** — it is in `content.ts` and
+   in the snapshot, but no component reads it. The section was removed from this page during the
+   CRO pass (see the header comment in `page.tsx`). Left in place; harmless, and it keeps the
+   snapshot a faithful mirror of theirs.
+
+2. **Pre-existing §8.1 bug in the hero `h1`, still unfixed.** The three h1 spans have no
+   separator, so the accessible text content of the page's most important heading reads:
+
+   ```
+   The AI CEOSips & GrowthExecutive Reception
+   ```
+
+   Same defect §8.1 documents and the same fix (`{line}{i < arr.length - 1 ? ' ' : ''}`) that the
+   `socialContext` h2 already uses a few lines below it. Not introduced by this update and not
+   fixed by it — flagged to Sam, awaiting the go-ahead.
+
+### 12.6 Verification run
+
+`tsc --noEmit` clean; production build green (18/18 static pages). Checked against the **built
+HTML**, not source: no `August 6` and no `An Executive Social` on either route; `Executive Social`
+present in title case with no all-caps version; `Wednesday, October 7` in the hero ticket line;
+`October 7 · 5:00-8:00 PM` in the details line; `Fifteen seats. October 7.` in the closing quote;
+both non-breaking characters intact on both routes; no `lg:whitespace-nowrap` anywhere in the
+output; no Event JSON-LD.
+
+**Not yet run — needs a browser:** the §12.2 computed-style comparison, and the §9 responsive
+checks at 320/360/375/390/430 (the ticket line is two characters longer than the string §8.2's
+313px measurement was taken on, and the reorder puts a new section boundary mid-page).

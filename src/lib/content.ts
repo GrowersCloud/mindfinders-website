@@ -515,7 +515,7 @@ export const content = {
             ],
             subtitle: "A private, closed-door evening for DMV area CEOs running $3 million to $1 billion businesses.\n\nYou'll get three concise executive briefings covering how to:\n• Create CEO-to-CEO strategic partnerships\n• Protect your valuation from AI data risks\n• Deploy AI agents that drive bottom-line growth\n\nThese are proven strategies that can increase your valuation. You'll meet 14 peer CEOs, many of whom target the exact same customers you do.\n\nYou'll see two of the hottest AI tools demonstrated live. Plus, you could walk out with a single strategic partnership worth three months of top-line revenue.",
             details: [
-                "Thursday, August 6 | 5:00‑8:00 PM",
+                "Wednesday, October 7 | 5:00‑8:00 PM",
                 "The Capital Grille, McLean, VA",
             ],
             description: "Join fellow CEOs from middle-market companies and innovative small businesses with 30 or more employees in this relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and increase productivity.",
@@ -523,10 +523,10 @@ export const content = {
         },
         socialContext: {
             h2: [
-                "An Executive Social.",
-                "Not a Pitch.",
+                "No stage. No pitch from us.",
+                "The only selling in the room is CEO-to-CEO.",
             ],
-            body: "The AI CEO Sips & Growth Executive Reception is a social, peer-level experience, not a formal presentation or sales event.",
+            body: "CEOs exploring strategic partnerships we matched in advance. You'll arrive already introduced to one specific CEO whose business fits yours. The evening is where that conversation gets real.",
             offerings: [
                 "Hand-crafted cocktails and wine, if you choose to drink",
                 "Fresh smoothies and mocktails for those who don't",
@@ -660,7 +660,7 @@ export const content = {
         details: {
             h2: "Event Details",
             event: "AI CEO Sips & Growth Executive Reception",
-            date: "August 6",
+            date: "October 7",
             time: "5:00-8:00 PM",
             location: "The Capital Grille \n1861 International Dr \nMcLean, VA 22102",
             amenities: "Hand-crafted cocktails, fresh smoothies, mocktails, and The Capital Grille's signature appetizers and small plates.",
@@ -704,7 +704,7 @@ export const content = {
             },
         },
         finalThought: {
-            body: "You came to this page because something on it caught your attention - strategic alliances, AI agents, the room, the venue, the chance to meet 14 CEOs you haven't met yet. Fifteen seats. August 6. The Capital Grille.",
+            body: "You came to this page because something on it caught your attention - strategic alliances, AI agents, the room, the venue, the chance to meet 14 CEOs you haven't met yet. Fifteen seats. October 7. The Capital Grille.",
             cta: "Request Your Invitation",
             microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
         },
@@ -812,7 +812,7 @@ export const content = {
             h1: "Thank you. Your request is in.",
             body: "We have your details. Kelli reviews every request personally, so you will hear from us shortly.",
             microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
-            eventLine: "Thursday, August 6 · 5:00‑8:00 PM · The Capital Grille, McLean VA",
+            eventLine: "Wednesday, October 7 · 5:00‑8:00 PM · The Capital Grille, McLean VA",
             backLabel: "Return to MindFinders.ai",
             backHref: "/"
         }

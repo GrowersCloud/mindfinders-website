@@ -111,11 +111,14 @@ export default function SipsAndGrowthExecutiveReceptionPage() {
                                     <span className="text-[11px] md:text-[10px] uppercase tracking-[0.3em] text-[#ED1B2F] font-bold block mb-2">
                                         {i === 0 ? "When" : "Where"}
                                     </span>
-                                    {/* At text-lg, "Thursday, August 6 | 5:00-8:00 PM" is 313px; plus the
-                                        section px-4 and this box's p-6 that demanded a 395px viewport and
-                                        forced horizontal scroll on every common phone (390/375/360).
-                                        text-base on mobile fits it on one line down to ~360px, and nowrap
-                                        is deferred to sm so the narrowest phones wrap instead of overflow. */}
+                                    {/* At text-lg the ticket line ("Thursday, August 6 | 5:00-8:00 PM",
+                                        313px at the time) plus the section px-4 and this box's p-6
+                                        demanded a 395px viewport and forced horizontal scroll on every
+                                        common phone (390/375/360). text-base on mobile fits it on one
+                                        line, and nowrap is deferred to sm so the narrowest phones wrap
+                                        instead of overflow. The date is now "Wednesday, October 7",
+                                        two characters longer, so the wrap path matters more than it
+                                        did — re-measure here if the date changes again. */}
                                     <div className="text-base sm:text-lg md:text-xl font-bold text-white sm:whitespace-nowrap">
                                         {detail}
                                     </div>
@@ -142,16 +145,29 @@ export default function SipsAndGrowthExecutiveReceptionPage() {
                 <div className="sips-container mx-auto">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div>
-                            <span className="text-[#ED1B2F] font-bold tracking-[0.3em] uppercase text-xs block mb-4">
-                                EXECUTIVE SOCIAL
+                            {/* Section title, not an eyebrow. Typed identically to the "What You Walk
+                                Away With" h2 so the two sections carry the same weight. Deliberately
+                                inherits the default dark text rather than taking #ED1B2F — it is a
+                                title now, not an accent. `uppercase` and `tracking-[0.3em]` are
+                                eyebrow devices and must not come back at this size: caps carry far
+                                more visual mass at 60px, and 0.3em adds ~18px per character, which
+                                pushes the two words past the column on their own. Still a <span>,
+                                not an <h2> — the section already has one. */}
+                            <span className="text-4xl md:text-6xl font-bold font-heading leading-tight tracking-tighter text-balance block mb-4">
+                                Executive Social
                             </span>
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading leading-[0.95] mb-8 tracking-tighter">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-[1.05] mb-8 tracking-tighter">
                                 {/* The two lines are block-level for the stacked headline look, so their
-                                    text nodes would otherwise concatenate as "An Executive Social.Not a Pitch."
-                                    when read by a screen reader or copied. The explicit space keeps the
-                                    sentence break intact in the accessible/text version on every viewport. */}
+                                    text nodes would otherwise concatenate as "No stage. No pitch from
+                                    us.The only selling in the room is CEO-to-CEO." when read by a screen
+                                    reader or copied. The explicit space keeps the sentence break intact
+                                    in the accessible/text version on every viewport. See spec §8.1.
+                                    No `whitespace-nowrap` here: each line is now a full sentence, and
+                                    this section is a two-column grid, so from lg up the text column is
+                                    only about half the container. nowrap was safe at 20 characters and
+                                    would push these lines straight out of the column. */}
                                 {Array.isArray(sips.socialContext.h2) ? sips.socialContext.h2.map((line: string, i: number, arr: string[]) => (
-                                    <span key={i} className="block lg:whitespace-nowrap">
+                                    <span key={i} className="block text-balance">
                                         {line}{i < arr.length - 1 ? ' ' : ''}
                                     </span>
                                 )) : sips.socialContext.h2}
@@ -186,6 +202,114 @@ export default function SipsAndGrowthExecutiveReceptionPage() {
                         </div>
                     </div>
                     {sectionCta()}
+                </div>
+            </section>
+
+            {/* [3] Referral Networking Section — LEAD BENEFIT (strongest, most differentiated).
+                 Sits directly under Executive Social: that section now ends on "the only selling in
+                 the room is CEO-to-CEO", and this one is what that selling actually looks like, so
+                 the two read as one argument before the agenda backs it up.
+                 NOTE: this is a deliberate divergence from GrowersCloud's section order — their
+                 layout runs executive social → agenda → CEO network effect. Spec §9's
+                 "layout matches GrowersCloud section for section" no longer holds here. */}
+            <section className="py-32 px-4 bg-gray-50/50 relative overflow-hidden">
+                <div className="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-[#ED1B2F]/5 rounded-none pointer-events-none" />
+                <div className="absolute bottom-[10%] left-[-5%] w-[30%] h-[30%] bg-[#444]/5 rounded-none pointer-events-none" />
+
+                <div className="sips-container mx-auto relative z-10">
+                    <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+                        <div className="lg:col-span-5 order-2 lg:order-1 relative h-[500px] sm:h-[700px] lg:h-[950px] flex flex-col justify-between">
+                            <div className="relative w-full h-[30%] z-20 group/img1 animate-fade-in-up">
+                                <div className="absolute inset-0 bg-[#ED1B2F]/10 rounded-none rotate-1 scale-105 group-hover/img1:rotate-0 group-hover/img1:scale-105 transition-all duration-700" />
+                                <div className="relative rounded-none overflow-hidden shadow-[8px_8px_0px_0px_#231F20] border-[3px] border-[#231F20] h-full">
+                                    <Image src="/referral-networking-main-casual-v2.webp" alt="CEOs Networking" fill className="object-cover transform group-hover/img1:scale-110 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-6 h-[55%]">
+                                <div className="w-1/2 h-full pt-12 animate-fade-in-up delay-200">
+                                    <div className="relative h-[85%] group/img2">
+                                        <div className="relative rounded-none overflow-hidden shadow-[8px_8px_0px_0px_#231F20] border-[3px] border-[#231F20] h-full border-4 border-white">
+                                            <Image src="/referral-partnership-luxury-polo.webp" alt="Luxury Dealership Referral" fill className="object-cover transform group-hover/img2:scale-105 transition-transform duration-1000" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-1/2 h-full pb-12 animate-fade-in-up delay-400">
+                                    <div className="relative h-[85%] mt-auto group/img3">
+                                        <div className="absolute inset-0 bg-[#ED1B2F]/5 rounded-none rotate-2 scale-105 group-hover/img3:rotate-0 transition-all duration-700" />
+                                        <div className="relative rounded-none overflow-hidden shadow-[8px_8px_0px_0px_#231F20] border-[3px] border-[#231F20] h-full border-4 border-white">
+                                            <Image src="/referral-partnership-financial-clean.webp" alt="Financial Services Referral" fill className="object-cover transform group-hover/img3:scale-105 transition-transform duration-1000" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="relative w-full text-center mt-8 pb-4">
+                                <button type="button" onClick={openBooking} aria-haspopup="dialog" className="group relative px-8 py-4 bg-[#ED1B2F] text-[#231F20] rounded-none font-bold text-lg hover:bg-[#C4162A] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-[6px_6px_0px_0px_#231F20] border-[3px] border-[#231F20] inline-block">
+                                    <span className="relative z-10">{sips.howToAttend.cta}</span>
+                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
+                            <div className="animate-fade-in-up">
+                                <span className="text-[#ED1B2F] font-bold tracking-[0.3em] uppercase text-xs block mb-4">
+                                    THE CEO NETWORK EFFECT
+                                </span>
+                                <h2 className="text-5xl md:text-7xl font-bold font-heading leading-[1.1] mb-8 tracking-tighter text-balance">
+                                    {sips.referrals.h2}
+                                </h2>
+                                <p className="text-xl md:text-2xl font-sans leading-relaxed text-[#231F20] font-medium max-w-3xl mb-6">
+                                    {sips.referrals.body}
+                                </p>
+                                <ul className="space-y-4 max-w-3xl">
+                                    {sips.referrals.bullets.map((bullet: string, i: number) => (
+                                        <li key={i} className="flex items-start gap-3">
+                                            <div className="mt-2 w-2 h-2 rounded-full bg-[#ED1B2F] flex-shrink-0" />
+                                            <span className="text-lg md:text-xl font-sans text-[#231F20] font-medium">{bullet}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="animate-fade-in-up delay-100 relative group">
+                                <div className="relative bg-white/80 p-6 sm:p-8 md:p-10 rounded-none shadow-[6px_6px_0px_0px_#231F20] border-[3px] border-[#231F20] border-l-[6px] border-[#ED1B2F] transform transition-transform duration-500 group-hover:-translate-y-1">
+                                    <p className="text-xl md:text-2xl font-sans italic text-[#231F20] leading-tight font-semibold">
+                                        &ldquo;{sips.referrals.valueProp}&rdquo;
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-8 animate-fade-in-up delay-200">
+                                <p className="text-lg md:text-xl font-heading font-bold uppercase tracking-[0.2em] text-gray-400">
+                                    {sips.referrals.imagine}
+                                </p>
+                                <div className="grid sm:grid-cols-2 gap-6">
+                                    {sips.referrals.scenarios.map((scenario: string, i: number) => (
+                                        <div key={i} className="group/card bg-white p-8 rounded-none shadow-[4px_4px_0px_0px_#ED1B2F] border-[3px] border-[#231F20] hover:shadow-[8px_8px_0px_0px_#231F20] hover:border-[#ED1B2F]/20 transition-all duration-500 flex flex-col justify-between h-full">
+                                            <div>
+                                                <div className="w-12 h-12 rounded-none bg-[#ED1B2F]/5 flex items-center justify-center text-[#ED1B2F] mb-6 font-bold text-xl group-hover/card:bg-[#ED1B2F] group-hover/card:text-white transition-all duration-500">
+                                                    0{i + 1}
+                                                </div>
+                                                <p className="text-lg md:text-xl font-sans text-[#231F20] leading-relaxed group-hover/card:text-[#ED1B2F] transition-colors duration-500">
+                                                    {scenario}
+                                                </p>
+                                            </div>
+                                            <div className="mt-8 h-1 w-12 bg-gray-100 group-hover/card:w-full group-hover/card:bg-[#ED1B2F] transition-all duration-700" />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="pt-8 border-t border-gray-200 animate-fade-in-up delay-300">
+                                <p className="text-2xl md:text-3xl font-heading font-bold text-[#231F20] leading-tight">
+                                    {sips.referrals.conclusion}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -355,107 +479,6 @@ export default function SipsAndGrowthExecutiveReceptionPage() {
                 </div>
             </section>
 
-            {/* [3] Referral Networking Section — LEAD BENEFIT (moved up: strongest, most differentiated) */}
-            <section className="py-32 px-4 bg-gray-50/50 relative overflow-hidden">
-                <div className="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-[#ED1B2F]/5 rounded-none pointer-events-none" />
-                <div className="absolute bottom-[10%] left-[-5%] w-[30%] h-[30%] bg-[#444]/5 rounded-none pointer-events-none" />
-
-                <div className="sips-container mx-auto relative z-10">
-                    <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-                        <div className="lg:col-span-5 order-2 lg:order-1 relative h-[500px] sm:h-[700px] lg:h-[950px] flex flex-col justify-between">
-                            <div className="relative w-full h-[30%] z-20 group/img1 animate-fade-in-up">
-                                <div className="absolute inset-0 bg-[#ED1B2F]/10 rounded-none rotate-1 scale-105 group-hover/img1:rotate-0 group-hover/img1:scale-105 transition-all duration-700" />
-                                <div className="relative rounded-none overflow-hidden shadow-[8px_8px_0px_0px_#231F20] border-[3px] border-[#231F20] h-full">
-                                    <Image src="/referral-networking-main-casual-v2.webp" alt="CEOs Networking" fill className="object-cover transform group-hover/img1:scale-110 transition-transform duration-1000" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                </div>
-                            </div>
-
-                            <div className="flex gap-6 h-[55%]">
-                                <div className="w-1/2 h-full pt-12 animate-fade-in-up delay-200">
-                                    <div className="relative h-[85%] group/img2">
-                                        <div className="relative rounded-none overflow-hidden shadow-[8px_8px_0px_0px_#231F20] border-[3px] border-[#231F20] h-full border-4 border-white">
-                                            <Image src="/referral-partnership-luxury-polo.webp" alt="Luxury Dealership Referral" fill className="object-cover transform group-hover/img2:scale-105 transition-transform duration-1000" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-1/2 h-full pb-12 animate-fade-in-up delay-400">
-                                    <div className="relative h-[85%] mt-auto group/img3">
-                                        <div className="absolute inset-0 bg-[#ED1B2F]/5 rounded-none rotate-2 scale-105 group-hover/img3:rotate-0 transition-all duration-700" />
-                                        <div className="relative rounded-none overflow-hidden shadow-[8px_8px_0px_0px_#231F20] border-[3px] border-[#231F20] h-full border-4 border-white">
-                                            <Image src="/referral-partnership-financial-clean.webp" alt="Financial Services Referral" fill className="object-cover transform group-hover/img3:scale-105 transition-transform duration-1000" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="relative w-full text-center mt-8 pb-4">
-                                <button type="button" onClick={openBooking} aria-haspopup="dialog" className="group relative px-8 py-4 bg-[#ED1B2F] text-[#231F20] rounded-none font-bold text-lg hover:bg-[#C4162A] transition-all transform hover:scale-105 active:scale-95 overflow-hidden shadow-[6px_6px_0px_0px_#231F20] border-[3px] border-[#231F20] inline-block">
-                                    <span className="relative z-10">{sips.howToAttend.cta}</span>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
-                            <div className="animate-fade-in-up">
-                                <span className="text-[#ED1B2F] font-bold tracking-[0.3em] uppercase text-xs block mb-4">
-                                    THE CEO NETWORK EFFECT
-                                </span>
-                                <h2 className="text-5xl md:text-7xl font-bold font-heading leading-[1.1] mb-8 tracking-tighter text-balance">
-                                    {sips.referrals.h2}
-                                </h2>
-                                <p className="text-xl md:text-2xl font-sans leading-relaxed text-[#231F20] font-medium max-w-3xl mb-6">
-                                    {sips.referrals.body}
-                                </p>
-                                <ul className="space-y-4 max-w-3xl">
-                                    {sips.referrals.bullets.map((bullet: string, i: number) => (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <div className="mt-2 w-2 h-2 rounded-full bg-[#ED1B2F] flex-shrink-0" />
-                                            <span className="text-lg md:text-xl font-sans text-[#231F20] font-medium">{bullet}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="animate-fade-in-up delay-100 relative group">
-                                <div className="relative bg-white/80 p-6 sm:p-8 md:p-10 rounded-none shadow-[6px_6px_0px_0px_#231F20] border-[3px] border-[#231F20] border-l-[6px] border-[#ED1B2F] transform transition-transform duration-500 group-hover:-translate-y-1">
-                                    <p className="text-xl md:text-2xl font-sans italic text-[#231F20] leading-tight font-semibold">
-                                        &ldquo;{sips.referrals.valueProp}&rdquo;
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="space-y-8 animate-fade-in-up delay-200">
-                                <p className="text-lg md:text-xl font-heading font-bold uppercase tracking-[0.2em] text-gray-400">
-                                    {sips.referrals.imagine}
-                                </p>
-                                <div className="grid sm:grid-cols-2 gap-6">
-                                    {sips.referrals.scenarios.map((scenario: string, i: number) => (
-                                        <div key={i} className="group/card bg-white p-8 rounded-none shadow-[4px_4px_0px_0px_#ED1B2F] border-[3px] border-[#231F20] hover:shadow-[8px_8px_0px_0px_#231F20] hover:border-[#ED1B2F]/20 transition-all duration-500 flex flex-col justify-between h-full">
-                                            <div>
-                                                <div className="w-12 h-12 rounded-none bg-[#ED1B2F]/5 flex items-center justify-center text-[#ED1B2F] mb-6 font-bold text-xl group-hover/card:bg-[#ED1B2F] group-hover/card:text-white transition-all duration-500">
-                                                    0{i + 1}
-                                                </div>
-                                                <p className="text-lg md:text-xl font-sans text-[#231F20] leading-relaxed group-hover/card:text-[#ED1B2F] transition-colors duration-500">
-                                                    {scenario}
-                                                </p>
-                                            </div>
-                                            <div className="mt-8 h-1 w-12 bg-gray-100 group-hover/card:w-full group-hover/card:bg-[#ED1B2F] transition-all duration-700" />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="pt-8 border-t border-gray-200 animate-fade-in-up delay-300">
-                                <p className="text-2xl md:text-3xl font-heading font-bold text-[#231F20] leading-tight">
-                                    {sips.referrals.conclusion}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* [5] Walk Away Section — benefit recap after the argument */}
             <section className="py-24 px-4 bg-gray-50/50 relative overflow-hidden">
