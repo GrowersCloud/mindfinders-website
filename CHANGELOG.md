@@ -2,7 +2,7 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-07-31
+> Last verified: 2026-08-06
 
 ---
 
@@ -77,6 +77,12 @@ decision.
 - `src/app/programs/ai-ceo-sips-and-growth-executive-reception/page.tsx` (label, h2 classes, reorder)
 - `docs/ai-ceo-sips-content-snapshot.json` (refreshed from the GrowersCloud payload, `reservation` dropped)
 - `docs/ai-ceo-sips-port-spec.md` (**appended** §12, not overwritten - our copy carries §0, §8.7-8.9 and §11 that GrowersCloud's does not)
+
+> **Deploy note:** `vercel --prod` aliased `www.mindfinders.ai` on its own again, no
+> `vercel promote` needed - same as 2026-07-31, unlike 2026-07-30. Verified by fetching the live
+> HTML on the real domain, not from the CLI output: both `/programs/ai-ceo-sips-and-growth-executive-reception`
+> and `/thank-you/ai-ceo-sips` serve October 7 with both non-breaking characters intact.
+> Auto-deploy on push is still broken (see KNOWN ISSUES) - the manual deploy is what shipped this.
 
 **Note back to GrowersCloud:** the work order warned that our snapshot carries a `matchmaking` key
 theirs does not and that a blind refresh would delete it. That is a false alarm -
