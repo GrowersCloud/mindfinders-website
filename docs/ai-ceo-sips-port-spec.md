@@ -911,3 +911,39 @@ output; no Event JSON-LD.
 **Not yet run — needs a browser:** the §12.2 computed-style comparison, and the §9 responsive
 checks at 320/360/375/390/430 (the ticket line is two characters longer than the string §8.2's
 313px measurement was taken on, and the reorder puts a new section boundary mid-page).
+
+---
+
+## 13. Revision — 2026-08-27: event moved to October 15, 6:00–9:00 PM
+
+Requested directly on the MindFinders side (not a GrowersCloud work order this time — no upstream
+brief to port from). Event moved from **Wednesday, October 7, 5:00–8:00 PM** to **Thursday,
+October 15, 6:00–9:00 PM**.
+
+To keep every duration claim in §4 true without re-deriving the arithmetic, the whole agenda was
+shifted **+1 hour** rather than re-timed: 5:00→6:00, 5:50→6:50, 6:00→7:00, 6:07→7:07, 6:14→7:14,
+6:20→7:20, 6:30→7:30. The new end time (7:30 + 90 min networking = 9:00 PM) matches the new close
+time, and every relative-duration sentence from §4 (30 min content, 2h30m total, 90 min networking,
+10 min demos) still holds unchanged.
+
+Updated (see §12.3 for the pattern — same four fields, edited by substring replace, not retyped,
+to keep the U+2011 non-breaking hyphen and U+00A0 non-breaking space in `hero.details[0]` and
+`thankYou.aiCeoSips.eventLine` intact):
+
+| Field | New value |
+|---|---|
+| `sipsAndSmoothies.hero.details[0]` | `Thursday, October 15 \| 6:00[U+2011]9:00[U+00A0]PM` |
+| `sipsAndSmoothies.eveningProgram.items[*].time` (all 7) | shifted +1 hour, see above |
+| `sipsAndSmoothies.eveningProgram.items[0].description` | `"Doors open at 6:00."` |
+| `sipsAndSmoothies.details.date` | `October 15` |
+| `sipsAndSmoothies.details.time` | `6:00-9:00 PM` |
+| `sipsAndSmoothies.finalThought.body` | `…Fifteen seats. October 15. The Capital Grille.` |
+| `thankYou.aiCeoSips.eventLine` | `Thursday, October 15 · 6:00[U+2011]9:00[U+00A0]PM · …` |
+
+Also updated the stale dev comment at `page.tsx` (hero ticket-line block, near line 114) that
+referenced the old "Wednesday, October 7" string length — the new string is the same character
+count (35), so the mobile-wrap fix from §8.2 needs no further changes, but re-measure if the date
+ever changes to a string of different length.
+
+**Not yet run:** the §9 verification checklist against rendered/built HTML (this revision only
+touched source and ran `tsc --noEmit`, which is clean).

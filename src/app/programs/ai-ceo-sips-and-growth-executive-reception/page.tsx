@@ -116,9 +116,10 @@ export default function SipsAndGrowthExecutiveReceptionPage() {
                                         demanded a 395px viewport and forced horizontal scroll on every
                                         common phone (390/375/360). text-base on mobile fits it on one
                                         line, and nowrap is deferred to sm so the narrowest phones wrap
-                                        instead of overflow. The date is now "Wednesday, October 7",
-                                        two characters longer, so the wrap path matters more than it
-                                        did — re-measure here if the date changes again. */}
+                                        instead of overflow. The date is now "Thursday, October 15",
+                                        same character count as the prior "Wednesday, October 7" string,
+                                        so the wrap path should be unaffected — re-measure if it changes
+                                        length in the future. */}
                                     <div className="text-base sm:text-lg md:text-xl font-bold text-white sm:whitespace-nowrap">
                                         {detail}
                                     </div>

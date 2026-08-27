@@ -515,7 +515,7 @@ export const content = {
             ],
             subtitle: "A private, closed-door evening for DMV area CEOs running $3 million to $1 billion businesses.\n\nYou'll get three concise executive briefings covering how to:\n• Create CEO-to-CEO strategic partnerships\n• Protect your valuation from AI data risks\n• Deploy AI agents that drive bottom-line growth\n\nThese are proven strategies that can increase your valuation. You'll meet 14 peer CEOs, many of whom target the exact same customers you do.\n\nYou'll see two of the hottest AI tools demonstrated live. Plus, you could walk out with a single strategic partnership worth three months of top-line revenue.",
             details: [
-                "Wednesday, October 7 | 5:00‑8:00 PM",
+                "Thursday, October 15 | 6:00‑9:00 PM",
                 "The Capital Grille, McLean, VA",
             ],
             description: "Join fellow CEOs from middle-market companies and innovative small businesses with 30 or more employees in this relaxed, high-quality evening for CEOs to connect, enjoy great food and drinks, and see how AI is being used right now to accelerate growth and increase productivity.",
@@ -564,16 +564,16 @@ export const content = {
             items: [
                 {
                     number: "01",
-                    time: "5:00 PM",
+                    time: "6:00 PM",
                     title: "Arrival & Casual Networking",
                     subtitle: "The First Hour Sets the Tone",
-                    description: "Doors open at 5:00. Pick up your name tag at the door, grab your first cocktail or fresh smoothie, and start your first conversation. Every CEO here was hand-selected for the room; there are no strangers, only CEOs you haven't met yet. Kelli (your evening host) introduces you to the right people on arrival",
+                    description: "Doors open at 6:00. Pick up your name tag at the door, grab your first cocktail or fresh smoothie, and start your first conversation. Every CEO here was hand-selected for the room; there are no strangers, only CEOs you haven't met yet. Kelli (your evening host) introduces you to the right people on arrival",
                     imageType: "scene",
                     imageDirection: "/arrival-scene.webp",
                 },
                 {
                     number: "02",
-                    time: "5:50 PM",
+                    time: "6:50 PM",
                     title: "Kelli's Welcome",
                     subtitle: "The Format. The Question.",
                     description: "Hear a few minutes from your on-site co-host and moderator, Kelli Gilmore, COO of MindFinders.ai. She sets the format, plants the icebreaker question we'll trade across the tables later, and introduces Samuel Salter, who joins remotely to deliver three concise executive briefings.",
@@ -582,7 +582,7 @@ export const content = {
                 },
                 {
                     number: "03",
-                    time: "6:00 PM",
+                    time: "7:00 PM",
                     title: "Executive Briefing #1:\nHow AI Makes CEO-to-CEO Strategic Partnerships 10× Easier.\nWhy This Could Be Your Biggest 2026 Growth Lever.",
                     subtitle: "The 2026 Strategic Partnership Thesis · 3 Min + 3 Min Q&A",
                     description: "Samuel Salter joins remotely to present the strategic partnership thesis. Strategic partnerships used to take months of partner discovery, manual matching, and due diligence. AI collapses that to a few days. The Anthropic + xAI deal, the OpenAI + Microsoft alliance, the Anthropic + Amazon partnership - every one of them is a CEO-to-CEO deal that's driving billions. The CEOs who learn to operate strategic partnerships at AI-enabled speed in 2026 are going to grow 3-5× faster than the ones still doing it like it's 2015. Kelli then moderates one focused question from the room.",
@@ -591,7 +591,7 @@ export const content = {
                 },
                 {
                     number: "04",
-                    time: "6:07 PM",
+                    time: "7:07 PM",
                     title: "Executive Briefing #2: Why Your Data Is Your Business and Why Buyers and Investors Are Starting to Value It That Way.",
                     subtitle: "Own Your Business, Own Your Data · 3 Min + 3 Min Q&A",
                     description: "Samuel Salter on the screen for the second strategic briefing. Your AI brain, customer history, operational signals, and pricing patterns are part of your company's intellectual property. It's the layer business buyers and investors are starting to value companies by. If your growth is built on rented intelligence such as Claude, ChatGPT, or Gemini, your enterprise value is rented too. Kelli then moderates one focused question from the room.",
@@ -600,7 +600,7 @@ export const content = {
                 },
                 {
                     number: "05",
-                    time: "6:14 PM",
+                    time: "7:14 PM",
                     title: "Executive Briefing #3:\nAI Agents - The Ultimate Growth Lever",
                     subtitle: "The Three Agents Every Company Will Be Deploying · 3 Min + 3 Min Q&A",
                     description: "Sam closes the executive briefings block with the AI agent moves most companies are making. He will cover three agent types, sales, operations, and customer service. He will provide specific use cases and real numbers. Kelli then moderates one focused question from the room.",
@@ -609,7 +609,7 @@ export const content = {
                 },
                 {
                     number: "06",
-                    time: "6:20 PM",
+                    time: "7:20 PM",
                     title: "The Hottest AI Tools: 2 AI Tool Demos, 10 Minutes",
                     subtitle: "From Strategy to Show",
                     description: "The strategic part is over. Now for the show. Two of the hottest AI tools in action - back to back, live in the room. The strategic insights you just heard are what move your valuation. The demos are how you start moving Monday morning. You'll see how a debt-consolidation company converted dead leads into $600,000 in 90 days using AI sales and database reactivation agents. You'll see an AI Brain run a CEO's morning briefing, providing status and insights on all key projects and metrics.",
@@ -618,7 +618,7 @@ export const content = {
                 },
                 {
                     number: "07",
-                    time: "6:30 PM",
+                    time: "7:30 PM",
                     title: "The Networking Block: Rotating Tables + Free Mingling",
                     subtitle: "90 Minutes Designed to Send You Home With One Possible Strategic Partnership or New Friend",
                     description: "The session features two rotating-table rounds (15 minutes each) and group icebreaker questions, ensuring everyone in the room has an optional opportunity to get to know each other. After two rounds, the structure dissolves into 60 minutes of free mingling.",
@@ -660,8 +660,8 @@ export const content = {
         details: {
             h2: "Event Details",
             event: "AI CEO Sips & Growth Executive Reception",
-            date: "October 7",
-            time: "5:00-8:00 PM",
+            date: "October 15",
+            time: "6:00-9:00 PM",
             location: "The Capital Grille \n1861 International Dr \nMcLean, VA 22102",
             amenities: "Hand-crafted cocktails, fresh smoothies, mocktails, and The Capital Grille's signature appetizers and small plates.",
         },
@@ -704,7 +704,7 @@ export const content = {
             },
         },
         finalThought: {
-            body: "You came to this page because something on it caught your attention - strategic alliances, AI agents, the room, the venue, the chance to meet 14 CEOs you haven't met yet. Fifteen seats. October 7. The Capital Grille.",
+            body: "You came to this page because something on it caught your attention - strategic alliances, AI agents, the room, the venue, the chance to meet 14 CEOs you haven't met yet. Fifteen seats. October 15. The Capital Grille.",
             cta: "Request Your Invitation",
             microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
         },
@@ -812,7 +812,7 @@ export const content = {
             h1: "Thank you. Your request is in.",
             body: "We have your details. Kelli reviews every request personally, so you will hear from us shortly.",
             microcopy: "Invitations are reviewed within 48 hours. If the room is full, you go on the waitlist for the next event.",
-            eventLine: "Wednesday, October 7 · 5:00‑8:00 PM · The Capital Grille, McLean VA",
+            eventLine: "Thursday, October 15 · 6:00‑9:00 PM · The Capital Grille, McLean VA",
             backLabel: "Return to MindFinders.ai",
             backHref: "/"
         }
