@@ -2,7 +2,31 @@
 
 All deployments to production are documented here. **Update this file after every push to master.**
 
-> Last verified: 2026-08-06
+> Last verified: 2026-08-27
+
+---
+
+## [2026-08-27] - Sips Event Moved to October 15, 6:00-9:00 PM
+**Commit**: `b92a7c1`
+
+Requested directly by Sam, not a GrowersCloud work order. Event moved from Wednesday, October 7,
+5:00-8:00 PM to **Thursday, October 15, 6:00-9:00 PM**.
+
+### Changed
+- **Event date/time**, all four fields per `docs/ai-ceo-sips-port-spec.md` §12.3: hero ticket line,
+  `details.date`/`details.time`, closing CTA quote, and `thankYou.aiCeoSips.eventLine`.
+- **All 7 agenda times** shifted +1 hour (6:00 -> 6:50 -> 7:00 -> 7:07 -> 7:14 -> 7:20 -> 7:30 PM)
+  so every load-bearing duration claim in the port spec (30 min content, 2h30m total, 90 min
+  networking, 10 min demos) stays true without re-deriving the arithmetic.
+- Stale dev comment in `page.tsx` referencing the old date string.
+
+### Verified
+- `tsc --noEmit` clean, production build green (18/18 static pages).
+- Non-breaking hyphen (U+2011) and non-breaking space (U+00A0) preserved in the ticket-line and
+  thank-you strings (edited programmatically, not retyped).
+- Confirmed live on `www.mindfinders.ai` post-deploy: event page and `/thank-you/ai-ceo-sips` both
+  show the new date/times.
+- Logged as §13 in `docs/ai-ceo-sips-port-spec.md`.
 
 ---
 
